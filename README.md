@@ -3,14 +3,13 @@
 ## Descrição
 Criar uma solução de acompanhamento de alunos de ensino médio de escolas privadas com base no seu histórico acadêmico anterior, perfil familiar, perfil social, interação familiar com a educação, participação em atividades, desempenho acadêmico, evento escolares, histórico financeiro etc. para prever desempenho futuro do aluno (reprovação em matérias especificas, potencial de inadimplência, evasão, aprovação em vestibulares etc.)
 
-## Resultados esperados
+## Projeto
+**Resultados esperados:** Solução em IA ou BigData para prever o futuro acadêmico e financeiro do aluno com base na sua história e comportamento escolar
 
-Solução em IA ou BigData para prever o futuro acadêmico e financeiro do aluno com base na sua história e comportamento escolar
+**Habilidades necessárias/preferenciais:** Programação em Python, conhecimento Aprendizagem de Máquina e/ou BigData
 
-Habilidades necessárias/preferenciais: Programação em Python, conhecimento machine learning e/ou BigDatae
+**Mentores:** Escolas privadas (Leonardo da Vinci e/ou Rogacionista e/ou Everet)
 
-Mentores: Escolas privadas (Leonardo da Vince e/ou Rogacionista e/ou Everet)
+**Tamanho do projeto:** Médio/Grande
 
-Tamanho do projeto: Médio/Grande
-
-Dificuldade: Médio.
+**Dificuldade:** Média
