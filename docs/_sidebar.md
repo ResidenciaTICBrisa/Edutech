@@ -1,4 +1,5 @@
 - [Home](./README.md)
 - [Reuniões](./cliente/reunioes.md)
 - [Workshops](./exploracao/workshops.md)
+- [ Visão Geral do Produto](./produto/visaogeral.md)
 - [Exemplo](template.md)
