@@ -37,4 +37,4 @@ O cliente comercial, aquele que entrará em contato com as Escolas privadas para
  - Atualizações do Projeto
 - Entramos em contato novamente com Paulo.
 - Paulo informou que durante esse período é difícil conseguir os dados da escola devido ao recesso.
-- Paulo perguntou quais dados específicos nós gostaríamos de obter da escola.
+- Paulo perguntou quais dados específicos nós gostaríamos de obter da escola. ok
