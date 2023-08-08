@@ -16,15 +16,11 @@ Criar uma solução de acompanhamento de alunos de ensino médio de escolas priv
 
 **Dificuldade:** Média
 
-## Documentação
+# Documentação
 
 ## Tecnologia
 
 A geração do site estático é realizada utilizando o [docsify](https://docsify.js.org/).
-
-```shell
-"Docsify generates your documentation website on the fly. Unlike GitBook, it does not generate static html files. Instead, it smartly loads and parses your Markdown files and displays them as a website. To start using it, all you need to do is create an index.html and deploy it on GitHub Pages."
-```
 
 ### Instalando o docsify
 
@@ -41,3 +37,6 @@ Para iniciar o site localmente, utilize o comando:
 ```shell
 docsify serve ./docs
 ```
+## Para contribuir
+
+Leia o [CONTRIBUTING](https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio/blob/docs/CONTRIBUTING.md) deste repositório.
