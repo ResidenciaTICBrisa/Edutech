@@ -2,4 +2,5 @@
 - [Reuniões](./cliente/reunioes.md)
 - [Workshops](./exploracao/workshops.md)
 - [ Visão Geral do Produto](./produto/visaogeral.md)
+- [Contributing](contributing.md)
 - [Exemplo](template.md)
