@@ -1,7 +1,12 @@
 - [Home](README.md)
-- [Reuniões](/cliente/reunioes.md)
-- [Estudos e Materiais](/estudos/estudos_materiais.md)
+- **Exploração**
+- [Reuniões](/exploracao/reunioes.md)
+- [Estudos e Materiais](/exploracao/estudos_materiais.md)
 - [Workshops](/exploracao/workshops.md)
+- **Produto**
 - [Visão Geral do Produto](/produto/visaogeral.md)
+- [Dados](/produto/dados.md)
+- [Notebooks](/produto/notebooks.md)
+- **Tópico Auxiliar**
 - [Contributing](CONTRIBUTING.md)
 - [Exemplo](template.md)
