@@ -1,5 +1,7 @@
 # Dados
 
+## Introdução
+
 O dataset utilizado nesta etapa inicial é um dado mockado (falso) vindo do Kaggle, que pode ser encontrado [aqui](https://www.kaggle.com/datasets/devansodariya/student-performance-data). Isso se deu pois até o momento da elaboração deste documento, não temos os dados reais da instituição de ensino com a qual estamos trabalhando.
 
 Esse dataset foi obtido por uma pesquisa em estudantes da disciplina de matemática de escolas de ensino médio. É composto por 33 informações sobre cada aluno, sendo algumas delas elas:
@@ -54,3 +56,9 @@ Sendo as colunas de "Grades" as mais importantes para o nosso projeto, pois são
 | G1         | Nota do primeiro período             | Número Inteiro | 21                  | 0 - 20                                                                                |
 | G2         | Nota do segundo período              | Número Inteiro | 21                  | 0 - 20                                                                                |
 | G3         | Nota final                           | Número Inteiro | 21                  | 0 - 20                                                                                |
+
+## Versionamento
+
+| Versão | Data       | Modificação         | Autor     |
+| ------ | ---------- | ------------------- | --------- |
+| 1.0    | 09/08/2023 | Criação do conteúdo | Luís Lins |

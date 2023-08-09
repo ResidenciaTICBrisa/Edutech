@@ -6,7 +6,7 @@
 - **Produto**
 - [Visão Geral do Produto](/produto/visaogeral.md)
 - [Dados](/produto/dados.md)
-- [Notebooks](/produto/notebooks.md)
+- [Notebook](/produto/notebook.md)
 - **Tópico Auxiliar**
 - [Contributing](CONTRIBUTING.md)
 - [Exemplo](template.md)
