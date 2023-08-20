@@ -14,10 +14,10 @@ análise avançada de dados
 
 ## Equipe
 
-| Membro                                  | Papel           | Github                                               |
-| --------------------------------------- | --------------- | ---------------------------------------------------- |
-| Luís Guilherme Gaboardi Lins            | Scrum Master    | [@luisgaboardi](https://github.com/luisgaboardi)     |
-| Mariana Oliveira Pires do Rio           | Product Manager | [@MarianaPRio](https://github.com/MarianaPRio)       |
-| Renan Girão Evangelista                 | Equipe Técnica  | [@RenanGirao](https://github.com/RenanGirao)         |
-| Fause Carlos Mascarenhas Lustosa Júnior | Líder Técnico   | [@FauseSkyWalker](https://github.com/FauseSkyWalker) |
-| Carlos Eduardo Vaz Ferreira             | Equipe Técnica  | [@VazFCarlos](https://github.com/VazFCarlos)         |
+Foto | Membro                                  | Papel           | Github                                               |
+---- | --------------------------------------- | --------------- | ---------------------------------------------------- |
+<img src="https://avatars.githubusercontent.com/u/45673358?v=4" alt="Luís Guilherme Gaboardi Lins" width="100">|Luís Guilherme Gaboardi Lins | Scrum Master | [@luisgaboardi](https://github.com/luisgaboardi)|
+<img src="https://avatars.githubusercontent.com/u/65375798?v=4" alt="Mariana Oliveira Pires do Rio" width="100">| Mariana Oliveira Pires do Rio | Product Manager | [@MarianaPRio](https://github.com/MarianaPRio)|
+<img src="https://avatars.githubusercontent.com/u/137415620?v=4" alt="Renan Girão Evangelista" width="100">| Renan Girão Evangelista | Equipe Técnica | [@RenanGirao](https://github.com/RenanGirao)|
+<img src="https://avatars.githubusercontent.com/u/90693864?v=4" alt="Fause Carlos Mascarenhas Lustosa Júnior" width="100">| Fause Carlos Mascarenhas Lustosa Júnior | Líder Técnico   | [@FauseSkyWalker](https://github.com/FauseSkyWalker) |
+<img src="https://avatars.githubusercontent.com/u/136510566?v=4" alt="Carlos Eduardo Vaz Ferreira" width="100">| Carlos Eduardo Vaz Ferreira| Equipe Técnica  | [@VazFCarlos](https://github.com/VazFCarlos)|
