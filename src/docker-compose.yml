@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+
+  backend:
+    build:
+      context: ./backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    image: backend
+    container_name: backend
+    volumes:
+      - ./backend:/app  # Montagem de volume para o código do backend
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    image: frontend
+    container_name: frontend
+    volumes:
+      - ./frontend:/usr/src/app  # Montagem de volume para o código do frontend
+
+  db:
+    build:
+      context: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: matrix123
+      MYSQL_DATABASE: studentdatabase
+    image: db
+    container_name: db
+    volumes:
+      - ./db:/usr/src/app  # Montagem de volume para o código do frontend
+    ports:
+      - "3307:3306"
