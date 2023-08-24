@@ -13,6 +13,7 @@
 - [Dados](/produto/dados.md)
 - [Notebook](/produto/notebook.md)
 - [Roadmap](/produto/roadmap.md)
+- [Prototipo](/produto/prototipo_visual.md)
 
 **Tópico Auxiliar**
 
