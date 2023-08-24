@@ -7,6 +7,8 @@ São representações de interfaces gráficas, como wireframes, por exemplo, e p
 As nossas **cores** escolhidas para o projeto foi um <font color="#0ec46f">verde</font> (#0ec46f) como principal cor e uma tonalidade de **azul escuro** (que é a cor de fundo da  pagina) para se contrapor (#1c3f50).
 <!-- Para a nossa **fonte** escolhemos a -->
 
+## Logo
+![logo](../imagens/logo.png)
 ## Telas feitas no prototipo 
 - Login
 - Home
