@@ -1,21 +1,22 @@
 - [Home](README.md)
 
-**Exploração**
+**Concepção**
 
-- [Reuniões](/exploracao/reunioes.md)
-- [Estudos e Materiais](/exploracao/estudos_materiais.md)
-- [Workshops](/exploracao/workshops.md)
+- [Visão Geral do Produto](/concepcao/visao-geral-produto.md)
+- [Arquitetura do Software](/concepcao/arquitetura-software.md)
+- [Dados Necessários](/concepcao/dados-necessarios.md)
 
 **Produto**
 
-- [Visão Geral do Produto](/produto/visaogeral.md)
-- [Tecnologias](/produto/tecnologias.md)
-- [Dados](/produto/dados.md)
-- [Notebook](/produto/notebook.md)
+- [Módulos do Produto](/concepcao/modulos-produto.md)
+  - [Gestão Interna](/concepcao/gestao-interna.md)
+  - [Análise de Desempenho](/concepcao/analise-desempenho.md)
+  - [Predição de Desempenho](/concepcao/predicao-desempenho.md)
+- [Backlog do Produto](/produto/backlog.md)
+- [Mínimo Produto Viável](/produto/mvp.md)
 - [Roadmap](/produto/roadmap.md)
-- [Prototipo](/produto/prototipo_visual.md)
+- [Protótipo Visual](/produto/prototipo-visual.md)
 
 **Tópico Auxiliar**
 
 - [Contributing](CONTRIBUTING.md)
-- [Exemplo](template.md)

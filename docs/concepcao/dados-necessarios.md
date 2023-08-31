@@ -1,5 +1,7 @@
 # Dados
 
+Este documento apresenta os dados necessários para o desenvolvimento do projeto, bem como a descrição do dataset utilizado para o treinamento dos modelos de machine learning.
+
 ## Introdução
 
 O dataset utilizado nesta etapa inicial é um dado mockado (falso) vindo do Kaggle, que pode ser encontrado [aqui](https://www.kaggle.com/datasets/devansodariya/student-performance-data). Isso se deu pois até o momento da elaboração deste documento, não temos os dados reais da instituição de ensino com a qual estamos trabalhando.

@@ -1,4 +1,4 @@
-# Documentação do Notebook
+# Predição de Desmpenho Acadêmico
 
 Este documento apresenta uma visão geral do notebook "Comparação de Desempenho entre Regressão Linear e Rede Neural"[1]. O notebook foi criado para analisar o desempenho comparativo entre um modelo de regressão linear e uma rede neural na previsão das notas G1, G2 e G3 dos alunos, utilizando o conjunto de dados de desempenho do aluno disponível no Kaggle[2].
 
