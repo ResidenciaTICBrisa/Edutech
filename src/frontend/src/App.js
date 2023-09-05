@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <h1>Add Message</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        {/* <div>
           <label>ID:</label>
           <input
             type="number"
@@ -37,7 +37,7 @@ function App() {
             value={message.id}
             onChange={handleInputChange}
           />
-        </div>
+        </div> */}
         <div>
           <label>Content:</label>
           <input
