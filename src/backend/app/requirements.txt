@@ -1,0 +1,2 @@
+fastapi
+mysql-connector-python
