@@ -1,15 +1,34 @@
-# Acompanhamento de alunos de ensino médio em escolas privadas
+# EduTech
 
-## Descrição
-Criar uma solução de acompanhamento de alunos de ensino médio de escolas privadas com base no seu histórico acadêmico anterior, perfil familiar, perfil social, interação familiar com a educação, participação em atividades, desempenho acadêmico, evento escolares, histórico financeiro etc. para prever desempenho futuro do aluno (reprovação em matérias especificas, potencial de inadimplência, evasão, aprovação em vestibulares etc.)
+## Pré-requisitos
+* Docker:
+* Docker Compose: Link
 
-## Projeto
-**Resultados esperados:** Solução em IA ou BigData para prever o futuro acadêmico e financeiro do aluno com base na sua história e comportamento escolar
+## Como Executar
+### 1. Clone o repositório:
 
-**Habilidades necessárias/preferenciais:** Programação em Python, conhecimento Aprendizagem de Máquina e/ou BigData
+```
+git clone https://github.com/seu-usuario/seu-projeto.git
+cd seu-projeto
+```
+### 2. Execute o Docker Compose:
 
-**Mentores:** Escolas privadas (Leonardo da Vinci e/ou Rogacionista e/ou Everet)
+```
+docker-compose up --build
+```
+Este comando irá construir e iniciar todos os serviços definidos no arquivo docker-compose.yml.
 
-**Tamanho do projeto:** Médio/Grande
+### 3. Acesse a aplicação:
+Depois que os contêineres estiverem em execução, você pode acessar a aplicação em:
 
-**Dificuldade:** Média
+**React**: http://localhost:3000
+
+**FastAPI**: http://localhost:8000
+
+## Encerrando a Execução
+
+Para encerrar a execução da aplicação e parar os contêineres, você pode pressionar Ctrl + C no terminal onde o Docker Compose está sendo executado ou executar o seguinte comando:
+
+```
+docker-compose down
+```
