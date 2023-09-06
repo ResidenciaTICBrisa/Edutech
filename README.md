@@ -8,8 +8,8 @@
 ### 1. Clone o repositório:
 
 ```
-git clone https://github.com/seu-usuario/seu-projeto.git
-cd seu-projeto
+git clone https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio.git
+cd 06_AcompanhamentoEnsinoMedio
 ```
 ### 2. Execute o Docker Compose:
 
@@ -32,3 +32,6 @@ Para encerrar a execução da aplicação e parar os contêineres, você pode pr
 ```
 docker-compose down
 ```
+## Para contribuir
+
+Leia o [CONTRIBUTING](https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio/blob/docs/CONTRIBUTING.md) deste repositório.
