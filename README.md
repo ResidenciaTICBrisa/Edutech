@@ -1,42 +1,35 @@
-# Acompanhamento de alunos de ensino médio em escolas privadas
+# EduTech - Documentação
 
-## Descrição
+## Pré-requisitos
+* NodeJS
 
-Criar uma solução de acompanhamento de alunos de ensino médio de escolas privadas com base no seu histórico acadêmico anterior, perfil familiar, perfil social, interação familiar com a educação, participação em atividades, desempenho acadêmico, evento escolares, histórico financeiro etc. para prever desempenho futuro do aluno (reprovação em matérias especificas, potencial de inadimplência, evasão, aprovação em vestibulares etc.)
+## Como Executar
 
-## Projeto
+### 1. Clone o repositório:
 
-**Resultados esperados:** Solução em IA ou BigData para prever o futuro acadêmico e financeiro do aluno com base na sua história e comportamento escolar
+```
+git clone https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio.git
+cd 06_AcompanhamentoEnsinoMedio
+```
+### 2. Instale o pacote que usamos para documentação ([docsify](https://docsify.js.org/))
 
-**Habilidades necessárias/preferenciais:** Programação em Python, conhecimento Aprendizagem de Máquina e/ou BigData
-
-**Mentores:** Escolas privadas (Leonardo da Vinci e/ou Rogacionista e/ou Everet)
-
-**Tamanho do projeto:** Médio/Grande
-
-**Dificuldade:** Média
-
-# Documentação
-
-## Tecnologia
-
-A geração do site estático é realizada utilizando o [docsify](https://docsify.js.org/).
-
-### Instalando o docsify
-
-Execute o comando:
-
-```shell
+```
 npm i docsify-cli -g
 ```
 
-### Executando localmente
-
-Para iniciar o site localmente, utilize o comando:
-
-```shell
+### 3. Execute a documentação contida na pasta /docs
+```
 docsify serve ./docs
 ```
+
+### 4. Acesse a aplicação no seu navegador:
+
+**Link**: http://localhost:3000
+
+## Encerrando a Execução
+
+Para encerrar a execução da aplicação, você pode pressionar Ctrl + C no terminal onde está sendo executado:
+
 ## Para contribuir
 
 Leia o [CONTRIBUTING](https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio/blob/docs/CONTRIBUTING.md) deste repositório.
