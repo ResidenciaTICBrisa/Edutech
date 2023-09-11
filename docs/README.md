@@ -4,7 +4,7 @@
 
 ## Definição
 
-EduTech Future é uma plataforma web idealizada com o propósito de apoiar instituições educacionais e aprimorar o progresso acadêmico dos alunos. Este projeto é realizado por estudantes para estudantes. gAtravés deste sistema, é possível avaliar o desenvolvimento dos alunos e realizar previsões sobre seu futuro acadêmico,Uma vez que um dos principais desafios educacionais no país nos dias de hoje é a evasão escolar, ocasionada por conta do desempenho acadêmico insatisfatório, nossa plataforma busca entender esses desafios e, assim, contribuir para a resolução dos problemas que prejudicam o rendimento escolar dos alunos.
+EduTech Future é uma plataforma web idealizada com o propósito de apoiar instituições educacionais e aprimorar o progresso acadêmico dos alunos. Este projeto é realizado por estudantes para estudantes. Através deste sistema, é possível avaliar o desenvolvimento dos alunos e realizar previsões sobre seu futuro acadêmico,Uma vez que um dos principais desafios educacionais no país nos dias de hoje é a evasão escolar, ocasionada por conta do desempenho acadêmico insatisfatório, nossa plataforma busca entender esses desafios e, assim, contribuir para a resolução dos problemas que prejudicam o rendimento escolar dos alunos.
 
 ## Principais Funcionalidades
 
