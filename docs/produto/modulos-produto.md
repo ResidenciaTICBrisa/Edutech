@@ -6,19 +6,19 @@ Este documento tem como objetivo apresentar de forma abrangente os três princip
 
 A área de gestão interna permite aos administradores cadastrar alunos, gerenciar turmas, disciplinas e professores, controlar presença, avaliações e notas, e personalizar critérios de identificação de baixo desempenho com base nas necessidades pedagógicas da instituição.
 
-Para saber mais, clique [aqui](/concepcao/gestao-interna.md).
+Para saber mais, clique [aqui](/produto/gestao-interna.md).
 
 ## Análise de Desempenho
 
 Para a nossa análise de desempenho ultilizaremos as ferramentas de gerenciamento dos alunos para analisar o atual desempenho e para que apartir disso possamos fazer uma predição do desempenho futuro dos alunos.
 
-Para saber mais, clique [aqui](/concepcao/analise-desempenho.md).
+Para saber mais, clique [aqui](/produto/analise-desempenho.md).
 
 ## Predição de Desempenho
 
 Nosso módulo de predição de Desempenho tem como objetivo de fazer análises preditivas do desempenho dos alunos para identificar fatores que levam ao baixo desempenho para que possam ser tomadas medidas preventivas.
 
-Para saber mais, clique [aqui](/concepcao/predicao-desempenho.md).
+Para saber mais, clique [aqui](/produto/predicao-desempenho.md).
 
 ## Versionamento
 
