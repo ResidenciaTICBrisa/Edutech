@@ -1,6 +1,8 @@
 # Módulos do Produto
 
-Este documento tem como objetivo apresentar de forma abrangente os três principais módulos do produto que constituem o nosso produto: Gestão Interna para organização de recursos, Análise de Desempenho para avaliação acadêmica, e Predição de Desempenho para prever resultados futuros dos alunos. Cada módulo otimiza processos educacionais visando a eficiência e a tomada de decisões das instituições de ensino.
+
+Este documento tem como objetivo apresentar de forma abrangente os três principais módulos que constituem o nosso produto: Gestão Interna, Análise de Desempenho e Predição de Desempenho. Cada um desses módulos mostra as funcionalidade do nosso produto.
+
 
 ## Gestão Interna
 
@@ -23,7 +25,9 @@ Para saber mais, clique [aqui](/produto/predicao-desempenho.md).
 ## Versionamento
 
 
+
 | Versão | Data       | Modificação                       | Autor        |
 | ------ | ---------- | --------------------------------- | ------------ |
 | 1.0    | 04/09/2023 | Criação do conteúdo               | Mariana Rio  |
 | 2.0    | 06/09/2023 | Adição de texto introdutório      | Carlos Vaz   |
+
