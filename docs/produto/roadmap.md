@@ -1,6 +1,6 @@
 # Roadmap
 
-Este documento visa...
+Este documento visa representação visual que detalha as atualizações e os aprimoramentos planejados para o projeto. Ele fornece uma visão geral das próximas funcionalidades e melhorias de desempenho que estão em desenvolvimento ou planejadas para o futuro, permitindo que os usuários acompanhem o progresso de desenvolvimento do produto.
 
 ## Sobre
 
@@ -16,3 +16,4 @@ Para vizualizar o nosso roadmap <a href="https://github.com/ResidenciaTICBrisa/0
 | ------ | ---------- | ----------------------------------- | ----------- |
 | 1.0    | 20/08/2023 | Criação do conteúdo                 | Mariana Rio |
 | 2.0    | 21/08/2023 | Correção da visualização do Roadmap | Luís Lins   |
+| 3.0    | 06/09/2023 | Adição de texto introdutório        | Carlos Vaz  |

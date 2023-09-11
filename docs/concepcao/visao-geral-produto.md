@@ -1,6 +1,6 @@
 # Visão Geral do Produto
 
-Este documento se propoe a...
+Este documento se propoe a demonstrar nossa plataforma Open-Source, que aborda o problema de baixo desempenho acadêmico em escolas particulares por meio de acompanhamento e predição de notas. Ela oferece gestão interna, análise e predição de desempenho acadêmico, beneficiando a diretores, docentes e alunos. Com a utilização de inteligência artificial, a plataforma busca melhorar a gestão e o rendimento acadêmico do aluno. O lançamento está previsto para novembro de 2023, visando resultados tangíveis até o final do ano seguinte.
 
 ## Declaração do Problema
 
@@ -102,3 +102,4 @@ Para a definição dos objetivos do produto, foi utilizada a metodologia SMART. 
 | ------ | ---------- | ------------------------------- | ----------- |
 | 1.0    | 07/08/2023 | Criação do conteúdo             | Mariana Rio |
 | 2.0    | 31/08/2023 | Refatoração da visão de produto | Luís Lins   |
+| 3.0    | 06/09/2023 | Adição de texto introdutório    | Carlos Vaz  |
