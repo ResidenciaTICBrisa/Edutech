@@ -1,6 +1,6 @@
 # Módulos do Produto
 
-Este documento tem como objetivo...
+Este documento tem como objetivo apresentar os módulos do produto, que incluem Gestão Interna para organização de recursos, Análise de Desempenho para avaliação acadêmica, e Predição de Desempenho para prever resultados futuros dos alunos. Cada módulo otimiza processos educacionais visando a eficiência e a tomada de decisões das instituições de ensino.
 
 ## Gestão Interna
 
@@ -19,3 +19,10 @@ Para saber mais, clique [aqui](/concepcao/analise-desempenho.md).
 Nulla volutpat massa eget elit egestas pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque at nisl vestibulum, gravida metus ut, congue felis. Maecenas commodo, mi eget posuere placerat, mauris dolor porta turpis, nec ornare sem justo vel est. Mauris vitae maximus magna. Praesent id mauris vitae nisl molestie pulvinar quis vel nisi. Duis ut sagittis turpis, eget commodo sem. Cras sit amet mauris posuere, lobortis nunc vel, scelerisque leo. Donec vitae efficitur lorem, eget efficitur erat. Maecenas et lacus nisl.
 
 Para saber mais, clique [aqui](/concepcao/predicao-desempenho.md).
+
+## Versionamento
+
+| Versão | Data       | Modificação                       | Autor        |
+| ------ | ---------- | --------------------------------- | ------------ |
+| 1.0    | 04/09/2023 | Criação do documento              | Luís Lins    |
+| 2.0    | 06/09/2023 | Adição de texto introdutório      | Carlos Vaz   |

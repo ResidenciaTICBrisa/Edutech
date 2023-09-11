@@ -1,6 +1,6 @@
 # Visão Geral da Arquitetura de Software
 
-Este documento apresenta...
+Este documento apresenta a arquitetura de software adotada para o projeto, que se baseia em um monolito que combina React para o front-end e FastAPI para o back-end, com dados armazenados no MySQL. O React oferece uma interface de usuário amigável, enquanto o FastAPI fornece um backend rápido e escalável. O MySQL foi escolhido devido à sua confiabilidade e presença de uma interface gráfica para gerenciamento de dados. Essa arquitetura suporta a gestão e análise do desempenho acadêmico dos alunos de forma eficaz.
 
 ## Descrição da Arquitetura de Software
 
@@ -44,3 +44,4 @@ monolito, React, Fast API, MySQL
 | ------ | ---------- | --------------------------------- | ------------ |
 | 1.0    | 20/08/2023 | Criação do conteúdo               | Fause Carlos |
 | 2.0    | 21/08/2023 | Melhoria da formatação e conteúdo | Luís Lins    |
+| 3.0    | 06/09/2023 | Adição de texto introdutório      | Carlos Vaz   |
