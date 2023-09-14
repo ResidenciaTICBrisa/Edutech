@@ -6,27 +6,27 @@ Agradecemos pelo seu interesse em contribuir para o Projeto! Siga os passos abai
 
 Clone o repositório para o seu ambiente de desenvolvimento local:
 
-```git clone https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio.git```
+`git clone https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio.git`
 
 ## Passo 2: Navegue para a branch de interesse (_docs_ ou _develop_)
 
-```git checkout docs```
+`git checkout docs`
 
 ## Passo 3: Crie uma branch a partir dessa
 
 É sempre recomendado que você crie uma branch a partir da versão mais recente da branch "mãe". Para isso, ainda na branch atual use o comando:
 
-```git pull```
+`git pull`
 
 Em seguida, crie a nova branch:
 
-```git checkout -b [nome da branch]```
+`git checkout -b [nome da branch]`
 
 ### Padrão de nome de branch
 
 O nome da branch deve indicar a qual Issue ela está associada e acompanhada de um resumo mínimo do que será feito. Por exemplo, supondo que a Issue número 6 seja para criar um README. O nome da branch seria:
 
-```feat06-readme``` ou ```feat06-criacao_readme```
+`feat06-readme` ou `feat06-criacao_readme`
 
 ## Passo 4: Faça as alterações na sua branch
 
@@ -34,32 +34,32 @@ O nome da branch deve indicar a qual Issue ela está associada e acompanhada de 
 
 Selecione quais arquivos você quer salvar as alterações com o comando:
 
-```git add [arquivo1] [arquivo2]``` ou simplesmente ```git add .``` para selecionar todos os arquivos que foram alterados.
+`git add [arquivo1] [arquivo2]` ou simplesmente `git add .` para selecionar todos os arquivos que foram alterados.
 
 ### 4.2. Fazer o commit dos arquivos
 
 Com os arquivos no stash, devemos fazer um commit para salvar as alterações no nosso repositório git com o comando:
 
-```git commit -m [mensagem do commit]```
+`git commit -m [mensagem do commit]`
 
 #### Padrão de mensagem de commit
 
 A mensagem de commit deve sempre indicar a qual issue se refere e deve ser descritiva do que foi feito, sendo o mais atômico possível, isto é, não deve haver grandes alterações em um único commit. Deve seguir a norma da língua portuguesa e priorizar o uso de verbos no infinitivo. Um exemplo de mensagem de commit seria:
 
-* Mensagem do Commit 1: ```[Feat#06] - Criação do README```
-* Mensagem do Commit 2: ```[Feat#06] - Adição dos nomes dos membros da equipe```
+- Mensagem do Commit 1: `[Feat#06] - Criação do README`
+- Mensagem do Commit 2: `[Feat#06] - Adição dos nomes dos membros da equipe`
 
 ### 4.3. Subir os arquivos para o repositório remoto
 
 Agora você deve enviar essas alterações para o repositório remoto mediante o comando _push_.
 
-```git push```
+`git push`
 
 **Obs:** Na primeira vez que você tentar fazer isso após criar a branch, você deve também subir a sua branch com o comando:
 
-```git push origin [nome da sua branch]```
+`git push origin [nome da sua branch]`
 
-Você pode conferir o nome da sua branch com o comando ```git branch```
+Você pode conferir o nome da sua branch com o comando `git branch`
 
 ## Passo 5: Solicite a incorporação das suas alterações na branch principal
 
@@ -80,13 +80,14 @@ Para realizar um PR, acesse o repositório no GitHub, na aba Pull Requests e cli
 Você será levado para uma tela em que você poderá dar um título, uma descrição e vários outros detalhes a respeito das suas alterações.
 
 1. Dê um **título**. Ele deve conter o número da Issue e um mínimo resumo do que foi feito. Por exemplo:
-```[Feat#03] - Criação do Documento de Visão```
+   `[Feat#03] - Criação do Documento de Visão`
 
 2. Adicione uma **descrição**, prioritariamente em pontos, do que foi feito. Algo como:
-* Criação do arquivo
-* Estrutura do arquivo: título, subtítulo, sumário, definição, contexto, bibliografia
-* Participantes
-* Versionamento
+
+- Criação do arquivo
+- Estrutura do arquivo: título, subtítulo, sumário, definição, contexto, bibliografia
+- Participantes
+- Versionamento
 
 3. Registre que fez o PR, no canto direito no campo "Assignees".
 

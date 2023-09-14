@@ -1,4 +1,4 @@
-# [EduTech Future]
+# EduTech Future
 
 ### Feito por: EduTech
 
@@ -13,6 +13,7 @@ EduTech Future oferece funcionalidades essenciais, incluindo a capacidade de imp
 ## Objetivo
 
 O propósito central do nosso sistema é impulsionar o avanço da educação, atuando como uma ferramenta que possibilita as escolas identificar e abordar os principais obstáculos que impactam a qualidade do ensino oferecido aos alunos. Ao fazer isso, nosso sistema auxilia as instituições de ensino a tomar medidas eficazes para resolver esses problemas. Isso inclui a identificação de alunos que necessitam de uma atenção especial e a implementação de estratégias direcionadas para apoiar seu progresso acadêmico. Além disso, nosso sistema oferece análises abrangentes para que as escolas possam tomar decisões informadas e adaptar seus métodos de ensino, promovendo, assim, um ambiente educacional mais eficaz e inclusivo.
+
 ## Quem somos
 
 Nós somos a equipe EduTech, somos um grupo de alunos universitários participantes de um projeto de extensão da Universidade de Brasília, em parceria com a Brisa. Nosso projeto tem como objetivos principais promover a inovação, disseminar conhecimento e garantir a qualidade em nossas iniciativas.
