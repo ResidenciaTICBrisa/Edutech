@@ -18,23 +18,23 @@ Sendo as colunas de "Grades" as mais importantes para o nosso projeto, pois são
 
 ## Dicionário de Dados
 
-| Coluna     | Descrição                            | Tipo           | Qtd. Valores Únicos | Valores                                                                               |
-| ---------- | ------------------------------------ | -------------- | ------------------- | ------------------------------------------------------------------------------------- |
-| school     | Tipo de escola                       | Texto          | 2                   | GP(Gabriel Pereira), MS(Mousinho da Silveira)                                         |
-| sex        | Gênero do estudante                  | Caracter       | 2                   | M(Male), F(Female)                                                                    |
-| age        | Idade do estudante                   | Número inteiro | 8                   | 15 - 22                                                                               |
-| studytime  | Tempo de estudo semanal              | Número inteiro | 4                   | 1(<2 hours), 2(2 to 5 hours), 3(5 to 10 hours), 4(>10 hours)                          |
-| failures   | Número de reprovações                | Número inteiro | 4                   | 0 - 3                                                                                 |
-| higher     | Quer fazer educação superior         | Booleano       | 2                   | True(yes), False(no)                                                                  |
-| internet   | Tem acesso à internet em casa        | Booleano       | 2                   | True(yes), False(no)                                                                                         |
-| absenses   | Número de faltas                     | Número Inteiro | 94                  | 0 - 93                                                                                |
-| G1         | Nota do primeiro período             | Número Inteiro | 21                  | 0 - 20                                                                                |
-| G2         | Nota do segundo período              | Número Inteiro | 21                  | 0 - 20                                                                                |
-| G3         | Nota final                           | Número Inteiro | 21                  | 0 - 20                                                                                |
+| Coluna    | Descrição                     | Tipo           | Qtd. Valores Únicos | Valores                                                      |
+| --------- | ----------------------------- | -------------- | ------------------- | ------------------------------------------------------------ |
+| school    | Tipo de escola                | Texto          | 2                   | GP(Gabriel Pereira), MS(Mousinho da Silveira)                |
+| sex       | Gênero do estudante           | Caracter       | 2                   | M(Male), F(Female)                                           |
+| age       | Idade do estudante            | Número inteiro | 8                   | 15 - 22                                                      |
+| studytime | Tempo de estudo semanal       | Número inteiro | 4                   | 1(<2 hours), 2(2 to 5 hours), 3(5 to 10 hours), 4(>10 hours) |
+| failures  | Número de reprovações         | Número inteiro | 4                   | 0 - 3                                                        |
+| higher    | Quer fazer educação superior  | Booleano       | 2                   | True(yes), False(no)                                         |
+| internet  | Tem acesso à internet em casa | Booleano       | 2                   | True(yes), False(no)                                         |
+| absenses  | Número de faltas              | Número Inteiro | 94                  | 0 - 93                                                       |
+| G1        | Nota do primeiro período      | Número Inteiro | 21                  | 0 - 20                                                       |
+| G2        | Nota do segundo período       | Número Inteiro | 21                  | 0 - 20                                                       |
+| G3        | Nota final                    | Número Inteiro | 21                  | 0 - 20                                                       |
 
 ## Versionamento
 
-| Versão | Data       | Modificação         | Autor     |
-| ------ | ---------- | ------------------- | --------- |
-| 1.0    | 09/08/2023 | Criação do conteúdo | Luís Lins |
+| Versão | Data       | Modificação             | Autor          |
+| ------ | ---------- | ----------------------- | -------------- |
+| 1.0    | 09/08/2023 | Criação do conteúdo     | Luís Lins      |
 | 2.0    | 08/09/2023 | Atualização do conteúdo | FauseSkyWalker |

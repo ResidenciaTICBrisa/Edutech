@@ -12,4 +12,4 @@ Para vizualizar o nosso roadmap <a href="https://github.com/ResidenciaTICBrisa/0
 | ------ | ---------- | ----------------------------------- | ----------- |
 | 1.0    | 20/08/2023 | Criação do conteúdo                 | Mariana Rio |
 | 2.0    | 21/08/2023 | Correção da visualização do Roadmap | Luís Lins   |
-| 3.0    | 10/09/2023 | Atualização  do Roadmap             | Mariana Rio |
+| 3.0    | 10/09/2023 | Atualização do Roadmap              | Mariana Rio |
