@@ -1,7 +1,6 @@
 # Prótipo Visual
 
-Este documento tem como objetivo apresentar o protótipo visual...
-São representações de interfaces gráficas, como wireframes, por exemplo, e podem ter diferentes níveis de fidelidade. Para iniciar o nosso projeto estaremos fazendo um prototipo de alta fidelidade para seguirmos com as construcoes de telas.
+Este documento tem como objetivo apresentar o protótipo visual, que consiste em uma representação gráfica de interfaces em alta fidelidade. As cores principais escolhidas são o verde e azul escuro. O protótipo inclui telas como Login, Home, páginas de predição e consulta relacionadas ao desempenho acadêmico dos alunos, bem como visualizações de gráficos.
 
 ## Cores
 
@@ -41,6 +40,7 @@ Link para vizualizar pelo <a href="//www.figma.com/file/XwP1NJtDg7cglLqzlTQaDP/U
 
 ## Versionamento
 
-| Versão | Data       | Modificação         | Autor       |
-| ------ | ---------- | ------------------- | ----------- |
-| 1.0    | 23/08/2023 | Criação do conteúdo | Mariana Rio |
+| Versão | Data       | Modificação                  | Autor       |
+| ------ | ---------- | ---------------------------- | ----------- |
+| 1.0    | 23/08/2023 | Criação do conteúdo          | Mariana Rio |
+| 2.0    | 06/09/2023 | Adição de texto introdutório | Carlos Vaz  |

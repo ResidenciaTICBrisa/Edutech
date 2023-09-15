@@ -1,4 +1,5 @@
 # Mínimo Produto Viável
+
 O Mínimo Produto Viável (MVP) é uma metodologia de desenvolvimento de produto. Este documento tem como objetivo construir uma versão simples e enxuta do produto para entregar a principal proposta de valor da ideia. Para a elaboração do MVP foi utilizado a ferramenta Canvas MVP, esta nos possibilita uma melhor visualização do MVP. 
 
 Assim, o MVP é fundamental na elaboração do produto uma vez que ao se ter uma visão geral do produto é possível determinar a viabilidade do produto e suas funcionalidades. Também com o MVP é possível identificar problemas e melhorias no produto, reduzir riscos uma vez que a equipe avalia a aceitação e receptividade do público e além dissso com essa avaliação é possível saber em qual parte do projeto a equipe deve focar. Essa análise se torna mais visual com a divisão do MVP em categorias. O Mínimo Produto Viável foi organizado em algumas categorias no Canvas MVP, no nosso caso elas são: 

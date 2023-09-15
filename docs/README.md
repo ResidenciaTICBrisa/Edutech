@@ -1,25 +1,22 @@
-# [NOME do PRODUTO]
+# EduTech Future
 
 ### Feito por: EduTech
 
 ## Definição
 
-Aliquam a imperdiet lorem. Cras porttitor viverra ligula, ut tincidunt dolor pulvinar vitae. Nulla vitae malesuada velit. Ut sed purus nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed nec eros vel felis tempor cursus sed vitae orci. Suspendisse sed rhoncus lacus. Suspendisse ac est at dolor posuere pretium. Nunc vel ipsum neque. Mauris pharetra turpis et felis feugiat vestibulum. Pellentesque ut magna lacinia enim sodales dictum. Aliquam non tincidunt urna, vel posuere mauris. Donec rhoncus nisl id risus tempus, vel accumsan diam hendrerit. Duis laoreet enim et leo accumsan, et suscipit ex imperdiet. Mauris luctus non magna vitae sollicitudin.
+EduTech Future é uma plataforma web idealizada com o propósito de apoiar instituições educacionais e aprimorar o progresso acadêmico dos alunos. Este projeto é realizado por estudantes para estudantes. Através deste sistema, é possível avaliar o desenvolvimento dos alunos e realizar previsões sobre seu futuro acadêmico,Uma vez que um dos principais desafios educacionais no país nos dias de hoje é a evasão escolar, ocasionada por conta do desempenho acadêmico insatisfatório, nossa plataforma busca entender esses desafios e, assim, contribuir para a resolução dos problemas que prejudicam o rendimento escolar dos alunos.
 
 ## Principais Funcionalidades
 
-Nunc eget elit nec felis feugiat dignissim ut at leo. In efficitur efficitur orci eget scelerisque. Etiam sed justo quis felis laoreet interdum. Nam eget pellentesque diam. Maecenas congue ipsum et euismod luctus. Mauris eleifend placerat tellus, in vestibulum nulla finibus ut. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce non sagittis ligula. Quisque eu risus viverra, hendrerit est ac, tincidunt mauris. Morbi vitae dolor vitae justo varius vulputate nec eu orci. Duis euismod ipsum sit amet est finibus elementum
-
-Morbi euismod nisl vel nibh pretium, ut sollicitudin urna rhoncus. Nullam a tortor dapibus, lacinia erat ut, varius lorem. Morbi tincidunt ipsum vel mi euismod, vitae maximus risus auctor. Cras efficitur iaculis ipsum, efficitur ultricies orci tincidunt non. Integer vehicula consectetur ante, nec sollicitudin justo interdum ac. Ut porta augue nibh, at cursus turpis sollicitudin at. In hac habitasse platea dictu
+EduTech Future oferece funcionalidades essenciais, incluindo a capacidade de importar dados de estudantes diretamente das instituições de ensino. Com essas informações em mãos, o sistema realiza uma análise minuciosa do desempenho acadêmico atual dos alunos e, a partir disso, gera previsões sobre seu desempenho futuro, além de identificar potenciais áreas de preocupação. Dessa maneira, a escola pode ter um entendimento claro dos possíveis desafios enfrentados pelos alunos e está melhor preparada para desenvolver estratégias direcionadas e eficazes para resolvê-los, garantindo assim um ambiente de aprendizado mais produtivo e de alta qualidade.
 
 ## Objetivo
 
-Nulla volutpat massa eget elit egestas pretium. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque at nisl vestibulum, gravida metus ut, congue felis. Maecenas commodo, mi eget posuere placerat, mauris dolor porta turpis, nec ornare sem justo vel est. Mauris vitae maximus magna. Praesent id mauris vitae nisl molestie pulvinar quis vel nisi. Duis ut sagittis turpis, eget commodo sem. Cras sit amet mauris posuere, lobortis nunc vel, scelerisque leo. Donec vitae efficitur lorem, eget efficitur erat. Maecenas et lacus nisl.
+O propósito central do nosso sistema é impulsionar o avanço da educação, atuando como uma ferramenta que possibilita as escolas identificar e abordar os principais obstáculos que impactam a qualidade do ensino oferecido aos alunos. Ao fazer isso, nosso sistema auxilia as instituições de ensino a tomar medidas eficazes para resolver esses problemas. Isso inclui a identificação de alunos que necessitam de uma atenção especial e a implementação de estratégias direcionadas para apoiar seu progresso acadêmico. Além disso, nosso sistema oferece análises abrangentes para que as escolas possam tomar decisões informadas e adaptar seus métodos de ensino, promovendo, assim, um ambiente educacional mais eficaz e inclusivo.
 
 ## Quem somos
 
-Nós somos a equipe EduTech, somos parte de...
-Quisque sed sagittis dolor. Donec lobortis, diam a rutrum lobortis, ligula arcu egestas nunc, at consequat augue urna sed tellus. Nam consectetur turpis ac suscipit pulvinar. Vivamus sed dictum nunc. Sed ut nibh quis diam hendrerit lobortis ut dignissim purus. Fusce cursus velit velit, quis molestie risus lobortis quis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas magna est, gravida eget fringilla at, mattis sit amet nisi. Morbi pretium nec augue eget pharetra.
+Nós somos a equipe EduTech, somos um grupo de alunos universitários participantes de um projeto de extensão da Universidade de Brasília, em parceria com a Brisa. Nosso projeto tem como objetivos principais promover a inovação, disseminar conhecimento e garantir a qualidade em nossas iniciativas.
 
 | Foto                                                                                                                       | Membro                                  | Papel           | Github                                               |
 | -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | --------------- | ---------------------------------------------------- |
