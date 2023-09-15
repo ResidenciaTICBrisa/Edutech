@@ -21,7 +21,7 @@ Para a definição do escopo do produto e seus requisitos, a metodologia usada s
 ## Histórias de Usuário
 
 | "US/TS" | Eu, como            | Quero / Preciso / Devo / Gostaria de                                                                                        | Para / A fim de                                                                          |
-| ------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| ------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | US01    | Direção             | Cadastrar os meus alunos a partir de uma planilha de excel                                                                  | Facilitar a importação de dados dos vários alunos da minha instituição para a plataforma |
 | US02    | Direção             | Gerenciar as turmas e os alunos que as compõem                                                                              | Organizar os alunos em suas turmas                                                       |
 | US03    | Direção             | Gerenciar as disciplinas que serão lecionadas pela instituição                                                              | Permitir o acompanhamento de cada uma individualmente                                    |
@@ -37,9 +37,9 @@ Para a definição do escopo do produto e seus requisitos, a metodologia usada s
 | US13    | Aluno               | Ter acesso a relatórios individuais e personalizados sobre meu desempenho acadêmico                                         | Entender meu progresso e áreas que precisam de mais atenção                              |
 | US14    | Aluno               | Receber recomendações de estudo com base nas análises e nas predições de desempenho                                         | Me ajudar a focar em áreas específicas de aprendizado                                    |
 | US15    | BRISA               | Ter acesso a um relatório que ilustra como a plataforma contribuiu para a melhoria do rendimento acadêmico nas instituições | Compartilhar com investidores e stakeholders                                             |
-| <!--    | TS01                | Desenvolvedor                                                                                                               | Fazer a modelagem do banco de dados                                                      | Possiblitar o registro e funcionamento da aplicação |
+| TS01    | Desenvolvedor       | Fazer a modelagem do banco de dados                                                                                         | Possiblitar o registro e funcionamento da aplicação                                      |
 | TS02    | Desenvolvedor       | Implementar algoritmos de aprendizado de máquina para prever o desempenho dos alunos                                        | Fornecer insights valiosos para as instituições mediante a plataforma                    |
-| TS03    | Desenvolvedor       | Garantir a segurança dos dados dos alunos                                                                                   | Implementando medidas de criptografia e conformidade com regulamentações de privacidade  | -->                                                 |
+| TS03    | Desenvolvedor       | Garantir a segurança dos dados dos alunos                                                                                   | Implementando medidas de criptografia e conformidade com regulamentações de privacidade  |
 
 ## Requisitos
 
