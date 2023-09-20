@@ -40,7 +40,11 @@ O [Jupyter Notebook](https://jupyter.org) é um aplicativo da web de código abe
 
 ### Diagrama Entidade-Relacionamento (DE-R)
 
-### Diagrama Lógico de Dados (DLD)
+![Diagrama Entidade-Relacionamento](../imagens/conceitual.png)
+
+### Diagrama Lógico de Dados (DLD
+
+![Diagrama Lógico de Dados](../imagens/logico.png)
 
 ## Referências Bibliográficas
 
@@ -60,3 +64,4 @@ O [Jupyter Notebook](https://jupyter.org) é um aplicativo da web de código abe
 | 1.1    | 21/08/2023 | Melhoria da formatação e conteúdo                                      | Luís Lins              |
 | 1.2    | 06/09/2023 | Adição de texto introdutório                                           | Carlos Vaz             |
 | 2.0    | 14/09/2023 | Adição da descrição das tecnologias, rich picture e diagrama de pastas | Luís Lins, Renan Girão |
+| 2.1    | 15/09/2023 | Adição do DE-R e DLD                                                   | Luís Lins, Renan Girão |
