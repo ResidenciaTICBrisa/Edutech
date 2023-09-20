@@ -2,182 +2,167 @@ CREATE DATABASE IF NOT EXISTS studentdatabase;
 
 USE studentdatabase;
 
-CREATE TABLE messages (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    content TEXT
-);
-
--- CREATE DATABASE studentdatabase;
-CREATE DATABASE IF NOT EXISTS studentdatabase;
-USE studentdatabase;
-
-CREATE TABLE escola (
-    cnpj INT AUTO_INCREMENT PRIMARY KEY,
-    nome TEXT,
-    cpfDirecao INT
-);
+CREATE TABLE ESCOLA (
+    cnpj       INT         NOT NULL AUTO_INCREMENT,
+    nome       VARCHAR(50) NOT NULL,
+    cpfDirecao INT         NOT NULL,
+    
+	CONSTRAINT ESCOLA_PK PRIMARY KEY (cnpj)
+) ENGINE = InnoDB AUTO_INCREMENT = 1;
 
 CREATE TABLE UNIDADE (
-    idUnidade INT PRIMARY KEY,
-    cnpjEscola INT,
-    nivelEducacao ENUM('Superior', 'Médio', 'Fundamental', 'Cursinho'),
-    siglaEstado CHAR(2),
-    cidade VARCHAR(50),
-    bairro VARCHAR(30),
-    cep INT,
-    logradouro VARCHAR(200),
-    numero INT,
-    complemento VARCHAR(200),
-    cpfCoordenador INT
-);
+    idUnidade      INT          NOT NULL,
+    cnpjEscola     INT          NOT NULL,
+    nivelEducacao  ENUM('Superior', 'Médio', 'Fundamental', 'Cursinho') NOT NULL,
+    siglaEstado    CHAR(2)      NOT NULL,
+    cidade         VARCHAR(50)  NOT NULL,
+    bairro         VARCHAR(30)  NOT NULL,
+    cep            INT          NOT NULL,
+    logradouro     VARCHAR(200) NOT NULL,
+    numero         INT          NOT NULL,
+    complemento    VARCHAR(200),
+    cpfCoordenador INT          NOT NULL,
+    
+    CONSTRAINT UNIDADE_PK PRIMARY KEY (idUnidade),
+    CONSTRAINT UNIDADE_ESCOLA_FK FOREIGN KEY (cnpjEscola)
+		REFERENCES ESCOLA (cnpj)
+		ON DELETE CASCADE
+) ENGINE = InnoDB;
 
 CREATE TABLE PESSOA (
-    cpf INT,
-    matricula INT,
-    nome VARCHAR(200),
-    genero ENUM('F', 'M'),
-    siglaEstado CHAR(2),
-    cidade VARCHAR(50),
-    bairro VARCHAR(30),
-    cep INT,
-    logradouro VARCHAR(200),
-    numero INT,
-    complemento VARCHAR(200),
-    PRIMARY KEY (cpf, matricula)
-);
+    cpf         INT            NOT NULL,
+    matricula   INT            NOT NULL,
+    nome        VARCHAR(200)   NOT NULL,
+    genero      ENUM('F', 'M') NOT NULL,
+    siglaEstado CHAR(2)        NOT NULL,
+    cidade      VARCHAR(50)    NOT NULL,
+    bairro      VARCHAR(30)    NOT NULL,
+    cep         INT            NOT NULL,
+    logradouro  VARCHAR(200),
+    numero      INT            NOT NULL,
+    complemento VARCHAR(200)   NOT NULL,
+    
+    CONSTRAINT PESSOA_PK PRIMARY KEY (cpf, matricula)
+) ENGINE = InnoDB;
 
 CREATE TABLE TURMA (
-    idTurma INT PRIMARY KEY,
-    serie INT,
-    letra CHAR(2),
-    ano DATE,
-    idUnidade INT
-);
+    idTurma   INT     NOT NULL,
+    serie     INT     NOT NULL,
+    letra     CHAR(2) NOT NULL,
+    ano       DATE    NOT NULL,
+    idUnidade INT     NOT NULL,
+    
+    CONSTRAINT TURMA_PK PRIMARY KEY (idTurma),
+    CONSTRAINT TURMA_UNIDADE_FK FOREIGN KEY (idUnidade)
+		REFERENCES UNIDADE (idUnidade)
+		ON DELETE CASCADE
+) ENGINE = InnoDB;
 
 CREATE TABLE DISCIPLINA (
-    codigo INT PRIMARY KEY,
-    nome VARCHAR(30)
-);
+    codigo INT         NOT NULL,
+    nome   VARCHAR(30) NOT NULL,
+    
+    CONSTRAINT DISCIPLINA_PK PRIMARY KEY (codigo)
+) ENGINE = InnoDB;
 
 CREATE TABLE AVALIACAO (
-    idAvaliacao INT PRIMARY KEY,
-    tipo VARCHAR(30),
-    peso INT
-);
+    idAvaliacao INT         NOT NULL,
+    tipo        VARCHAR(30) NOT NULL,
+    peso        FLOAT       NOT NULL,
+    
+    CONSTRAINT AVALIACAO_PK PRIMARY KEY (idAvaliacao)
+) ENGINE = InnoDB;
 
 CREATE TABLE ALUNO (
-    cpf INT,
-    matricula INT,
-    dataNascimento DATE,
-    acessaInternet Boolean,
-    PRIMARY KEY (cpf, matricula)
-);
+	cpf            INT     NOT NULL,
+    matricula      INT     NOT NULL,
+    dataNascimento DATE    NOT NULL,
+    acessaInternet BOOLEAN NOT NULL,
+    
+    CONSTRAINT ALUNO_PK PRIMARY KEY (matricula),
+    CONSTRAINT ALUNO_PESSOA_FK FOREIGN KEY (cpf, matricula)
+		REFERENCES PESSOA (cpf, matricula)
+		ON DELETE CASCADE
+) ENGINE = InnoDB;
 
 CREATE TABLE PROFESSOR (
-    cpf INT,
-    matricula INT,
-    formacao VARCHAR(200),
-    PRIMARY KEY (cpf, matricula)
-);
+    cpf       INT          NOT NULL,
+    matricula INT          NOT NULL,
+    formacao  VARCHAR(200) NOT NULL,
+
+	CONSTRAINT PROFESSOR_PK PRIMARY KEY (matricula),
+    CONSTRAINT PROFESSOR_PESSOA_FK FOREIGN KEY (cpf, matricula)
+		REFERENCES PESSOA (cpf, matricula)
+		ON DELETE CASCADE
+) ENGINE = InnoDB;
 
 CREATE TABLE ALOCACAO_leciona (
-    idAlocacao INT PRIMARY KEY,
-    codigo INT,
-    cpf INT,
-    matricula INT,
-    UNIQUE (codigo, matricula)
-);
+    idAlocacao         INT NOT NULL,
+    codigoDisciplina   INT NOT NULL,
+    matriculaProfessor INT NOT NULL,
+    
+    CONSTRAINT ALOCACAO_leciona_PK PRIMARY KEY (idAlocacao),
+    CONSTRAINT ALOCACAO_leciona_DISCIPLINA_FK FOREIGN KEY (codigoDisciplina)
+		REFERENCES DISCIPLINA (codigo)
+		ON DELETE CASCADE,
+	CONSTRAINT ALOCACAO_leciona_PROFESSOR_FK FOREIGN KEY (matriculaProfessor)
+		REFERENCES PROFESSOR (matricula)
+		ON DELETE CASCADE,
+    CONSTRAINT ALOCACAO_leciona_UK UNIQUE KEY (codigoDisciplina, matriculaProfessor)
+) ENGINE = InnoDB;
 
-CREATE TABLE telefone_unidade (
+CREATE TABLE telefone_UNIDADE (
     idUnidade INT NOT NULL,
-    telefone INT,
-    PRIMARY KEY (idUnidade, telefone)
-);
+    telefone  INT NOT NULL,
+    
+    CONSTRAINT telefone_UNIDADE_PK PRIMARY KEY (idUnidade, telefone),
+    CONSTRAINT telefone_UNIDADE_UNIDADE_FK FOREIGN KEY (idUnidade)
+		REFERENCES UNIDADE (idUnidade)
+		ON DELETE CASCADE
+) ENGINE = InnoDB;
 
-CREATE TABLE telefone (
-    cpf INT NOT NULL,
-    telefone INT,
-    PRIMARY KEY (cpf, telefone)
-);
+CREATE TABLE telefone_PESSOA (
+    cpf      INT NOT NULL,
+    telefone INT NOT NULL,
+	
+    CONSTRAINT telefone_PESSOA_PK PRIMARY KEY (cpf, telefone),
+    CONSTRAINT telefone_PESSOA_PESSOA_FK FOREIGN KEY (cpf)
+		REFERENCES PESSOA (cpf)
+		ON DELETE CASCADE
+) ENGINE = InnoDB;
 
 CREATE TABLE oferta (
-    IdUnidade INT,
-    codigo INT
-);
+    idUnidade        INT  NOT NULL,
+    codigoDisciplina INT  NOT NULL,
+    
+    CONSTRAINT oferta_PK PRIMARY KEY (IdUnidade, codigoDisciplina),
+    CONSTRAINT oferta_DISCIPLINA_FK FOREIGN KEY (idUnidade)
+		REFERENCES UNIDADE (idUnidade)
+		ON DELETE CASCADE
+) ENGINE = InnoDB;
 
 CREATE TABLE compoe (
-    idTurma INT,
-    cpf INT,
-    matricula INT
-);
+    idTurma        INT NOT NULL,
+    matriculaAluno INT NOT NULL,
+    
+    CONSTRAINT compoe_PK PRIMARY KEY (idTurma, matriculaAluno),
+    CONSTRAINT compoe_TURMA_FK FOREIGN KEY (idTurma)
+		REFERENCES TURMA (idTUrma)
+		ON DELETE CASCADE,
+	CONSTRAINT compoe_ALUNO_FK FOREIGN KEY (matriculaAluno)
+		REFERENCES ALUNO (matricula)
+		ON DELETE CASCADE
+) ENGINE = InnoDB;
 
 CREATE TABLE cursa (
-    idTurma INT,
-    codigo INT
-);
- 
-ALTER TABLE UNIDADE ADD CONSTRAINT FK_UNIDADE_3
-    FOREIGN KEY (cnpjEscola)
-    REFERENCES ESCOLA (cnpj)
-    ON DELETE RESTRICT;
-
-ALTER TABLE TURMA ADD CONSTRAINT FK_TURMA_2
-    FOREIGN KEY (idUnidade)
-    REFERENCES UNIDADE (idUnidade)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE AVALIACAO ADD CONSTRAINT FK_AVALIACAO_2
-    FOREIGN KEY (idAvaliacao)
-    REFERENCES ALOCACAO_leciona (idAlocacao);
- 
-ALTER TABLE ALUNO ADD CONSTRAINT FK_ALUNO_2
-    FOREIGN KEY (cpf, matricula)
-    REFERENCES PESSOA (cpf, matricula)
-    ON DELETE CASCADE;
- 
-ALTER TABLE PROFESSOR ADD CONSTRAINT FK_PROFESSOR_2
-    FOREIGN KEY (cpf, matricula)
-    REFERENCES PESSOA (cpf, matricula)
-    ON DELETE CASCADE;
- 
-ALTER TABLE ALOCACAO_leciona ADD CONSTRAINT FK_ALOCACAO_leciona_1
-    FOREIGN KEY (codigo)
-    REFERENCES DISCIPLINA (codigo);
- 
-ALTER TABLE ALOCACAO_leciona ADD CONSTRAINT FK_ALOCACAO_leciona_2
-    FOREIGN KEY (cpf, matricula)
-    REFERENCES PROFESSOR (cpf, matricula);
- 
-ALTER TABLE telefone_unidade ADD CONSTRAINT FK_telefone_unidade_1
-    FOREIGN KEY (idUnidade)
-    REFERENCES UNIDADE (idUnidade);
- 
-ALTER TABLE oferta ADD CONSTRAINT FK_oferta_1
-    FOREIGN KEY (IdUnidade)
-    REFERENCES UNIDADE (idUnidade)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE oferta ADD CONSTRAINT FK_oferta_2
-    FOREIGN KEY (codigo)
-    REFERENCES DISCIPLINA (codigo)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE compoe ADD CONSTRAINT FK_compoe_1
-    FOREIGN KEY (idTurma)
-    REFERENCES TURMA (idTurma)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE compoe ADD CONSTRAINT FK_compoe_2
-    FOREIGN KEY (cpf, matricula)
-    REFERENCES ALUNO (cpf, matricula)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE cursa ADD CONSTRAINT FK_cursa_1
-    FOREIGN KEY (idTurma)
-    REFERENCES TURMA (idTurma)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE cursa ADD CONSTRAINT FK_cursa_2
-    FOREIGN KEY (codigo)
-    REFERENCES DISCIPLINA (codigo)
-    ON DELETE RESTRICT;
+    idTurma          INT NOT NULL,
+    codigoDisciplina INT NOT NULL,
+    
+    CONSTRAINT compoe_PK PRIMARY KEY (idTurma, codigoDisciplina),
+    CONSTRAINT cursa_TURMA_FK FOREIGN KEY (idTurma)
+		REFERENCES TURMA (idTUrma)
+		ON DELETE CASCADE,
+	CONSTRAINT cursa_DISCIPLINA_FK FOREIGN KEY (codigoDisciplina)
+		REFERENCES DISCIPLINA (codigo)
+		ON DELETE CASCADE
+) ENGINE = InnoDB;
