@@ -1,13 +1,15 @@
 FROM node:14
 
-WORKDIR /usr/src/app
+# Create app directory
+WORKDIR /frontend
 
-COPY package*.json ./
+# Install app dependencies
+COPY package.json .
 
 RUN npm install
 
+# Copy app source code
 COPY . .
 
-EXPOSE 3000
-
+# Start application
 CMD ["npm", "start"]

@@ -29,15 +29,6 @@ function App() {
     <div className="App">
       <h1>Add Message</h1>
       <form onSubmit={handleSubmit}>
-        {/* <div>
-          <label>ID:</label>
-          <input
-            type="number"
-            name="id"
-            value={message.id}
-            onChange={handleInputChange}
-          />
-        </div> */}
         <div>
           <label>Content:</label>
           <input

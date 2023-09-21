@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS studentdatabase;
 
 USE studentdatabase;
 
-CREATE TABLE ESCOLA (
+CREATE TABLE IF NOT EXISTS ESCOLA (
     cnpj       INT         NOT NULL AUTO_INCREMENT,
     nome       VARCHAR(50) NOT NULL,
     cpfDirecao INT         NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE ESCOLA (
 	CONSTRAINT ESCOLA_PK PRIMARY KEY (cnpj)
 ) ENGINE = InnoDB AUTO_INCREMENT = 1;
 
-CREATE TABLE UNIDADE (
+CREATE TABLE IF NOT EXISTS UNIDADE (
     idUnidade      INT          NOT NULL,
     cnpjEscola     INT          NOT NULL,
     nivelEducacao  ENUM('Superior', 'Médio', 'Fundamental', 'Cursinho') NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE UNIDADE (
 		ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-CREATE TABLE PESSOA (
+CREATE TABLE IF NOT EXISTS PESSOA (
     cpf         INT            NOT NULL,
     matricula   INT            NOT NULL,
     nome        VARCHAR(200)   NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE PESSOA (
     CONSTRAINT PESSOA_PK PRIMARY KEY (cpf, matricula)
 ) ENGINE = InnoDB;
 
-CREATE TABLE TURMA (
+CREATE TABLE IF NOT EXISTS TURMA (
     idTurma   INT     NOT NULL,
     serie     INT     NOT NULL,
     letra     CHAR(2) NOT NULL,
@@ -58,14 +58,14 @@ CREATE TABLE TURMA (
 		ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-CREATE TABLE DISCIPLINA (
+CREATE TABLE IF NOT EXISTS DISCIPLINA (
     codigo INT         NOT NULL,
     nome   VARCHAR(30) NOT NULL,
     
     CONSTRAINT DISCIPLINA_PK PRIMARY KEY (codigo)
 ) ENGINE = InnoDB;
 
-CREATE TABLE AVALIACAO (
+CREATE TABLE IF NOT EXISTS AVALIACAO (
     idAvaliacao INT         NOT NULL,
     tipo        VARCHAR(30) NOT NULL,
     peso        FLOAT       NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE AVALIACAO (
     CONSTRAINT AVALIACAO_PK PRIMARY KEY (idAvaliacao)
 ) ENGINE = InnoDB;
 
-CREATE TABLE ALUNO (
+CREATE TABLE IF NOT EXISTS ALUNO (
 	cpf            INT     NOT NULL,
     matricula      INT     NOT NULL,
     dataNascimento DATE    NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE ALUNO (
 		ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-CREATE TABLE PROFESSOR (
+CREATE TABLE IF NOT EXISTS PROFESSOR (
     cpf       INT          NOT NULL,
     matricula INT          NOT NULL,
     formacao  VARCHAR(200) NOT NULL,
@@ -96,7 +96,7 @@ CREATE TABLE PROFESSOR (
 		ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-CREATE TABLE ALOCACAO_leciona (
+CREATE TABLE IF NOT EXISTS ALOCACAO_leciona (
     idAlocacao         INT NOT NULL,
     codigoDisciplina   INT NOT NULL,
     matriculaProfessor INT NOT NULL,
@@ -111,7 +111,7 @@ CREATE TABLE ALOCACAO_leciona (
     CONSTRAINT ALOCACAO_leciona_UK UNIQUE KEY (codigoDisciplina, matriculaProfessor)
 ) ENGINE = InnoDB;
 
-CREATE TABLE telefone_UNIDADE (
+CREATE TABLE IF NOT EXISTS telefone_UNIDADE (
     idUnidade INT NOT NULL,
     telefone  INT NOT NULL,
     
@@ -121,7 +121,7 @@ CREATE TABLE telefone_UNIDADE (
 		ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-CREATE TABLE telefone_PESSOA (
+CREATE TABLE IF NOT EXISTS telefone_PESSOA (
     cpf      INT NOT NULL,
     telefone INT NOT NULL,
 	
@@ -131,7 +131,7 @@ CREATE TABLE telefone_PESSOA (
 		ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-CREATE TABLE oferta (
+CREATE TABLE IF NOT EXISTS oferta (
     idUnidade        INT  NOT NULL,
     codigoDisciplina INT  NOT NULL,
     
@@ -141,7 +141,7 @@ CREATE TABLE oferta (
 		ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-CREATE TABLE compoe (
+CREATE TABLE IF NOT EXISTS compoe (
     idTurma        INT NOT NULL,
     matriculaAluno INT NOT NULL,
     
@@ -154,7 +154,7 @@ CREATE TABLE compoe (
 		ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
-CREATE TABLE cursa (
+CREATE TABLE IF NOT EXISTS cursa (
     idTurma          INT NOT NULL,
     codigoDisciplina INT NOT NULL,
     

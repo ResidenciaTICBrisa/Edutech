@@ -1,39 +1,42 @@
-version: '3'
+version: '3.0'
 
 services:
 
+  frontend:
+    image: react_app_image
+    container_name: react_app
+    build: ./frontend
+    volumes:
+      - ./frontend:/frontend  # Montagem de volume para o código do frontend
+      - node_modules:/frontend/node_modules  # Montagem de volume para o node_modules
+    ports:
+      - "3000:3000"
+
   backend:
-    build:
+    container_name: fastapi_app
+    image: fastapi_app_image
+    build: 
       context: ./backend
-    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
     ports:
       - "8000:8000"
     depends_on:
       - db
-    image: backend
-    container_name: backend
     volumes:
-      - ./backend:/app  # Montagem de volume para o código do backend
-
-  frontend:
-    build:
-      context: ./frontend
-    ports:
-      - "3000:3000"
-    image: frontend
-    container_name: frontend
-    volumes:
-      - ./frontend:/usr/src/app  # Montagem de volume para o código do frontend
+      - ./backend/app:/app  # Montagem de volume para o código do backend
 
   db:
-    build:
-      context: ./db
+    container_name: mysql8
+    image: mysql8
+    build: ./db
+    ports:
+      - "3308:3306"
     environment:
       MYSQL_ROOT_PASSWORD: matrix123
       MYSQL_DATABASE: studentdatabase
-    image: db
-    container_name: db
     volumes:
-      - ./db:/usr/src/app  # Montagem de volume para o código do frontend
-    ports:
-      - "3307:3306"
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+    driver: local
+  node_modules:
