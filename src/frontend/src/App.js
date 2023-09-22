@@ -73,7 +73,7 @@ function App() {
             onChange={handleInstituicaoInputChange}
           />
         </div>
-        {/* Outros campos do formulário de´´ĺlllllllllllllllllll cadastro de instituições */}
+        {/* Outros campos do formulário de cadastro de instituições */}
         <button type="submit">Cadastrar</button>
       </form>
 
