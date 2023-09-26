@@ -1,16 +1,18 @@
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, Request
 from fastapi.responses import JSONResponse
 import mysql.connector
 from mysql.connector import errorcode
 from typing import List
 import pandas as pd
 from models.PessoaAluno import PessoaAluno
+from models.Escola import Escola, EscolaLogin
 import os
 import tempfile
 import shutil
 from datetime import date
 import mysql.connector.pooling
+from typing import Optional
 
 
 #### Início da configuração do banco de dados ####
@@ -79,7 +81,6 @@ async def listar_alunos():
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao consultar alunos: {err}")
 
-
 @app.post("/alunos/")
 async def cadastrar_alunos(file: UploadFile):
     temp_dir = tempfile.mkdtemp()
@@ -133,7 +134,6 @@ async def cadastrar_alunos(file: UploadFile):
 
     return {"message": "Alunos cadastrados com sucesso!."}
 
-
 # Função para inserir dados na tabela PESSOA
 def inserir_pessoa(cursor, data):
     try:
@@ -175,6 +175,25 @@ def inserir_no_banco(data):
         cnx.rollback()
         raise HTTPException(status_code=500, detail=f"Erro no banco de dados: {err}")
 
+    finally:
+        # Fechar o cursor e retornar a conexão ao pool
+        cursor.close()
+        cnx.close()
+
+@app.post("/cadastro-escola/")
+def cadastrar_escola(escola: Escola):
+    try:
+        # Obter uma conexão do pool
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor()
+        sql = "INSERT INTO ESCOLA (cnpj, nome, cpfDirecao, email, senha) VALUES (%s, %s, %s, %s, %s)"
+        cursor.execute(sql, (escola.cnpj, escola.nome, escola.cpf_responsavel, escola.email, escola.senha))
+        # Commit para efetivar as inserções
+        cnx.commit()
+        return {"message": "Escola cadastrada com sucesso!"}
+    except mysql.connector.Error as err:
+        cnx.rollback()
+        raise HTTPException(status_code=500, detail=f"Erro no banco de dados: {err}")
     finally:
         # Fechar o cursor e retornar a conexão ao pool
         cursor.close()
