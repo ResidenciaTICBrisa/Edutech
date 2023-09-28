@@ -3,7 +3,7 @@ from pydantic import BaseModel
 class Escola(BaseModel):
     cnpj: str
     nome: str
-    cpf_responsavel: str
+    cpfDirecao: str
     email: str
     senha: str
 
