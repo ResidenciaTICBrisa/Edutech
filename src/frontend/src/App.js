@@ -1,14 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CadastroAlunosPage from './pages/CadastroAlunos';
+import CadastroAlunosPage from './pages/cadastro_alunos/CadastroAlunos';
+import Header from './components/header/Header';
+
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/alunos/cadastro" element={<CadastroAlunosPage />} />
-      </Routes>
-    </Router>
+    <div>
+      <Header />
+      <CadastroAlunosPage />
+    </div>
   );
 };
 

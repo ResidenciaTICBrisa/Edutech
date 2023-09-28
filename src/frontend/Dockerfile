@@ -1,4 +1,4 @@
-FROM node:14
+FROM node
 
 # Create app directory
 WORKDIR /frontend
