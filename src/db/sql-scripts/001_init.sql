@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS ESCOLA (
     cnpj       INT         NOT NULL AUTO_INCREMENT,
     nome       VARCHAR(50) NOT NULL,
     cpfDirecao INT         NOT NULL,
+    email      VARCHAR(50) NOT NULL,
+    senha      VARCHAR(30) NOT NULL,
     
 	CONSTRAINT ESCOLA_PK PRIMARY KEY (cnpj)
 ) ENGINE = InnoDB AUTO_INCREMENT = 1;

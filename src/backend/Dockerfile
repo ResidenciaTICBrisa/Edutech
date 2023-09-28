@@ -1,12 +1,10 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
+FROM tiangolo/uvicorn-gunicorn:python3.9
 
 WORKDIR /app
 
-# Copia apenas os arquivos necessários
-COPY ./app/main.py /app/main.py
-COPY ./app/requirements.txt /app/requirements.txt
+COPY . /app/
 
-RUN pip install -r requirements.txt
+RUN pip install -r app/requirements.txt
 
 EXPOSE 8000
 

@@ -8,7 +8,7 @@ services:
     build: ./frontend
     volumes:
       - ./frontend:/frontend  # Montagem de volume para o código do frontend
-      - node_modules:/frontend/node_modules  # Montagem de volume para o node_modules
+      - ./frontend/node_modules:/frontend/node_modules  # Montagem de volume para o node_modules
     ports:
       - "3000:3000"
 

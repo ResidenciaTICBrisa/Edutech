@@ -1,4 +1,4 @@
-FROM mysql:8
+FROM mysql
 
 ENV MYSQL_ROOT_PASSWORD=matrix123
 ENV MYSQL_DATABASE=studentdatabase
