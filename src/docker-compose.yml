@@ -6,11 +6,12 @@ services:
     container_name: react_app
     image: react_image
     build: ./frontend
-    volumes:
-      - ./frontend:/frontend  # Montagem de volume para o código do frontend
     ports:
       - "3000:3000"
-    command: bash -c "npm install && npm start"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true  # For file change detection in containers (works better on Windows)
 
   backend:
     container_name: fastapi_app
