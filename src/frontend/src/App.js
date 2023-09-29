@@ -1,7 +1,6 @@
-import React from 'react';
-import CadastroAlunosPage from './pages/cadastro_alunos/CadastroAlunos';
-import Header from './components/header/Header';
-
+import React from "react";
+import CadastroAlunosPage from "./pages/cadastro_alunos/CadastroAlunos";
+import Header from "./components/header/Header";
 
 const App = () => {
   return (

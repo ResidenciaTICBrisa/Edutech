@@ -15,8 +15,7 @@ services:
   backend:
     container_name: fastapi_app
     image: fastapi_image
-    build: 
-      context: ./backend
+    build: ./backend
     ports:
       - "8000:8000"
     depends_on:

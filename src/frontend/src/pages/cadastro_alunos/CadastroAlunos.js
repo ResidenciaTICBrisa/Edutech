@@ -2,7 +2,6 @@ import React from "react";
 import "./CadastroAlunos.css";
 
 function CadastroAlunosPage() {
-
   const handleFileDownload = () => {
     // Caminho para o arquivo xlsx
     const filePath = "lista_alunos.xlsx";
@@ -21,7 +20,6 @@ function CadastroAlunosPage() {
     // Remove o link do corpo do documento
     document.body.removeChild(link);
   };
-
 
   return (
     <div>
