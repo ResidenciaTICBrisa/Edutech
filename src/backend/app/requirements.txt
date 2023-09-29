@@ -4,3 +4,4 @@ pandas
 requests
 openpyxl
 python-multipart
+asyncio

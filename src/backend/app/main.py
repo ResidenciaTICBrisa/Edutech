@@ -13,33 +13,15 @@ import shutil
 from datetime import date
 import mysql.connector.pooling
 from typing import Optional
+import asyncio
 
 
-#### Início da configuração do banco de dados ####
-DB_CONFIG = {
-    "host": "db",
-    "user": "root",
-    "password": "matrix123",
-    "database": "studentdatabase",
-    "port": "3306"
-}
-
-# Criação do pool de conexões
-connection_pool = mysql.connector.pooling.MySQLConnectionPool(
-    pool_name="my_pool",
-    pool_size=5,
-    **DB_CONFIG
-)
-#### Fim da configuração do banco de dados ####
-
-#### Criação da aplicação FastAPI ####
-app = FastAPI()
-
-# Configuração do CORS
 origins = [
     "*"
-    "http://localhost:3000",    # Se o front-end estiver rodando em uma porta diferente
+    "http://localhost:3000",
 ]
+
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
@@ -48,6 +30,38 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+DB_CONFIG = {
+    "host": "db",
+    "user": "root",
+    "password": "matrix123",
+    "database": "studentdatabase",
+    "port": "3306"
+}
+
+async def check_db_availability():
+    while True:
+        try:
+            # Tente conectar-se ao banco de dados
+            cnx = mysql.connector.connect(**DB_CONFIG)
+            cnx.close()
+            print("MySQL is up - executing command")
+            # Conexão bem-sucedida, retorne o connection_pool
+            return mysql.connector.pooling.MySQLConnectionPool(
+                pool_name="my_pool",
+                pool_size=5,
+                **DB_CONFIG
+            )
+        except mysql.connector.Error as err:
+            print("MySQL is unavailable - sleeping")
+            await asyncio.sleep(1)
+
+@app.on_event("startup")
+async def on_startup():
+    print("Checking database availability...")
+    global connection_pool  # Torna a variável connection_pool global
+    connection_pool = await check_db_availability()
+    print("Database is available. Starting FastAPI.")
 
 
 ## Endpoints

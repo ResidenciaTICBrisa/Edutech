@@ -3,8 +3,8 @@ version: '3.0'
 services:
 
   frontend:
-    image: react_app_image
     container_name: react_app
+    image: react_image
     build: ./frontend
     volumes:
       - ./frontend:/frontend  # Montagem de volume para o código do frontend
@@ -14,7 +14,7 @@ services:
 
   backend:
     container_name: fastapi_app
-    image: fastapi_app_image
+    image: fastapi_image
     build: 
       context: ./backend
     ports:
@@ -25,8 +25,8 @@ services:
       - ./backend/app:/app  # Montagem de volume para o código do backend
 
   db:
-    container_name: mysql8
-    image: mysql8
+    container_name: mysql
+    image: mysql_image
     build: ./db
     ports:
       - "3308:3306"
