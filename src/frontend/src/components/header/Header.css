@@ -7,13 +7,24 @@ header * {
     display: inline-block;
     vertical-align: middle;
 }
-
 img {
     width: 12%;
     height: 12%;
     margin: 20px;
     margin-right: 18%;
 }
+/* .button-home {
+    font-size: 1.3rem;
+    background-color: #0EC46F;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+} */
+
 h1 {
     margin: 0;
     font-size: 24px;

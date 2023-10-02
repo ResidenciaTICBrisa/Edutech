@@ -16,11 +16,12 @@
     transition: background-color 0.3s ease;
     text-align: center;
   }
-  button:hover {
+
+  .log-color:hover {
     background-color: #0EC46F;
   }
   
-  button:disabled {
+  .log-color:disabled {
     background-color: #ccc;
     cursor: not-allowed; 
   }

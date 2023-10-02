@@ -7,8 +7,10 @@ function Header() {
   return (
     <header>
       <div className="container">
-        <img src={logo} alt="logo" />
         <nav>
+          {/* <button className="button-home" onclick="window.location.href='/'"> */}
+            <img src={logo} alt="logo" />
+          {/* </button> */}
           <ul>
           <li className="nav-item">
               {/* <a href="/predicao">Predição</a> */}
@@ -23,7 +25,7 @@ function Header() {
               <a href="/graficos">Gráficos</a>
             </li>
             <li className="nav-item">
-              <a href="/cadastro">Cadastro</a>
+              <a href="/cadastro/alunos">Cadastro</a>
             </li>
             <li className="nav-item">
               <a href="/feedback">Feedback</a>
