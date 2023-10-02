@@ -22,7 +22,7 @@ function ButtonUpload({ onFileSelected }) {
         style={{ display: 'none' }}
         onChange={handleFileChange}
       />
-      <button className="file-upload-button" onClick={handleFileUpload}>Selecionar Arquivo</button>
+      <button className="file-upload-button" onClick={() => fileInputRef.current.click()}>Upload de Arquivo</button>
     </div>
   );
 }
