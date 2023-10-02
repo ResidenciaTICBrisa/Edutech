@@ -1,15 +1,18 @@
 import React from "react";
 import "./Header.css";
-import logo from "../../img/logo.png";
+import logo from "../../img/logo_completa.png";
+import LoginButton from '../logged/log';
 
 function Header() {
   return (
     <header>
       <div className="container">
         <img src={logo} alt="logo" />
-        <h1>Edutech</h1>
         <nav>
           <ul>
+          <li className="nav-item">
+              {/* <a href="/predicao">Predição</a> */}
+            </li>
             <li className="nav-item">
               <a href="/predicao">Predição</a>
             </li>
@@ -26,7 +29,9 @@ function Header() {
               <a href="/feedback">Feedback</a>
             </li>
           </ul>
+
         </nav>
+        <LoginButton />
       </div>
     </header>
   );
