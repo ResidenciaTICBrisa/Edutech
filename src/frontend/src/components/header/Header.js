@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import logo from "../../img/logo_completa.png";
-import LoginButton from '../logged/log';
+import LoginButton from "../logged/log";
 
 function Header() {
   return (
@@ -9,10 +9,10 @@ function Header() {
       <div className="container">
         <nav>
           {/* <button className="button-home" onclick="window.location.href='/'"> */}
-            <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" />
           {/* </button> */}
           <ul>
-          <li className="nav-item">
+            <li className="nav-item">
               {/* <a href="/predicao">Predição</a> */}
             </li>
             <li className="nav-item">
@@ -31,7 +31,6 @@ function Header() {
               <a href="/feedback">Feedback</a>
             </li>
           </ul>
-
         </nav>
         <LoginButton />
       </div>

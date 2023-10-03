@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 import "./ButtonUpload.css";
-
 
 function ButtonUpload({ onFileSelected }) {
   const fileInputRef = useRef(null);
@@ -19,10 +18,15 @@ function ButtonUpload({ onFileSelected }) {
       <input
         type="file"
         ref={fileInputRef}
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         onChange={handleFileChange}
       />
-      <button className="file-upload-button" onClick={() => fileInputRef.current.click()}>Upload de Arquivo</button>
+      <button
+        className="file-upload-button"
+        onClick={() => fileInputRef.current.click()}
+      >
+        Upload de Arquivo
+      </button>
     </div>
   );
 }
