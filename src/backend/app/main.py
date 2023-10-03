@@ -7,6 +7,9 @@ from typing import List
 import pandas as pd
 from models.PessoaAluno import PessoaAluno
 from models.Escola import EscolaLogin, Escola
+from models.Unidade import Unidade
+from models.Turma import Turma
+from models.Disciplina import Disciplina
 import os
 import tempfile
 import shutil
@@ -45,7 +48,7 @@ async def check_db_availability():
             # Tente conectar-se ao banco de dados
             cnx = mysql.connector.connect(**DB_CONFIG)
             cnx.close()
-            print("MySQL is up - executing command")
+            print("MySQL is up - continuing...")
             # Conexão bem-sucedida, retorne o connection_pool
             return mysql.connector.pooling.MySQLConnectionPool(
                 pool_name="my_pool",
@@ -53,7 +56,7 @@ async def check_db_availability():
                 **DB_CONFIG
             )
         except mysql.connector.Error as err:
-            print("MySQL is unavailable - sleeping")
+            print("MySQL is unavailable - sleeping...")
             await asyncio.sleep(300)
 
 @app.on_event("startup")
@@ -64,58 +67,17 @@ async def on_startup():
     print("Database is available. Starting FastAPI.")
 
 
-## Endpoints
-@app.get("/")
-@app.get("/alunos/")
-async def listar_alunos():
-    try:
-        # Obter uma conexão do pool
-        cnx = connection_pool.get_connection()
-        cursor = cnx.cursor(dictionary=True)
-
-        cursor.execute("""
-            SELECT A.cpf, A.matricula, nome, genero, dataNascimento, acessaInternet, siglaEstado, cidade, bairro, cep, logradouro, numero, complemento
-            FROM PESSOA P, ALUNO A
-            WHERE P.cpf = A.cpf
-        """)
-
-        # Obter os resultados como uma lista de dicionários
-        alunos = cursor.fetchall()
-
-        # Fechar o cursor
-        cursor.close()
-
-        # Retornar a conexão ao pool
-        cnx.close()
-
-        # Converter objetos de data para strings
-        for aluno in alunos:
-            aluno['dataNascimento'] = aluno['dataNascimento'].strftime('%Y-%m-%d')
-
-        return JSONResponse(content=alunos)
-
-    except mysql.connector.Error as err:
-        raise HTTPException(status_code=500, detail=f"Erro ao consultar alunos: {err}")
-
-@app.post("/alunos/")
+############ ALUNOS ############
+@app.post("/alunos")
 async def cadastrar_alunos(file: UploadFile):
     temp_dir = tempfile.mkdtemp()
-
     try:
-        # Crie o caminho para o arquivo temporário
         file_path = os.path.join(temp_dir, file.filename)
-
-        # Salve o conteúdo do arquivo temporário
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(file.file, buffer)
-
-        # Leia o arquivo Excel a partir do arquivo temporário
         df = pd.read_excel(file_path)
-
-        # Inicialize uma lista para armazenar os dados
         dados_a_inserir = []
 
-        # Iterar sobre as linhas do DataFrame e processar os dados
         for _, row in df.iterrows():
             data = PessoaAluno(
                 cpf=row['cpf'],
@@ -134,53 +96,56 @@ async def cadastrar_alunos(file: UploadFile):
             )
             dados_a_inserir.append(data)
 
-        # Inserir os dados no banco de dados dentro de uma transação
         try:
             for data in dados_a_inserir:
                 inserir_no_banco(data)
-
         except mysql.connector.Error as err:
-            # Reverter as alterações em caso de erro
             cnx.rollback()
             raise HTTPException(status_code=500, detail=f"Erro ao inserir dados no banco de dados: {err}")
-
     finally:
-        # Limpe os arquivos temporários
         shutil.rmtree(temp_dir)
-
     return {"message": "Alunos cadastrados com sucesso!."}
+
+@app.get("/")
+@app.get("/alunos")
+async def listar_alunos():
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("""
+            SELECT * FROM PESSOA P
+            JOIN ALUNO A ON P.cpf = A.cpf AND P.matricula = A.matricula
+            WHERE P.matricula = A.matricula
+        """)
+        alunos = cursor.fetchall()
+        for aluno in alunos:
+            aluno['dataNascimento'] = aluno['dataNascimento'].strftime('%Y-%m-%d')
+        return JSONResponse(content=alunos)
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=500, detail=f"Erro ao consultar alunos: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
 
 @app.get("/alunos/{matricula}")
 async def buscar_aluno(matricula: int):
     try:
-        # Obter uma conexão do pool
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-
         cursor.execute("""
-            SELECT A.cpf, A.matricula, nome, genero, dataNascimento, acessaInternet, siglaEstado, cidade, bairro, cep, logradouro, numero, complemento
-            FROM PESSOA P, ALUNO A
-            WHERE P.cpf = A.cpf AND A.matricula = %s
+            SELECT * FROM PESSOA P
+            JOIN ALUNO A ON P.cpf = A.cpf AND P.matricula = A.matricula
+            WHERE P.matricula = A.matricula AND A.matricula = %s
         """, (matricula,))
-
-        # Obter o resultado como um dicionário
         aluno = cursor.fetchone()
-
-        # Fechar o cursor
-        cursor.close()
-
-        # Retornar a conexão ao pool
-        cnx.close()
-
-        # Converter objeto de data para string
         aluno['dataNascimento'] = aluno['dataNascimento'].strftime('%Y-%m-%d')
-
         return JSONResponse(content=aluno)
-
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao consultar aluno: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
 
-# Função para inserir dados na tabela PESSOA
 def inserir_pessoa(cursor, data):
     try:
         cursor.execute("""
@@ -190,7 +155,6 @@ def inserir_pessoa(cursor, data):
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao inserir na tabela PESSOA: {err}")
 
-# Função para inserir dados na tabela ALUNO
 def inserir_aluno(cursor, data):
     try:
         cursor.execute("""
@@ -200,116 +164,185 @@ def inserir_aluno(cursor, data):
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao inserir na tabela ALUNO: {err}")
 
-# Função para inserir os dados no banco
 def inserir_no_banco(data):
     try:
-        # Obter uma conexão do pool
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor()
-
-        # Inserir na tabela PESSOA
         inserir_pessoa(cursor, data)
-
-        # Inserir na tabela ALUNO
         inserir_aluno(cursor, data)
-
-        # Commit para efetivar as inserções
         cnx.commit()
-
     except mysql.connector.Error as err:
-        # Reverter as alterações em caso de erro
         cnx.rollback()
         raise HTTPException(status_code=500, detail=f"Erro no banco de dados: {err}")
-
     finally:
-        # Fechar o cursor e retornar a conexão ao pool
         cursor.close()
         cnx.close()
 
-@app.get("/escolas/")
+############ ESCOLAS e UNIDADES ############
+@app.get("/escolas")
 async def listar_escolas():
     try:
-        # Obter uma conexão do pool
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-
         cursor.execute("""SELECT * FROM ESCOLA""")
-
-        # Obter os resultados como uma lista de dicionários
         escolas = cursor.fetchall()
-
-        # Fechar o cursor
-        cursor.close()
-
-        # Retornar a conexão ao pool
-        cnx.close()
-
         return JSONResponse(content=escolas)
-
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao consultar escolas: {err}")
-
-@app.post("/escolas/")
-@app.post("/cadastro/")
-async def cadastrar_escola(escola: Escola):
-    try:
-        # Obter uma conexão do pool
-        cnx = connection_pool.get_connection()
-        cursor = cnx.cursor()
-        sql = "INSERT INTO ESCOLA (cnpj, nome, cpfDirecao, email, senha) VALUES (%s, %s, %s, %s, %s)"
-        cursor.execute(sql, (escola.cnpj, escola.nome, escola.cpfDirecao, escola.email, escola.senha))
-        # Commit para efetivar as inserções
-        cnx.commit()
-        return {"message": "Escola cadastrada com sucesso!"}
-    except mysql.connector.Error as err:
-        cnx.rollback()
-        raise HTTPException(status_code=500, detail=f"Erro no banco de dados: {err}")
     finally:
-        # Fechar o cursor e retornar a conexão ao pool
+        cursor.close()
+        cnx.close()
+
+@app.post("/login")
+async def login(escola_login: EscolaLogin):
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM ESCOLA WHERE email = %s AND senha = %s", 
+                       (escola_login.email, escola_login.senha))
+        escola = cursor.fetchone()
+        if escola:
+            return {"message": "Login efetuado com sucesso!", "escola": escola}
+        else:
+            return {"message": "Email ou senha incorretos!"}
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=500, detail=f"Erro ao consultar escolas: {err}")
+    finally:
         cursor.close()
         cnx.close()
 
 @app.get("/escolas/{cnpj}")
 async def buscar_escola(cnpj: str):
     try:
-        # Obter uma conexão do pool
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-
         cursor.execute("""SELECT * FROM ESCOLA WHERE cnpj = %s""", (cnpj,))
-
-        # Obter o resultado como um dicionário
         escola = cursor.fetchone()
-
-        # Fechar o cursor
-        cursor.close()
-
-        # Retornar a conexão ao pool
-        cnx.close()
-
         return JSONResponse(content=escola)
-
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao consultar escola: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
 
-@app.post("/login/")
-async def login(escola_login: EscolaLogin):
+@app.get("/escolas/{cnpj}/unidades")
+async def listar_unidades(cnpj: str):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-
-        cursor.execute("SELECT * FROM ESCOLA WHERE email = %s AND senha = %s", 
-                       (escola_login.email, escola_login.senha))
-
-        escola = cursor.fetchone()
-
+        cursor.execute("""
+            SELECT * FROM UNIDADE
+            WHERE cnpjEscola = %s""", (cnpj,))
+        unidades = cursor.fetchall()
+        return JSONResponse(content=unidades)
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=500, detail=f"Erro ao consultar as unidades da escola: {err}")
+    finally:
         cursor.close()
         cnx.close()
 
-        if escola:
-            return {"message": "Login efetuado com sucesso!", "escola": escola}
-        else:
-            return {"message": "Email ou senha incorretos!"}
-
+@app.post("/escolas/{cnpj}/unidades")
+async def cadastrar_unidade(cnpj: str, unidade: Unidade):
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor()
+        sql = "INSERT INTO UNIDADE (idUnidade, cnpjEscola, nivelEducacao, siglaEstado, cidade, bairro, cep, logradouro, numero, complemento, cpfCoordenador) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        cursor.execute(sql, (unidade.idUnidade, cnpj, unidade.nivelEducacao, unidade.siglaEstado, unidade.cidade, unidade.bairro, unidade.cep, unidade.logradouro, unidade.numero, unidade.complemento, unidade.cpfCoordenador))
+        cnx.commit()
+        return {"message": "Unidade cadastrada com sucesso!"}
     except mysql.connector.Error as err:
-        raise HTTPException(status_code=500, detail=f"Erro ao consultar escolas: {err}")
+        cnx.rollback()
+        raise HTTPException(status_code=500, detail=f"Erro no banco de dados: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
+
+@app.get("/escolas/{cnpj}/unidades/{idUnidade}")
+async def buscar_unidade(cnpj: str, idUnidade: int):
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("""
+            SELECT * FROM UNIDADE
+            WHERE cnpjEscola = %s AND idUnidade = %s""", (cnpj, idUnidade))
+        unidade = cursor.fetchone()
+        return JSONResponse(content=unidade)
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=500, detail=f"Erro ao consultar unidade: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
+
+############ DISCIPLINAS ############
+@app.get("/unidades/{idUnidade}/disciplinas")
+async def listar_disciplinas(idUnidade: int):
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("""
+            SELECT D.*
+            FROM DISCIPLINA D
+            JOIN oferta ON codigoDisciplina = D.codigo
+            WHERE idUnidade = %s""", (idUnidade,))
+        disciplinas = cursor.fetchall()
+        return JSONResponse(content=disciplinas)
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=500, detail=f"Erro ao consultar disciplinas: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
+
+@app.post("/unidades/{idUnidade}/disciplinas")
+async def cadastrar_disciplina(idUnidade: int, disciplina: Disciplina):
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor()
+        sql = "INSERT INTO DISCIPLINA (codigo, nome) VALUES (%s, %s)"
+        cursor.execute(sql, (disciplina.codigo, disciplina.nome))
+        cnx.commit()
+
+        sql = "INSERT INTO oferta (codigoDisciplina, idUnidade) VALUES (%s, %s)"  ### TODO: Caso esse insert não funcione, o insert anterior deve ser desfeito
+        cursor.execute(sql, (disciplina.codigo, idUnidade))
+        cnx.commit()
+        return {"message": "Disciplina cadastrada com sucesso!"}
+    except mysql.connector.Error as err:
+        cnx.rollback()
+        raise HTTPException(status_code=500, detail=f"Erro no banco de dados: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
+
+############ TURMAS ############
+@app.get("/unidades/{idUnidade}/turmas")
+async def listar_turmas(idUnidade: int):
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("""
+            SELECT * FROM TURMA
+            WHERE idUnidade = %s""", (idUnidade,))
+        turmas = cursor.fetchall()
+        for turma in turmas:
+            turma['ano'] = turma['ano'].strftime('%Y-%m-%d')
+        return JSONResponse(content=turmas)
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=500, detail=f"Erro ao consultar turmas: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
+
+@app.post("/unidades/{idUnidade}/turmas")
+async def cadastrar_turma(idUnidade: int, turma: Turma):
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor()
+        sql = "INSERT INTO TURMA (idTurma, serie, letra, ano, idUnidade) VALUES (%s, %s, %s, %s, %s)"
+        cursor.execute(sql, (turma.idTurma, turma.serie, turma.letra, turma.ano, idUnidade))
+        cnx.commit()
+        return {"message": "Turma cadastrada com sucesso!"}
+    except mysql.connector.Error as err:
+        cnx.rollback()
+        raise HTTPException(status_code=500, detail=f"Erro no banco de dados: {err}")
+    finally:
+        cursor.close()
+        cnx.close()

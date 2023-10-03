@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS studentdatabase;
 
-USE studentdatabase;
+USE studentdatabase; -- TODO: Ids autoincrement e Alterar tipos numéricos como cnpj e cpf para varchar
 
 CREATE TABLE IF NOT EXISTS ESCOLA (
     cnpj       INT         NOT NULL AUTO_INCREMENT,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS ESCOLA (
 ) ENGINE = InnoDB AUTO_INCREMENT = 1;
 
 CREATE TABLE IF NOT EXISTS UNIDADE (
-    idUnidade      INT          NOT NULL,
+    idUnidade      INT          AUTO_INCREMENT,
     cnpjEscola     INT          NOT NULL,
     nivelEducacao  ENUM('Superior', 'Médio', 'Fundamental', 'Cursinho') NOT NULL,
     siglaEstado    CHAR(2)      NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS UNIDADE (
     CONSTRAINT UNIDADE_ESCOLA_FK FOREIGN KEY (cnpjEscola)
 		REFERENCES ESCOLA (cnpj)
 		ON DELETE CASCADE
-) ENGINE = InnoDB;
+) ENGINE = InnoDB AUTO_INCREMENT = 1;
 
 CREATE VIEW nomePrecoProduto AS
 SELECT Nome AS Produto,
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS AVALIACAO (
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS ALUNO (
-	cpf            INT     NOT NULL,
+	  cpf            INT     NOT NULL,
     matricula      INT     NOT NULL,
     dataNascimento DATE    NOT NULL,
     acessaInternet BOOLEAN NOT NULL,
