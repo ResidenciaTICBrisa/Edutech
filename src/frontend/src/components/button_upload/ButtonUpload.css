@@ -1,0 +1,19 @@
+.file-upload-button {
+  display: inline-block;
+  font-size: 1.3rem;
+  background-color: #0EC46F;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.file-upload-button:hover {
+  background-color: #0056b3;
+}
+
+.hidden-upload-button {
+  display: none;
+}

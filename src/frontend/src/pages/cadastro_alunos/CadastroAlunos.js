@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "../../components/header/Header";
 import "./CadastroAlunos.css";
 
 function CadastroAlunosPage() {
@@ -22,9 +23,12 @@ function CadastroAlunosPage() {
   };
 
   return (
-    <div>
-      <button onClick={handleFileDownload}>Download</button>
-    </div>
+    <>
+      <Header />
+      <div>
+        <button onClick={handleFileDownload}>Download</button>
+      </div>
+    </>
   );
 }
 

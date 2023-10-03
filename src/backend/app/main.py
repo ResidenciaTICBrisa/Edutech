@@ -54,7 +54,7 @@ async def check_db_availability():
             )
         except mysql.connector.Error as err:
             print("MySQL is unavailable - sleeping")
-            await asyncio.sleep(1)
+            await asyncio.sleep(300)
 
 @app.on_event("startup")
 async def on_startup():

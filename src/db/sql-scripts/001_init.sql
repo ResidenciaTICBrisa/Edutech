@@ -31,6 +31,11 @@ CREATE TABLE IF NOT EXISTS UNIDADE (
 		ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
+CREATE VIEW nomePrecoProduto AS
+SELECT Nome AS Produto,
+       vlUnitario AS Preco
+FROM Produtos;
+
 CREATE TABLE IF NOT EXISTS PESSOA (
     cpf         INT            NOT NULL,
     matricula   INT            NOT NULL,

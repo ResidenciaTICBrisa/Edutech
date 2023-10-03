@@ -2,16 +2,16 @@ version: '3.0'
 
 services:
 
-  frontend:
-    container_name: react_app
-    image: react_image
-    build: ./frontend
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/app
-    environment:
-      - CHOKIDAR_USEPOLLING=true  # For file change detection in containers (works better on Windows)
+  # frontend:
+  #   container_name: react_app
+  #   image: react_image
+  #   build: ./frontend
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./frontend:/app
+  #   environment:
+  #     - CHOKIDAR_USEPOLLING=true  # For file change detection in containers (works better on Windows)
 
   backend:
     container_name: fastapi_app
