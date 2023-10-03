@@ -7,11 +7,24 @@ header * {
     display: inline-block;
     vertical-align: middle;
 }
-
 img {
-    width: 5%;
-    height: 5%;
+    width: 12%;
+    height: 12%;
+    margin: 20px;
+    margin-right: 18%;
 }
+/* .button-home {
+    font-size: 1.3rem;
+    background-color: #0EC46F;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+} */
+
 h1 {
     margin: 0;
     font-size: 24px;
@@ -36,7 +49,8 @@ nav a:hover {
     display: inline-block;
     margin-right: 20px;
 }
-.nav-item a {
+.nav-item a {  
+    font-size: 1.3rem;
     text-decoration: none;
     color: #fff;
     background-color: #0EC46F;
@@ -50,5 +64,11 @@ nav a:hover {
 }
 
 .container {
-    display: inline-block;
+    position: relative;
 }
+/* @media screen and (max-width: 999px) {
+    .nav-item a {
+        font-size: 0.5rem;
+        padding: 8px 16px;
+    }
+} */
