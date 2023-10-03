@@ -8,10 +8,6 @@ import CadastroInstituicao from "./pages/cadastro_intituicao/CadastroInstituicao
 import CadastrarInstituicao from "./pages/cadastro_intituicao/CadastrarInstituicao";
 
 import Consulta from "./pages/consulta/Consulta";
-import Predicao from "./pages/predicao/Predicao";
-import Grafico from "./pages/grafico/Grafico";
-import Feedback from "./pages/feedback/Feedback";
-import Home from "./pages/home/Home";
 
 import Predicao from "./pages/predicao/Predicao"
 
