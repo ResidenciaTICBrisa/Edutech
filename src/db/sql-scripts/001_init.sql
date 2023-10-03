@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS AVALIACAO (
 ) ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS ALUNO (
-	cpf            INT     NOT NULL,
+	  cpf            INT     NOT NULL,
     matricula      INT     NOT NULL,
     dataNascimento DATE    NOT NULL,
     acessaInternet BOOLEAN NOT NULL,
