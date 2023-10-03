@@ -1,4 +1,4 @@
-.div-fundo-aluno {
+.div-fundo {
     text-align: center;
     background-color: #1C3F50;
     border-radius: 10px;
@@ -8,7 +8,7 @@
     margin-bottom: 3%;
 }
 
-.text-cadastro-aluno {
+.text-cadastro {
     color: #fff;
     font-size: 2.3rem;
     margin-bottom: 7%;;
@@ -20,7 +20,7 @@
     justify-content: space-between;
 }
 
-.h1-cadastro-aluno {
+.h1-cadastro {
     color: #fff;
     font-size: 1.5em;
     padding: 10%;
@@ -30,12 +30,12 @@
     margin-top: -7%;
 }
 
-.img-cadastro-aluno {
+.img-cadastro {
     width: 11rem;
     height: 11rem;
 }
 
-.child-aluno {
+.child {
     width: 50%;
     margin: 1px;
     margin-top: 10px;
@@ -44,19 +44,19 @@
     text-align: center;
 }
 
-.child-aluno + .child-aluno {
+.child + .child {
     margin-left: -13%;
 }
 
-.img-cadastro-aluno-content {
+.img-cadastro-content {
     margin-left: 1%;
 }
 
-.content-aluno {
+.content {
     height: auto;
 }
 
-.button-cadastro-aluno {
+.button-cadastro {
     font-size: 1.3rem;
     background-color: #0EC46F;
     color: #fff;
@@ -68,11 +68,11 @@
     text-align: center;
 }
 
-.button-aluno:hover {
+button:hover {
     background-color: #007bff;
 }
   
-.button-aluno:disabled {
+button:disabled {
     background-color: #ccc;
     cursor: not-allowed; 
 }
