@@ -9,10 +9,15 @@ function Header() {
       <div className="container">
         <nav>
           {/* <button className="button-home" onclick="window.location.href='/'"> */}
-            <img src={logo} alt="logo" />
+          {/* <img src={logo} alt="logo" /> */}
           {/* </button> */}
           <ul>
-          <li className="nav-item">
+            <li>
+              <a href="/" className="a-logo">
+                  <img src={logo} alt="logo" className="img-logo"/>
+              </a>
+            </li>
+            <li className="nav-item">
               {/* <a href="/predicao">Predição</a> */}
             </li>
             <li className="nav-item">
