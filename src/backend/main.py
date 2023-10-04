@@ -17,11 +17,13 @@ from datetime import date
 import mysql.connector.pooling
 from typing import Optional
 import asyncio
+from dotenv import load_dotenv
 
+# Carrega as variáveis do arquivo .env
+load_dotenv()
 
 origins = [
-    "*"
-    "http://localhost:3000",
+    os.getenv("FRONT_URL"),
 ]
 
 app = FastAPI()
@@ -35,10 +37,10 @@ app.add_middleware(
 )
 
 DB_CONFIG = {
-    "host": "db",
-    "user": "root",
-    "password": "matrix123",
-    "database": "studentdatabase",
+    "host": os.getenv("DB_HOST"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASS"),
+    "database": os.getenv("DB_NAME"),
     "port": "3306"
 }
 
@@ -57,7 +59,7 @@ async def check_db_availability():
             )
         except mysql.connector.Error as err:
             print("MySQL is unavailable - sleeping...")
-            await asyncio.sleep(300)
+            await asyncio.sleep(1)
 
 @app.on_event("startup")
 async def on_startup():

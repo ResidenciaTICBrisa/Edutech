@@ -25,6 +25,8 @@ Depois que os contêineres estiverem em execução, você pode acessar a aplica�
 
 **FastAPI**: http://localhost:8000
 
+**Documentação dos EndPoints**: http://localhost:8000/docs
+
 ## Encerrando a Execução
 
 Para encerrar a execução da aplicação e parar os contêineres, você pode pressionar Ctrl + C no terminal onde o Docker Compose está sendo executado ou executar o seguinte comando:

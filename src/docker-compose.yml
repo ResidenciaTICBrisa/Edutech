@@ -10,8 +10,6 @@ services:
   #     - "3000:3000"
   #   volumes:
   #     - ./frontend:/app
-  #   environment:
-  #     - CHOKIDAR_USEPOLLING=true  # For file change detection in containers (works better on Windows)
 
   backend:
     container_name: fastapi_app
@@ -22,7 +20,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./backend/app:/app  # Montagem de volume para o código do backend
+      - ./backend:/app  # Montagem de volume para o código do backend
 
   db:
     container_name: mysql
