@@ -1,14 +1,12 @@
-import React from "react";
-import Header from "../../components/header/Header";
+import React from 'react';
 
-import "./Grafico.css";
+import './Grafico.css';
 
 function Grafico() {
   return (
     <>
-      <Header />
       <div className="div-fundo-grafico">
-        <p class="text-cadastrar"></p>
+        <p className="text-cadastrar"></p>
       </div>
     </>
   );

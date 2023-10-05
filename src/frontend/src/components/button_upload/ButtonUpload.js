@@ -1,17 +1,12 @@
-import React, { useRef } from "react";
-import "./ButtonUpload.css";
+import React, { useRef } from 'react';
+import './ButtonUpload.css';
 
 function ButtonUpload({ onFileSelected }) {
   const fileInputRef = useRef(null);
 
-  const handleFileUpload = () => {
-    fileInputRef.current.click();
-  };
-
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     onFileSelected(file);
-    handleFileUpload();
   };
 
   return (
@@ -19,7 +14,7 @@ function ButtonUpload({ onFileSelected }) {
       <input
         type="file"
         ref={fileInputRef}
-        style={{ display: "none" }}
+        style={{ display: 'none' }}
         onChange={handleFileChange}
       />
       <button

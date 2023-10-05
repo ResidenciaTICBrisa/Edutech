@@ -1,13 +1,13 @@
-import React from "react";
-import * as XLSX from 'xlsx'
+import React from 'react';
+import * as XLSX from 'xlsx';
 
-import Header from "../../components/header/Header";
-import ButtonUpload from "../../components/button_upload/ButtonUpload";
+import Header from '../../components/header/Header';
+import ButtonUpload from '../../components/button_upload/ButtonUpload';
 
-import add_document from "../../img/add_document.png";
-import Instituicao from "../../img/instituicao.png";
+import add_document from '../../img/add_document.png';
+import Instituicao from '../../img/instituicao.png';
 
-import "./CadastroInstituicao.css";
+import './CadastroInstituicao.css';
 
 function CadastroInstituicaoPage() {
   const handleFileSelected = (file) => {
@@ -32,35 +32,49 @@ function CadastroInstituicaoPage() {
   };
 
   const handleCadastro = () => {
-    window.location.href = "/cadastro/instituicao/cadastrar";
+    window.location.href = '/cadastro/instituicao/cadastrar';
   };
 
   return (
     <>
-    <Header />
-    <div className="div-fundo">
-        <p class="text-cadastro">Página de Cadastramento de Instituição</p>
-      <div className="div-fundo-content">
-        <div className="child">
-          <div class="img-cadastro-content">
-            <img class="img-cadastro" src={Instituicao} alt="Cadastrar Instituição"/>
+      <Header />
+      <div className="div-fundo">
+        <p className="text-cadastro">Página de Cadastramento de Instituição</p>
+        <div className="div-fundo-content">
+          <div className="child">
+            <div className="img-cadastro-content">
+              <img
+                className="img-cadastro"
+                src={Instituicao}
+                alt="Cadastrar Instituição"
+              />
+            </div>
+            <div className="content">
+              <button className="button-cadastro" onClick={handleCadastro}>
+                Cadastrar Instituição
+              </button>
+              <div className="h1-cadastro">
+                Nesta opção é possível cadastrar uma nova Instituição.
+              </div>
+            </div>
           </div>
-          <div class="content">
-            <button className="button-cadastro" onClick={handleCadastro}>Cadastrar Instituição</button>
-            <div class="h1-cadastro">Nesta opção é possível cadastrar uma nova Instituição.</div>
-          </div>
-        </div>
-        <div className="child">
-          <div class="img-cadastro-content">
-            <img class="img-cadastro" src={add_document} alt="Upload Instituição"/>
-          </div>
-          <div class="content">
-            <ButtonUpload onFileSelected={handleFileSelected}/>
-            <div class="h1-cadastro">Nesta opção é possível importar os dados de nova Instituição.</div>
+          <div className="child">
+            <div className="img-cadastro-content">
+              <img
+                className="img-cadastro"
+                src={add_document}
+                alt="Upload Instituição"
+              />
+            </div>
+            <div className="content">
+              <ButtonUpload onFileSelected={handleFileSelected} />
+              <div className="h1-cadastro">
+                Nesta opção é possível importar os dados de nova Instituição.
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 }

@@ -1,14 +1,12 @@
-import React from "react";
-import Header from "../../components/header/Header";
+import React from 'react';
 
-import "./Predicao.css";
+import './Predicao.css';
 
 function Predicao() {
   return (
     <>
-      <Header />
       <div className="div-fundo-predicao">
-        <p class="text-cadastrar"></p>
+        <p className="text-cadastrar"></p>
       </div>
     </>
   );

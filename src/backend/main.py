@@ -74,43 +74,14 @@ async def root():
 
 ############ ALUNOS ############
 @app.post("/alunos")
-async def cadastrar_alunos(file: UploadFile):
-    temp_dir = tempfile.mkdtemp()
+async def cadastrar_alunos(alunos: List[PessoaAluno]):
     try:
-        file_path = os.path.join(temp_dir, file.filename)
-        with open(file_path, "wb") as buffer:
-            shutil.copyfileobj(file.file, buffer)
-        df = pd.read_excel(file_path)
-        dados_a_inserir = []
-
-        for _, row in df.iterrows():
-            data = PessoaAluno(
-                cpf=row['cpf'],
-                matricula=row['matricula'],
-                nome=row['nome'],
-                genero=row['genero'],
-                siglaEstado=row['siglaEstado'],
-                cidade=row['cidade'],
-                bairro=row['bairro'],
-                cep=row['cep'],
-                logradouro=row['logradouro'],
-                numero=row['numero'],
-                complemento=row['complemento'],
-                dataNascimento=row['dataNascimento'],
-                acessaInternet=row['acessaInternet']
-            )
-            dados_a_inserir.append(data)
-
-        try:
-            for data in dados_a_inserir:
-                inserir_no_banco(data)
-        except mysql.connector.Error as err:
-            cnx.rollback()
-            raise HTTPException(status_code=500, detail=f"Erro ao inserir dados no banco de dados: {err}")
-    finally:
-        shutil.rmtree(temp_dir)
-    return {"message": "Alunos cadastrados com sucesso!."}
-
+        for aluno in alunos:
+            inserir_no_banco(aluno)
+        return {"message": "Alunos cadastrados com sucesso!."}
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=500, detail=f"Erro ao inserir dados no banco de dados: {err}")
+    
 @app.get("/alunos")
 async def listar_alunos():
     try:
@@ -153,30 +124,30 @@ async def buscar_aluno(matricula: int):
         cursor.close()
         cnx.close()
 
-def inserir_pessoa(cursor, data):
+def inserir_pessoa(cursor, aluno):
     try:
         cursor.execute("""
             INSERT INTO PESSOA (cpf, matricula, nome, genero, siglaEstado, cidade, bairro, cep, logradouro, numero, complemento)
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-        """, (data.cpf, data.matricula, data.nome, data.genero, data.siglaEstado, data.cidade, data.bairro, data.cep, data.logradouro, data.numero, data.complemento))
+        """, (aluno.cpf, aluno.matricula, aluno.nome, aluno.genero, aluno.siglaEstado, aluno.cidade, aluno.bairro, aluno.cep, aluno.logradouro, aluno.numero, aluno.complemento))
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao inserir na tabela PESSOA: {err}")
 
-def inserir_aluno(cursor, data):
+def inserir_aluno(cursor, aluno):
     try:
         cursor.execute("""
             INSERT INTO ALUNO (matricula, dataNascimento, acessaInternet)
             VALUES (%s, %s, %s)
-        """, (data.matricula, data.dataNascimento, data.acessaInternet))
+        """, (aluno.matricula, aluno.dataNascimento, aluno.acessaInternet))
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao inserir na tabela ALUNO: {err}")
 
-def inserir_no_banco(data):
+def inserir_no_banco(aluno: PessoaAluno):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor()
-        inserir_pessoa(cursor, data)
-        inserir_aluno(cursor, data)
+        inserir_pessoa(cursor, aluno)
+        inserir_aluno(cursor, aluno)
         cnx.commit()
     except mysql.connector.Error as err:
         cnx.rollback()
@@ -225,7 +196,10 @@ async def buscar_escola(cnpj: str):
         cursor = cnx.cursor(dictionary=True)
         cursor.execute("""SELECT * FROM ESCOLA WHERE cnpj = %s""", (cnpj,))
         escola = cursor.fetchone()
-        return JSONResponse(content=escola)
+        if escola:
+            return JSONResponse(content=escola)
+        else:
+            return {"message": "Escola não encontrada!"}
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao consultar escola: {err}")
     finally:
@@ -241,7 +215,10 @@ async def listar_unidades(cnpj: str):
             SELECT * FROM UNIDADE
             WHERE cnpjEscola = %s""", (cnpj,))
         unidades = cursor.fetchall()
-        return JSONResponse(content=unidades)
+        if unidades:
+            return JSONResponse(content=unidades)
+        else:
+            return {"message": "Escola não existe ou nenhuma unidade foi encontrada!"}
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao consultar as unidades da escola: {err}")
     finally:
@@ -273,7 +250,10 @@ async def buscar_unidade(cnpj: str, idUnidade: int):
             SELECT * FROM UNIDADE
             WHERE cnpjEscola = %s AND idUnidade = %s""", (cnpj, idUnidade))
         unidade = cursor.fetchone()
-        return JSONResponse(content=unidade)
+        if unidade:
+            return JSONResponse(content=unidade)
+        else:
+            return {"message": "Unidade não encontrada!"}
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao consultar unidade: {err}")
     finally:

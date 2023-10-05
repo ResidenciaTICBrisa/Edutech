@@ -1,7 +1,7 @@
-import React from "react";
-import "./Header.css";
-import logo from "../../img/logo_completa.png";
-import LoginButton from "../logged/log";
+import React from 'react';
+import './Header.css';
+import logo from '../../img/logo_completa.png';
+import LoginButton from '../logged/log';
 
 function Header() {
   return (
@@ -14,7 +14,7 @@ function Header() {
           <ul>
             <li>
               <a href="/" className="a-logo">
-                  <img src={logo} alt="logo" className="img-logo"/>
+                <img src={logo} alt="logo" className="img-logo" />
               </a>
             </li>
             <li className="nav-item">

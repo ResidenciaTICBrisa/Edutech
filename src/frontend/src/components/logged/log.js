@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./log.css";
+import React, { useState } from 'react';
+import './log.css';
 
 function LoginButton() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -10,7 +10,7 @@ function LoginButton() {
 
   return (
     <button className="log-pos log-color" onClick={handleButtonClick}>
-      {loggedIn ? "Sign out" : "Sign In"}
+      {loggedIn ? 'Sign out' : 'Sign In'}
     </button>
   );
 }

@@ -1,14 +1,12 @@
-import React from "react";
-import Header from "../../components/header/Header";
+import React from 'react';
 
-import "./Feedback.css";
+import './Feedback.css';
 
 function Feedback() {
   return (
     <>
-      <Header />
       <div className="div-fundo-feedback">
-        <p class="text-cadastrar"></p>
+        <p className="text-cadastrar"></p>
       </div>
     </>
   );
