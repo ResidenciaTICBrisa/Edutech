@@ -11,6 +11,7 @@ function ButtonUpload({ onFileSelected }) {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     onFileSelected(file);
+    handleFileUpload();
   };
 
   return (

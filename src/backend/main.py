@@ -5,11 +5,6 @@ import mysql.connector
 from mysql.connector import errorcode
 from typing import List
 import pandas as pd
-from models.PessoaAluno import PessoaAluno
-from models.Escola import EscolaLogin, Escola
-from models.Unidade import Unidade
-from models.Turma import Turma
-from models.Disciplina import Disciplina
 import os
 import tempfile
 import shutil
@@ -18,6 +13,13 @@ import mysql.connector.pooling
 from typing import Optional
 import asyncio
 from dotenv import load_dotenv
+
+from models.PessoaAluno import PessoaAluno
+from models.Escola import EscolaLogin, Escola
+from models.Unidade import Unidade
+from models.Turma import Turma
+from models.Disciplina import Disciplina
+
 
 # Carrega as variáveis do arquivo .env
 load_dotenv()
@@ -50,7 +52,6 @@ async def check_db_availability():
             # Tente conectar-se ao banco de dados
             cnx = mysql.connector.connect(**DB_CONFIG)
             cnx.close()
-            print("MySQL is up - continuing...")
             # Conexão bem-sucedida, retorne o connection_pool
             return mysql.connector.pooling.MySQLConnectionPool(
                 pool_name="my_pool",
@@ -58,16 +59,18 @@ async def check_db_availability():
                 **DB_CONFIG
             )
         except mysql.connector.Error as err:
-            print("MySQL is unavailable - sleeping...")
-            await asyncio.sleep(1)
+            print("------- MySQL is still unavailable. Trying again. -------")
+            await asyncio.sleep(300)
 
 @app.on_event("startup")
 async def on_startup():
-    print("Checking database availability...")
     global connection_pool  # Torna a variável connection_pool global
     connection_pool = await check_db_availability()
-    print("Database is available. Starting FastAPI.")
+    print("------- Database is available. FastAPI started. -------")
 
+@app.get("/")
+async def root():
+    return "FastAPI Working!"
 
 ############ ALUNOS ############
 @app.post("/alunos")
@@ -108,7 +111,6 @@ async def cadastrar_alunos(file: UploadFile):
         shutil.rmtree(temp_dir)
     return {"message": "Alunos cadastrados com sucesso!."}
 
-@app.get("/")
 @app.get("/alunos")
 async def listar_alunos():
     try:
@@ -116,7 +118,7 @@ async def listar_alunos():
         cursor = cnx.cursor(dictionary=True)
         cursor.execute("""
             SELECT * FROM PESSOA P
-            JOIN ALUNO A ON P.cpf = A.cpf AND P.matricula = A.matricula
+            JOIN ALUNO A ON P.matricula = A.matricula
             WHERE P.matricula = A.matricula
         """)
         alunos = cursor.fetchall()
@@ -136,12 +138,15 @@ async def buscar_aluno(matricula: int):
         cursor = cnx.cursor(dictionary=True)
         cursor.execute("""
             SELECT * FROM PESSOA P
-            JOIN ALUNO A ON P.cpf = A.cpf AND P.matricula = A.matricula
-            WHERE P.matricula = A.matricula AND A.matricula = %s
+            JOIN ALUNO A ON P.matricula = A.matricula
+            WHERE A.matricula = %s
         """, (matricula,))
         aluno = cursor.fetchone()
-        aluno['dataNascimento'] = aluno['dataNascimento'].strftime('%Y-%m-%d')
-        return JSONResponse(content=aluno)
+        if aluno:
+            aluno['dataNascimento'] = aluno['dataNascimento'].strftime('%Y-%m-%d')
+            return JSONResponse(content=aluno)
+        else:
+            return {"message": "Aluno não encontrado!"}
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao consultar aluno: {err}")
     finally:
@@ -160,9 +165,9 @@ def inserir_pessoa(cursor, data):
 def inserir_aluno(cursor, data):
     try:
         cursor.execute("""
-            INSERT INTO ALUNO (cpf, matricula, dataNascimento, acessaInternet)
-            VALUES (%s, %s, %s, %s)
-        """, (data.cpf, data.matricula, data.dataNascimento, data.acessaInternet))
+            INSERT INTO ALUNO (matricula, dataNascimento, acessaInternet)
+            VALUES (%s, %s, %s)
+        """, (data.matricula, data.dataNascimento, data.acessaInternet))
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao inserir na tabela ALUNO: {err}")
 

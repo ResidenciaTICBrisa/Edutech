@@ -1,13 +1,9 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Header from "../../components/header/Header";
 
 import "./CadastrarInstituicao.css";
 
 function CadastrarInstituicao() {
- 
-  const Cadastrar = () => {
-    window.location.href = "/cadastro/instituicao/cadastrar";
-  };
 
   const [dadosInstituicao, setdadosInstituicao] = useState({
     nome: '',

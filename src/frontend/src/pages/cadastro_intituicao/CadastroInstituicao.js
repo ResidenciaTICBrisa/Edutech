@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import * as XLSX from 'xlsx'
 
 import Header from "../../components/header/Header";
