@@ -1,24 +1,24 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
-import './Consulta.css';
+import './Cadastro.css';
 
-function Consulta() {
+function Cadastro() {
     return (
         <div className="dark-background button-container">
-            <Link to="/consulta/aluno">
+            <Link to="/cadastro/aluno">
                 <button className="styled-button">
-                    Consulta de Aluno
+                    Cadastro de Aluno
                 </button>
             </Link>
 
-            <Link to="/consulta/instituicao">
+            <Link to="/cadastro/instituicao">
                 <button className="styled-button">
-                    Consulta de Instituição
+                    Cadastro de Instituição
                 </button>
             </Link>
         </div>
     );
 }
 
-export default Consulta;
+export default Cadastro;

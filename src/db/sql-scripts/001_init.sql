@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS PESSOA (
     cpf         VARCHAR(14)    NOT NULL,
     matricula   INT            NOT NULL,
     nome        VARCHAR(200)   NOT NULL,
-    genero      ENUM('F', 'M') NOT NULL,
+    genero      VARCHAR(2)     NOT NULL,
     siglaEstado CHAR(2)        NOT NULL,
     cidade      VARCHAR(50)    NOT NULL,
     bairro      VARCHAR(30)    NOT NULL,

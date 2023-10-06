@@ -1,0 +1,18 @@
+.button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.styled-button {
+    background-color: #0ec46f;
+    color: #FFF;
+    padding: 10px 20px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.styled-button:hover {
+    background-color: #2980b9;
+}

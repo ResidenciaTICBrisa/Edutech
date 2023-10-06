@@ -1,40 +1,40 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import CadastroAlunos from "./pages/cadastro_alunos/CadastroAlunos";
-import CadastrarAlunos from "./pages/cadastro_alunos/CadastrarAluno";
-import CadastroInstituicao from "./pages/cadastro_intituicao/CadastroInstituicao";
-import CadastrarInstituicao from "./pages/cadastro_intituicao/CadastrarInstituicao";
+import Home from "./pages/home/Home";
+import Cadastro from "./pages/cadastro/Cadastro";
 import Consulta from "./pages/consulta/Consulta";
 import Predicao from "./pages/predicao/Predicao";
-import Grafico from "./pages/grafico/Grafico";
-import Feedback from "./pages/feedback/Feedback";
-import Home from "./pages/home/Home";
+import CadastroAlunoNovo from "./pages/cadastro/cadastro-aluno-novo/CadastroAlunoNovo";
+import CadastroAluno from "./pages/cadastro/cadastro-aluno/CadastroAluno";
+import CadastroInstituicaoNovo from "./pages/cadastro/cadastro-instituicao-novo/CadastroInstituicaoNovo";
+import CadastroInstituicao from "./pages/cadastro/cadastro-intituicao/CadastroInstituicao";
+import ConsultaAluno from "./pages/consulta/consulta-aluno/ConsultaAluno";
+import ConsultaInstituicao from "./pages/consulta/consulta-instituicao/ConsultaInstituicao";
 
 const App = () => {
   return (
     <Router>
       <Routes>
+        {/* Menu Superior */}
         <Route path="/" exact element={<Home />} />
-        <Route path="/saiba-mais" exact element={<Home />} />
-        <Route path="/contato" exact element={<Home />} />
-        
-        <Route path="/cadastro/instituicao" element={<CadastroInstituicao />} />
-        <Route
-          path="/cadastro/instituicao/cadastrar"
-          element={<CadastrarInstituicao />}
-        />
-
-        <Route path="/cadastro/alunos" element={<CadastroAlunos />} />
-        <Route
-          path="/cadastro/alunos/cadastrar"
-          element={<CadastrarAlunos />}
-        />
-
+        <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/consulta" element={<Consulta />} />
         <Route path="/predicao" element={<Predicao />} />
-        <Route path="/graficos" element={<Grafico />} />
-        <Route path="/feedback" element={<Feedback />} />
+
+        {/* Subrotas */}
+
+        {/* Cadastro */}
+        <Route path="/cadastro/instituicao" element={<CadastroInstituicao />} />
+        <Route path="/cadastro/instituicao/novo" element={<CadastroInstituicaoNovo />} />
+        <Route path="/cadastro/aluno" element={<CadastroAluno />} />
+        <Route path="/cadastro/aluno/novo" element={<CadastroAlunoNovo />} />
+
+        {/* Consulta */}
+        <Route path="/consulta/instituicao" element={<ConsultaInstituicao />} />
+        <Route path="/consulta/aluno" element={<ConsultaAluno />} />
+
+
       </Routes>
     </Router>
   );

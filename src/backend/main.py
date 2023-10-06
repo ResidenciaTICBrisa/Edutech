@@ -1,16 +1,10 @@
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI, File, UploadFile, HTTPException, Depends, Request
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 import mysql.connector
-from mysql.connector import errorcode
 from typing import List
-import pandas as pd
 import os
-import tempfile
-import shutil
-from datetime import date
 import mysql.connector.pooling
-from typing import Optional
 import asyncio
 from dotenv import load_dotenv
 
@@ -162,11 +156,27 @@ async def listar_escolas():
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-        cursor.execute("""SELECT * FROM ESCOLA""")
+        cursor.execute("""SELECT cnpj, nome, cpfDirecao, email FROM ESCOLA""")
         escolas = cursor.fetchall()
         return JSONResponse(content=escolas)
     except mysql.connector.Error as err:
         raise HTTPException(status_code=500, detail=f"Erro ao consultar escolas: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
+
+@app.post("/escolas")
+async def cadastrar_escola(escola: Escola):
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor()
+        sql = "INSERT INTO ESCOLA (cnpj, nome, cpfDirecao, email, senha) VALUES (%s, %s, %s, %s, %s)"
+        cursor.execute(sql, (escola.cnpj, escola.nome, escola.cpfDirecao, escola.email, escola.senha))
+        cnx.commit()
+        return {"message": "Escola cadastrada com sucesso!"}
+    except mysql.connector.Error as err:
+        cnx.rollback()
+        raise HTTPException(status_code=500, detail=f"Erro no banco de dados: {err}")
     finally:
         cursor.close()
         cnx.close()

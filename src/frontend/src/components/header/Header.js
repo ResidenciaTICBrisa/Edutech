@@ -3,14 +3,11 @@ import './Header.css';
 import logo from '../../img/logo_completa.png';
 import LoginButton from '../logged/log';
 
-function Header() {
+function HeaderComponent() {
   return (
     <header>
       <div className="container">
         <nav>
-          {/* <button className="button-home" onclick="window.location.href='/'"> */}
-          {/* <img src={logo} alt="logo" /> */}
-          {/* </button> */}
           <ul>
             <li>
               <a href="/" className="a-logo">
@@ -18,22 +15,13 @@ function Header() {
               </a>
             </li>
             <li className="nav-item">
-              {/* <a href="/predicao">Predição</a> */}
-            </li>
-            <li className="nav-item">
-              <a href="/predicao">Predição</a>
+              <a href="/cadastro">Cadastro</a>
             </li>
             <li className="nav-item">
               <a href="/consulta">Consulta</a>
             </li>
             <li className="nav-item">
-              <a href="/graficos">Gráficos</a>
-            </li>
-            <li className="nav-item">
-              <a href="/cadastro/alunos">Cadastro</a>
-            </li>
-            <li className="nav-item">
-              <a href="/feedback">Feedback</a>
+              <a href="/predicao">Predição</a>
             </li>
           </ul>
         </nav>
@@ -43,4 +31,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderComponent;

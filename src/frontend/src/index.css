@@ -6,3 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.dark-background {
+  text-align: center;
+  background-color: #1c3f50;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 1%;
+  margin-top: 2%;
+}

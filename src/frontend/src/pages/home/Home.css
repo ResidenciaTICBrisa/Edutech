@@ -24,21 +24,6 @@
   text-align: center;
 }
 
-.a-home {
-  color: white;
-}
-
-.a-home:hover {
-  background-color: #0ec46f;
-  text-decoration: underline;
-}
-
-.p-home {
-  font-size: 1.4rem;
-  text-align: justify;
-  margin: 7%;
-}
-
 .img-home {
   width: 100%;
   height: 100%;

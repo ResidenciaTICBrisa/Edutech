@@ -3,6 +3,16 @@ import axios from "axios";
 const BASE_URL = process.env.REACT_APP_API_URL;
 
 const EscolaService = {
+
+  addEscola: async (escola) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/escolas`, escola);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
   getEscolas: async () => {
     try {
       const response = await axios.get(`${BASE_URL}/escolas`);

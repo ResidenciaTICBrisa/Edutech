@@ -1,15 +1,14 @@
 import React from "react";
-import ButtonUpload from "../../components/button_upload/ButtonUpload";
+import { Link } from 'react-router-dom';
 import * as XLSX from "xlsx";
 
-import add_document from "../../img/add_document.png";
-import aluna from "../../img/aluna.png";
-import "./CadastroAlunos.css";
-import PessoaService from "../../services/PessoaService";
+import ButtonUploadComponent from "../../../components/button_upload/ButtonUpload";
+import add_document from "../../../img/add_document.png";
+import aluno from "../../../img/aluno.png";
+import PessoaService from "../../../services/PessoaService";
+import "./CadastroAluno.css";
 
-function CadastroAlunos() {
-
-  // const [redirect, setRedirect] = useState(false);
+function CadastroAluno() {
 
   const handleFileSelected = (file) => {
     if (!file) {
@@ -30,24 +29,28 @@ function CadastroAlunos() {
   };
 
   const handleCadastro = (excelData) => {
-    const alunos = excelData.map((row, _) => ({
-      cpf: String(row[0]) || "",
-      matricula: row[1] || 0,
-      nome: row[2] || "",
-      genero: row[3] || "",
-      siglaEstado: row[4] || "",
-      cidade: row[5] || "",
-      bairro: row[6] || "",
-      cep: String(row[7]) || "",
-      logradouro: row[8] || "",
-      numero: row[9] || 0,
-      complemento: row[10] || "",
-      dataNascimento: row[11] || "",
-      acessaInternet: !!row[12]
-    }));
+    const alunos = excelData
+      .filter((row) => row.some((cell) => cell !== undefined && cell !== null && cell !== ''))
+      .map((row, _) => ({
+        cpf: String(row[0]) || "",
+        matricula: String(row[1]) || "",
+        nome: row[2] || "",
+        genero: row[3] || "",
+        siglaEstado: row[4] || "",
+        cidade: row[5] || "",
+        bairro: row[6] || "",
+        cep: String(row[7]) || "",
+        logradouro: row[8] || "",
+        numero: row[9] || 0,
+        complemento: row[10] || "",
+        dataNascimento: row[11] || "",
+        acessaInternet: !!row[12]
+      }));
 
     alunos.shift(); // Remove o cabeçalho
-  
+
+    console.log(alunos)
+
     PessoaService.addAlunos(alunos)
       .then((response) => {
         console.log(response)
@@ -67,21 +70,20 @@ function CadastroAlunos() {
             <div className="img-cadastro-aluno-content">
               <img
                 className="img-cadastro-aluno"
-                src={aluna}
+                src={aluno}
                 alt="Cadastrar Instituição"
               />
             </div>
-            <div className="content-aluno">
-              <button
-                className="button-cadastro-aluno"
-                onClick={handleCadastro}
-              >
-                Cadastrar Aluno
-              </button>
-              <div className="h1-cadastro-aluno">
-                Nesta opção é possível cadastrar um Aluno.
+            <Link to="/cadastro/aluno/novo">
+              <div className="content-aluno">
+                <button className="button-cadastro-aluno">
+                  Cadastrar Aluno
+                </button>
+                <div className="h1-cadastro-aluno">
+                  Nesta opção é possível cadastrar um Aluno.
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
           <div className="child-aluno">
             <div className="img-cadastro-aluno-content">
@@ -92,12 +94,11 @@ function CadastroAlunos() {
               />
             </div>
             <div className="content-aluno">
-              <ButtonUpload onFileSelected={handleFileSelected} />
+              <ButtonUploadComponent onFileSelected={handleFileSelected} />
               <div className="h1-cadastro-aluno">
                 Nesta opção é possível importar os dados de Alunos.
               </div>
             </div>
-            {/* {redirect && window.location.replace("/consulta")} */}
           </div>
         </div>
       </div>
@@ -105,4 +106,4 @@ function CadastroAlunos() {
   );
 }
 
-export default CadastroAlunos;
+export default CadastroAluno;
