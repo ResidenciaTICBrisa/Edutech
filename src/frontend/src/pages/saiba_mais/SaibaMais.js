@@ -8,13 +8,13 @@ function SaibaMais() {
   return (
     <div className="container">
         <div className="container-login">
-            <img src={logo} className="login-header-img"/>
+            <img alt="" src={logo} className="login-header-img"/>
             <div className="header-login">
                 <a className="txt3" href="/contato">Contato</a>
                 <a className="txtselect" href="/saiba-mais">Saiba mais</a>
                 <a className="txt3" href="/login">Login</a>
             </div>
-            <img src={login_img} className="container-img"/>
+            <img alt="" src={login_img} className="container-img"/>
             <div className="wrap-saiba">
                 <form className="login-form">
                     <span className="login-saiba-title">

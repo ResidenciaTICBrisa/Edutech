@@ -1,14 +1,54 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import * as ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <>
-    <App />
-  </>
+import PessoaService from "./services/PessoaService";
+import Home from "./pages/home/Home";
+import Cadastro from "./pages/cadastro/Cadastro";
+import CadastroInstituicao from "./pages/cadastro/cadastro-intituicao/CadastroInstituicao";
+import CadastroInstituicaoNovo from "./pages/cadastro/cadastro-instituicao-novo/CadastroInstituicaoNovo";
+import CadastroAluno from "./pages/cadastro/cadastro-aluno/CadastroAluno";
+import CadastroAlunoNovo from "./pages/cadastro/cadastro-aluno-novo/CadastroAlunoNovo";
+import Consulta from "./pages/consulta/Consulta";
+import ConsultaInstituicao from "./pages/consulta/consulta-instituicao/ConsultaInstituicao";
+import ConsultaAluno from "./pages/consulta/consulta-aluno/ConsultaAluno";
+import Predicao from "./pages/predicao/Predicao";
+import SaibaMais from "./pages/saiba_mais/SaibaMais";
+import Contato from "./pages/contato/Contato";
+import Login from "./pages/login/Login";
+
+const usuarioEstaLogado = PessoaService.isUsuarioLogado();
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: usuarioEstaLogado ? <Home /> : <Navigate to="/login" />,
+  },
+  { path: "/cadastro/", element: <Cadastro /> },
+  { path: "/cadastro/instituicao", element: <CadastroInstituicao /> },
+  { path: "/cadastro/instituicao/novo", element: <CadastroInstituicaoNovo /> },
+  { path: "/cadastro/aluno", element: <CadastroAluno /> },
+  { path: "/cadastro/aluno/novo", element: <CadastroAlunoNovo /> },
+  { path: "/consulta/", element: <Consulta /> },
+  { path: "/consulta/instituicao", element: <ConsultaInstituicao /> },
+  { path: "/consulta/aluno", element: <ConsultaAluno /> },
+  { path: "/predicao", element: <Predicao /> },
+  { path: "/saiba-mais", element: <SaibaMais /> },
+  { path: "/contato", element: <Contato /> },
+  { path: "/login", element: <Login /> },
+]);
+
+
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
 
 reportWebVitals();

@@ -7,13 +7,13 @@ import './Cadastro.css';
 function Cadastro() {
     return (
         <><Header /><div className="dark-background button-container">
-            <Link to="/cadastro/aluno">
+            <Link to="aluno">
                 <button className="styled-button">
                     Cadastro de Aluno
                 </button>
             </Link>
 
-            <Link to="/cadastro/instituicao">
+            <Link to="instituicao">
                 <button className="styled-button">
                     Cadastro de Instituição
                 </button>

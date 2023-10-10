@@ -1,17 +1,32 @@
 import React from 'react';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import logo from '../../img/logo_completa.png';
 import login_img from '../../img/login_img.png'
 import './Login.css';
+import PessoaService from '../../services/PessoaService';
 
 function Predicao() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleLogin = () => {
-    // rota login verificar email e senha
-    window.location.href = '/';
+    const loginData = {
+      email: email,
+      senha: password,
+    };
+
+    PessoaService.login(loginData).then((response) => {
+      if (response) {
+        console.log("Login realizado com sucesso!", response.escola);
+        navigate("/");
+      } else {
+        window.window.alert("Erro ao realizar login!");
+      }
+    });
   };
 
   return (
