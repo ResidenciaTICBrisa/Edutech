@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './CadastroAlunoNovo.css';
 import PessoaService from '../../../services/PessoaService';
+import Header from "../../../components/header/Header";
 
 function CadastroAlunoNovo() {
   const [dadosAluno, setDadosAluno] = useState({
@@ -43,6 +44,7 @@ function CadastroAlunoNovo() {
 
   return (
     <>
+      <Header />
       <div className="dark-background">
         <p className="text-cadastrar">Cadastro de Novo Aluno</p>
         <div className="div-fundo-content-cadastrar">

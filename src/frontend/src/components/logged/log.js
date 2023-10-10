@@ -6,11 +6,13 @@ function LoginButton() {
 
   const handleButtonClick = () => {
     setLoggedIn(!loggedIn);
+    window.location.href = '/login';
   };
 
   return (
     <button className="log-pos log-color" onClick={handleButtonClick}>
-      {loggedIn ? 'Sign out' : 'Sign In'}
+      {'Sign out'}
+      {/* {loggedIn ? 'Sign out' : 'Sign In'} */}
     </button>
   );
 }

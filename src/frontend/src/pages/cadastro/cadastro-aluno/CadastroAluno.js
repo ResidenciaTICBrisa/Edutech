@@ -6,6 +6,7 @@ import ButtonUploadComponent from "../../../components/button_upload/ButtonUploa
 import add_document from "../../../img/add_document.png";
 import aluno from "../../../img/aluno.png";
 import PessoaService from "../../../services/PessoaService";
+import Header from "../../../components/header/Header";
 import "./CadastroAluno.css";
 
 function CadastroAluno() {
@@ -63,6 +64,7 @@ function CadastroAluno() {
 
   return (
     <>
+      <Header />
       <div className="div-fundo-aluno">
         <p className="text-cadastro-aluno">Página de Cadastramento de Alunos</p>
         <div className="div-fundo-content">

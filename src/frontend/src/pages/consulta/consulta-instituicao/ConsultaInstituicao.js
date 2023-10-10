@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 
 import "./ConsultaInstituicao.css";
 import EscolaService from "../../../services/EscolaService";
+import Header from "../../../components/header/Header";
 
 const ConsultaInstituicao = () => {
 
@@ -16,6 +17,7 @@ const ConsultaInstituicao = () => {
 
   return (
     <>
+      <Header />
       <div className="dark-background">
       <div>
           <h1>Consulta de Instituições</h1>

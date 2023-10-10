@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
+import Header from "../../components/header/Header";
 import './Cadastro.css';
 
 function Cadastro() {
     return (
-        <div className="dark-background button-container">
+        <><Header /><div className="dark-background button-container">
             <Link to="/cadastro/aluno">
                 <button className="styled-button">
                     Cadastro de Aluno
@@ -17,7 +18,7 @@ function Cadastro() {
                     Cadastro de Instituição
                 </button>
             </Link>
-        </div>
+        </div></>
     );
 }
 

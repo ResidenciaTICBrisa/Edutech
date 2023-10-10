@@ -4,6 +4,7 @@ import * as XLSX from 'xlsx';
 import ButtonUpload from '../../../components/button_upload/ButtonUpload';
 import add_document from '../../../img/add_document.png';
 import Instituicao from '../../../img/instituicao.png';
+import Header from "../../../components/header/Header";
 import './CadastroInstituicao.css';
 
 function CadastroInstituicao() {
@@ -33,7 +34,7 @@ function CadastroInstituicao() {
   };
 
   return (
-    <div className="dark-background">
+    <><Header /><div className="dark-background">
       <p className="text-cadastro">Página de Cadastramento de Instituição</p>
       <div className="div-fundo-content">
         <div className="child">
@@ -61,7 +62,7 @@ function CadastroInstituicao() {
           </div>
         </div>
       </div>
-    </div>
+    </div></>
   );
 }
 

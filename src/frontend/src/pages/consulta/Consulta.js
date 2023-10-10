@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
+import Header from "../../components/header/Header";
 import './Consulta.css';
 
 function Consulta() {
     return (
-        <div className="dark-background button-container">
+        <><Header /><div className="dark-background button-container">
             <Link to="/consulta/aluno">
                 <button className="styled-button">
                     Consulta de Aluno
@@ -17,7 +18,7 @@ function Consulta() {
                     Consulta de Instituição
                 </button>
             </Link>
-        </div>
+        </div></>
     );
 }
 
