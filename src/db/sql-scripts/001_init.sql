@@ -12,6 +12,9 @@ CREATE TABLE IF NOT EXISTS ESCOLA (
 	  CONSTRAINT ESCOLA_PK PRIMARY KEY (cnpj)
 ) ENGINE = InnoDB;
 
+INSERT INTO ESCOLA (cnpj, nome, cpfDirecao, email, senha) VALUES
+('00.000.000/0000-00', 'Escola Teste', '000.000.000-00', 'escola@email.com', 'senha');
+
 CREATE TABLE IF NOT EXISTS UNIDADE (
     idUnidade      INT          AUTO_INCREMENT,
     cnpjEscola     VARCHAR(18)  NOT NULL,

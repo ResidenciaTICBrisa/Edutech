@@ -3,12 +3,10 @@ import * as ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
-  Navigate,
 } from "react-router-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
-import PessoaService from "./services/PessoaService";
 import Home from "./pages/home/Home";
 import Cadastro from "./pages/cadastro/Cadastro";
 import CadastroInstituicao from "./pages/cadastro/cadastro-intituicao/CadastroInstituicao";
@@ -23,13 +21,9 @@ import SaibaMais from "./pages/saiba_mais/SaibaMais";
 import Contato from "./pages/contato/Contato";
 import Login from "./pages/login/Login";
 
-const usuarioEstaLogado = PessoaService.isUsuarioLogado();
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: usuarioEstaLogado ? <Home /> : <Navigate to="/login" />,
-  },
+  { path: "/", element: <Home /> },
   { path: "/cadastro/", element: <Cadastro /> },
   { path: "/cadastro/instituicao", element: <CadastroInstituicao /> },
   { path: "/cadastro/instituicao/novo", element: <CadastroInstituicaoNovo /> },

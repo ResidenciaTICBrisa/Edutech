@@ -7,13 +7,14 @@ import login_img from '../../img/login_img.png'
 import './Login.css';
 import PessoaService from '../../services/PessoaService';
 
-function Predicao() {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = (event) => {
+    event.preventDefault();
     const loginData = {
       email: email,
       senha: password,
@@ -65,7 +66,7 @@ function Predicao() {
             </div>
 
             <div className="container-login-form-btn">
-              <button className="login-form-btn" onClick={handleLogin}>Login</button>
+              <button type="submit" className="login-form-btn" onClick={handleLogin}>Login</button>
             </div>
 
             <div className="text-center">
@@ -79,9 +80,7 @@ function Predicao() {
         </div>
       </div>
   </div>
-  );
+);
 }
 
-export default Predicao;
-/* <img src={logo} alt="logo" className="img-login" /> */
-// <div className="background-login"></div>
+export default Login;
