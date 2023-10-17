@@ -91,6 +91,15 @@ const EscolaService = {
       console.error(error);
     }
   },
+
+  getTurmas: async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/turmas`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
   
   getTurmasUnidade: async (idUnidade) => {
     try {

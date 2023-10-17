@@ -12,17 +12,21 @@ import CadastroAluno from "./pages/cadastro/cadastro-aluno/CadastroAluno";
 import CadastroAlunoNovo from "./pages/cadastro/cadastro-aluno-novo/CadastroAlunoNovo";
 import CadastroUnidadeNovo from "./pages/cadastro/cadastro-unidade-novo/CadastroUnidadeNovo";
 import CadastroDisciplinaNovo from "./pages/cadastro/cadastro-disciplina/CadastroDisciplinaNovo";
+import CadastroTurmaNovo from "./pages/cadastro/cadastro-turma-novo/CadastroTurmaNovo";
 
 import Consulta from "./pages/consulta/Consulta";
 import ConsultaInstituicao from "./pages/consulta/consulta-instituicao/ConsultaInstituicao";
 import ConsultaAluno from "./pages/consulta/consulta-aluno/ConsultaAluno";
 import ConsultaUnidade from "./pages/consulta/consulta-unidade/ConsultaUnidade";
 import ConsultaDisciplina from "./pages/consulta/consulta-disciplina/ConsultaDisciplina";
+import ConsultaTurma from "./pages/consulta/consulta-turma/ConsultaTurma";
 
 import Predicao from "./pages/predicao/Predicao";
 import SaibaMais from "./pages/saiba_mais/SaibaMais";
 import Contato from "./pages/contato/Contato";
 import Login from "./pages/login/Login";
+
+
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -33,12 +37,14 @@ const router = createBrowserRouter([
   { path: "/cadastro/aluno/novo", element: <CadastroAlunoNovo /> },
   { path: "/cadastro/unidade", element: <CadastroUnidadeNovo /> },
   { path: "/cadastro/disciplina", element: <CadastroDisciplinaNovo /> },
+  { path: "/cadastro/turma", element: <CadastroTurmaNovo />},
 
   { path: "/consulta/", element: <Consulta /> },
   { path: "/consulta/instituicao", element: <ConsultaInstituicao /> },
   { path: "/consulta/aluno", element: <ConsultaAluno /> },
   { path: "/consulta/unidade", element: <ConsultaUnidade /> },
   { path: "/consulta/disciplina", element: <ConsultaDisciplina /> },
+  { path: "/consulta/turma", element: <ConsultaTurma /> },
 
   { path: "/predicao", element: <Predicao /> },
 

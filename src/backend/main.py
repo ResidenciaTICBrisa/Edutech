@@ -294,8 +294,24 @@ async def cadastrar_disciplina(idUnidade: str, disciplina: Disciplina):
 #endregion
 
 #region Turmas
+@app.get("/turmas")
+async def listar_turmas():
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("""SELECT * FROM TURMA""")
+        turmas = cursor.fetchall()
+        for turma in turmas:
+            turma['ano'] = turma['ano'].strftime('%Y-%m-%d')
+        return JSONResponse(content=turmas)
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar turmas: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
+
 @app.get("/unidades/{idUnidade}/turmas")
-async def listar_turmas(idUnidade: int):
+async def listar_turmas_unidade(idUnidade: int):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
@@ -317,8 +333,8 @@ async def cadastrar_turma(idUnidade: int, turma: Turma):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor()
-        sql = "INSERT INTO TURMA (idTurma, serie, letra, ano, idUnidade) VALUES (%s, %s, %s, %s, %s)"
-        cursor.execute(sql, (turma.idTurma, turma.serie, turma.letra, turma.ano, idUnidade))
+        sql = "INSERT INTO TURMA (serie, letra, ano, idUnidade) VALUES (%s, %s, %s, %s)"
+        cursor.execute(sql, (turma.serie, turma.letra, turma.ano, idUnidade))
         cnx.commit()
         return {"message": "Turma cadastrada com sucesso!"}
     except mysql.connector.Error as err:
