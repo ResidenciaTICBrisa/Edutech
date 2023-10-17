@@ -1,14 +1,13 @@
 from pydantic import BaseModel
 
 class Unidade(BaseModel):
-    idUnidade: int
-    cnpjEscola: int
+    cnpjEscola: str
     nivelEducacao: str
     siglaEstado: str
     cidade: str
     bairro: str
-    cep: int
+    cep: str
     logradouro: str
     numero: int
     complemento: str
-    cpfCoordenador: int
+    cpfCoordenador: str

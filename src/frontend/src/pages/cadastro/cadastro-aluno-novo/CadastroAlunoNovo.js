@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import './CadastroAlunoNovo.css';
-import PessoaService from '../../../services/PessoaService';
+import React, { useState } from "react";
+import "./CadastroAlunoNovo.css";
+import PessoaService from "../../../services/PessoaService";
 import Header from "../../../components/header/Header";
 
 function CadastroAlunoNovo() {
   const [dadosAluno, setDadosAluno] = useState({
-    cpf: '',
-    matricula: '',
-    nome: '',
-    genero: '',
-    siglaEstado: '',
-    cidade: '',
-    bairro: '',
-    cep: '',
-    logradouro: '',
-    numero: '',
-    complemento: '',
-    dataNascimento: '',
+    cpf: "",
+    matricula: "",
+    nome: "",
+    genero: "",
+    siglaEstado: "",
+    cidade: "",
+    bairro: "",
+    cep: "",
+    logradouro: "",
+    numero: "",
+    complemento: "",
+    dataNascimento: "",
     acessaInternet: true,
   });
 
@@ -29,17 +29,17 @@ function CadastroAlunoNovo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Dados do Aluno', dadosAluno);
+    console.log("Dados do Aluno", dadosAluno);
     let data = [];
     data.push(dadosAluno);
     PessoaService.addAlunos(data).then((res) => {
       console.log(res);
-      window.location.href = '/consulta/aluno';
+      window.location.href = "/consulta/aluno";
     });
   };
 
   const handleCancelar = () => {
-    window.location.href = '/cadastro/aluno';
+    window.location.href = "/cadastro/aluno";
   };
 
   return (
@@ -56,7 +56,7 @@ function CadastroAlunoNovo() {
                 className="text-entrada"
                 placeholder="000.000.000-00"
                 value={dadosAluno.cpf}
-                onChange={(e) => handleChangeTexto('cpf', e.target.value)}
+                onChange={(e) => handleChangeTexto("cpf", e.target.value)}
               />
             </div>
 
@@ -67,7 +67,7 @@ function CadastroAlunoNovo() {
                 className="text-entrada"
                 placeholder="000000"
                 value={dadosAluno.matricula}
-                onChange={(e) => handleChangeTexto('matricula', e.target.value)}
+                onChange={(e) => handleChangeTexto("matricula", e.target.value)}
               />
             </div>
 
@@ -78,7 +78,7 @@ function CadastroAlunoNovo() {
                 className="text-entrada"
                 placeholder="Nome do Aluno"
                 value={dadosAluno.nome}
-                onChange={(e) => handleChangeTexto('nome', e.target.value)}
+                onChange={(e) => handleChangeTexto("nome", e.target.value)}
               />
             </div>
 
@@ -89,7 +89,7 @@ function CadastroAlunoNovo() {
                 className="text-entrada"
                 placeholder="Gênero do Aluno"
                 value={dadosAluno.genero}
-                onChange={(e) => handleChangeTexto('genero', e.target.value)}
+                onChange={(e) => handleChangeTexto("genero", e.target.value)}
               />
             </div>
 
@@ -100,7 +100,9 @@ function CadastroAlunoNovo() {
                 className="text-entrada"
                 placeholder="Estado do Aluno"
                 value={dadosAluno.siglaEstado}
-                onChange={(e) => handleChangeTexto('siglaEstado', e.target.value)}
+                onChange={(e) =>
+                  handleChangeTexto("siglaEstado", e.target.value)
+                }
               />
             </div>
 
@@ -111,7 +113,7 @@ function CadastroAlunoNovo() {
                 className="text-entrada"
                 placeholder="Cidade"
                 value={dadosAluno.cidade}
-                onChange={(e) => handleChangeTexto('cidade', e.target.value)}
+                onChange={(e) => handleChangeTexto("cidade", e.target.value)}
               />
             </div>
 
@@ -122,7 +124,7 @@ function CadastroAlunoNovo() {
                 className="text-entrada"
                 placeholder="Bairro"
                 value={dadosAluno.bairro}
-                onChange={(e) => handleChangeTexto('bairro', e.target.value)}
+                onChange={(e) => handleChangeTexto("bairro", e.target.value)}
               />
             </div>
 
@@ -133,7 +135,7 @@ function CadastroAlunoNovo() {
                 className="text-entrada"
                 placeholder="cep"
                 value={dadosAluno.cep}
-                onChange={(e) => handleChangeTexto('cep', e.target.value)}
+                onChange={(e) => handleChangeTexto("cep", e.target.value)}
               />
             </div>
 
@@ -144,7 +146,9 @@ function CadastroAlunoNovo() {
                 className="text-entrada"
                 placeholder="logradouro"
                 value={dadosAluno.logradouro}
-                onChange={(e) => handleChangeTexto('logradouro', e.target.value)}
+                onChange={(e) =>
+                  handleChangeTexto("logradouro", e.target.value)
+                }
               />
             </div>
 
@@ -155,7 +159,7 @@ function CadastroAlunoNovo() {
                 className="text-entrada"
                 placeholder="numero"
                 value={dadosAluno.numero}
-                onChange={(e) => handleChangeTexto('numero', e.target.value)}
+                onChange={(e) => handleChangeTexto("numero", e.target.value)}
               />
             </div>
 
@@ -166,18 +170,24 @@ function CadastroAlunoNovo() {
                 className="text-entrada"
                 placeholder="complemento"
                 value={dadosAluno.complemento}
-                onChange={(e) => handleChangeTexto('complemento', e.target.value)}
+                onChange={(e) =>
+                  handleChangeTexto("complemento", e.target.value)
+                }
               />
             </div>
 
             <div className="caixa-texto-aluno">
-              <label className="label-aluno-span-text">Data de Nascimento</label>
+              <label className="label-aluno-span-text">
+                Data de Nascimento
+              </label>
               <input
                 type="text"
                 className="text-entrada"
                 placeholder="Data de Nascimento"
                 value={dadosAluno.dataNascimento}
-                onChange={(e) => handleChangeTexto('dataNascimento', e.target.value)}
+                onChange={(e) =>
+                  handleChangeTexto("dataNascimento", e.target.value)
+                }
               />
             </div>
 

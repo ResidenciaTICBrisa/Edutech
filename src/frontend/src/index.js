@@ -20,6 +20,8 @@ import Predicao from "./pages/predicao/Predicao";
 import SaibaMais from "./pages/saiba_mais/SaibaMais";
 import Contato from "./pages/contato/Contato";
 import Login from "./pages/login/Login";
+import CadastroUnidadeNovo from "./pages/cadastro/cadastro-unidade-novo/CadastroUnidadeNovo";
+import ConsultaUnidade from "./pages/consulta/consulta-unidade/ConsultaUnidade";
 
 
 const router = createBrowserRouter([
@@ -29,10 +31,15 @@ const router = createBrowserRouter([
   { path: "/cadastro/instituicao/novo", element: <CadastroInstituicaoNovo /> },
   { path: "/cadastro/aluno", element: <CadastroAluno /> },
   { path: "/cadastro/aluno/novo", element: <CadastroAlunoNovo /> },
+  { path: "/cadastro/unidade", element: <CadastroUnidadeNovo /> },
+
   { path: "/consulta/", element: <Consulta /> },
   { path: "/consulta/instituicao", element: <ConsultaInstituicao /> },
   { path: "/consulta/aluno", element: <ConsultaAluno /> },
+  { path: "/consulta/unidade", element: <ConsultaUnidade /> },
+
   { path: "/predicao", element: <Predicao /> },
+
   { path: "/saiba-mais", element: <SaibaMais /> },
   { path: "/contato", element: <Contato /> },
   { path: "/login", element: <Login /> },

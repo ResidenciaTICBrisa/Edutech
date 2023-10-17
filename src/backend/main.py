@@ -66,16 +66,7 @@ async def on_startup():
 async def root():
     return "FastAPI Working!"
 
-############ ALUNOS ############
-@app.post("/alunos")
-async def cadastrar_alunos(alunos: List[PessoaAluno]):
-    try:
-        for aluno in alunos:
-            inserir_no_banco(aluno)
-        return {"message": "Alunos cadastrados com sucesso!."}
-    except mysql.connector.Error as err:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao inserir dados no banco de dados: {err}")
-    
+#region Alunos
 @app.get("/alunos")
 async def listar_alunos():
     try:
@@ -96,27 +87,14 @@ async def listar_alunos():
         cursor.close()
         cnx.close()
 
-@app.get("/alunos/{matricula}")
-async def buscar_aluno(matricula: int):
+@app.post("/alunos")
+async def cadastrar_alunos(alunos: List[PessoaAluno]):
     try:
-        cnx = connection_pool.get_connection()
-        cursor = cnx.cursor(dictionary=True)
-        cursor.execute("""
-            SELECT * FROM PESSOA P
-            JOIN ALUNO A ON P.matricula = A.matricula
-            WHERE A.matricula = %s
-        """, (matricula,))
-        aluno = cursor.fetchone()
-        if aluno:
-            aluno['dataNascimento'] = aluno['dataNascimento'].strftime('%Y-%m-%d')
-            return JSONResponse(content=aluno)
-        else:
-            return {"message": "Aluno não encontrado!"}
+        for aluno in alunos:
+            inserir_no_banco(aluno)
+        return {"message": "Alunos cadastrados com sucesso!."}
     except mysql.connector.Error as err:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar aluno: {err}")
-    finally:
-        cursor.close()
-        cnx.close()
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao inserir dados no banco de dados: {err}")  
 
 def inserir_pessoa(cursor, aluno):
     try:
@@ -149,8 +127,9 @@ def inserir_no_banco(aluno: PessoaAluno):
     finally:
         cursor.close()
         cnx.close()
+#endregion
 
-############ ESCOLAS e UNIDADES ############
+#region Escolas
 @app.get("/escolas")
 async def listar_escolas():
     try:
@@ -202,49 +181,50 @@ async def login(escola_login: EscolaLogin):
         cursor.close()
         cnx.close()
 
-@app.get("/escolas/{cnpj}")
-async def buscar_escola(cnpj: str):
+#endregion
+
+#region Unidades
+@app.get("/unidades")
+async def listar_unidades():
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-        cursor.execute("""SELECT * FROM ESCOLA WHERE cnpj = %s""", (cnpj,))
-        escola = cursor.fetchone()
-        if escola:
-            return JSONResponse(content=escola)
+        cursor.execute("""SELECT * FROM UNIDADE""")
+        unidades = cursor.fetchall()
+        if unidades:
+            return JSONResponse(content=unidades)
         else:
-            return {"message": "Escola não encontrada!"}
+            return {"message": "Nenhuma unidade foi encontrada!"}
     except mysql.connector.Error as err:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar escola: {err}")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar as unidades: {err}")
     finally:
         cursor.close()
         cnx.close()
 
 @app.get("/escolas/{cnpj}/unidades")
-async def listar_unidades(cnpj: str):
+async def listar_unidades_escola(cnpj: str):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-        cursor.execute("""
-            SELECT * FROM UNIDADE
-            WHERE cnpjEscola = %s""", (cnpj,))
+        cursor.execute("""SELECT * FROM UNIDADE WHERE cnpjEscola = %s""", (cnpj,))
         unidades = cursor.fetchall()
         if unidades:
             return JSONResponse(content=unidades)
         else:
-            return {"message": "Escola não existe ou nenhuma unidade foi encontrada!"}
+            return {"message": "Nenhuma unidade dessa escola foi encontrada!"}
     except mysql.connector.Error as err:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar as unidades da escola: {err}")
     finally:
         cursor.close()
         cnx.close()
 
-@app.post("/escolas/{cnpj}/unidades")
-async def cadastrar_unidade(cnpj: str, unidade: Unidade):
+@app.post("/unidades")
+async def cadastrar_unidade(unidade: Unidade):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor()
-        sql = "INSERT INTO UNIDADE (idUnidade, cnpjEscola, nivelEducacao, siglaEstado, cidade, bairro, cep, logradouro, numero, complemento, cpfCoordenador) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        cursor.execute(sql, (unidade.idUnidade, cnpj, unidade.nivelEducacao, unidade.siglaEstado, unidade.cidade, unidade.bairro, unidade.cep, unidade.logradouro, unidade.numero, unidade.complemento, unidade.cpfCoordenador))
+        sql = "INSERT INTO UNIDADE (cnpjEscola, nivelEducacao, siglaEstado, cidade, bairro, cep, logradouro, numero, complemento, cpfCoordenador) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        cursor.execute(sql, (unidade.cnpjEscola, unidade.nivelEducacao, unidade.siglaEstado, unidade.cidade, unidade.bairro, unidade.cep, unidade.logradouro, unidade.numero, unidade.complemento, unidade.cpfCoordenador))
         cnx.commit()
         return {"message": "Unidade cadastrada com sucesso!"}
     except mysql.connector.Error as err:
@@ -253,27 +233,9 @@ async def cadastrar_unidade(cnpj: str, unidade: Unidade):
     finally:
         cursor.close()
         cnx.close()
+#endregion
 
-@app.get("/escolas/{cnpj}/unidades/{idUnidade}")
-async def buscar_unidade(cnpj: str, idUnidade: int):
-    try:
-        cnx = connection_pool.get_connection()
-        cursor = cnx.cursor(dictionary=True)
-        cursor.execute("""
-            SELECT * FROM UNIDADE
-            WHERE cnpjEscola = %s AND idUnidade = %s""", (cnpj, idUnidade))
-        unidade = cursor.fetchone()
-        if unidade:
-            return JSONResponse(content=unidade)
-        else:
-            return {"message": "Unidade não encontrada!"}
-    except mysql.connector.Error as err:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar unidade: {err}")
-    finally:
-        cursor.close()
-        cnx.close()
-
-############ DISCIPLINAS ############
+#region Disciplinas
 @app.get("/unidades/{idUnidade}/disciplinas")
 async def listar_disciplinas(idUnidade: int):
     try:
@@ -312,7 +274,9 @@ async def cadastrar_disciplina(idUnidade: int, disciplina: Disciplina):
         cursor.close()
         cnx.close()
 
-############ TURMAS ############
+#endregion
+
+#region Turmas
 @app.get("/unidades/{idUnidade}/turmas")
 async def listar_turmas(idUnidade: int):
     try:
@@ -346,3 +310,4 @@ async def cadastrar_turma(idUnidade: int, turma: Turma):
     finally:
         cursor.close()
         cnx.close()
+#endregion

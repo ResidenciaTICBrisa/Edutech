@@ -4,6 +4,7 @@ const BASE_URL = process.env.REACT_APP_API_URL;
 
 const EscolaService = {
 
+  //#region Escola
   addEscola: async (escola) => {
     try {
       const response = await axios.post(`${BASE_URL}/escolas`, escola);
@@ -21,10 +22,21 @@ const EscolaService = {
       console.error(error);
     }
   },
+  //#endregion
 
-  findEscola: async (cnpj) => {
+  //#region Unidade
+  addUnidade: async (unidade) => {
     try {
-      const response = await axios.get(`${BASE_URL}/escolas/${cnpj}`);
+      const response = await axios.post(`${BASE_URL}/unidades`, unidade);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  getUnidades: async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/unidades`);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -39,39 +51,47 @@ const EscolaService = {
       console.error(error);
     }
   },
+  //#endregion
 
-  findUnidadeEscola: async (cnpj, id) => {
+  //#region Disciplina
+  addDisciplina: async (disciplina) => {
     try {
-      const response = await axios.get(
-        `${BASE_URL}/escolas/${cnpj}/unidades/${id}`
-      );
+      const response = await axios.post(`${BASE_URL}/disciplinas`, disciplina);
       return response.data;
     } catch (error) {
       console.error(error);
     }
   },
-
+  
   getDisciplinasUnidade: async (id) => {
     try {
-      const response = await axios.get(
-        `${BASE_URL}/unidades/${id}/disciplinas`
-      );
+      const response = await axios.get(`${BASE_URL}/unidades/${id}/disciplinas`);
       return response.data;
     } catch (error) {
       console.error(error);
     }
   },
+  //#endregion
 
-  getTurmasUnidade: async (id) => {
+  //#region Turma
+  addTurma: async (idUnidade, turma) => {
     try {
-      const response = await axios.get(
-        `${BASE_URL}/unidades/${id}/turmas`
-      );
+      const response = await axios.post(`${BASE_URL}/unidades/${idUnidade}/turmas`, turma);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  
+  getTurmasUnidade: async (idUnidade) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/unidades/${idUnidade}/turmas`);
       return response.data;
     } catch (error) {
       console.error(error);
     }
   }
+  //#endregion
 };
 
 export default EscolaService;
