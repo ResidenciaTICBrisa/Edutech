@@ -9,16 +9,20 @@ function Consulta() {
     <>
       <Header />
       <div className="dark-background button-container">
-        <Link to="/consulta/aluno">
+        <Link to="aluno">
           <button className="styled-button">Consulta de Aluno</button>
         </Link>
 
-        <Link to="/consulta/instituicao">
+        <Link to="instituicao">
           <button className="styled-button">Consulta de Instituição</button>
         </Link>
 
-        <Link to="/consulta/unidade">
+        <Link to="unidade">
           <button className="styled-button">Consulta de Unidade</button>
+        </Link>
+
+        <Link to="disciplina">
+          <button className="styled-button">Consulta de Disciplina</button>
         </Link>
       </div>
     </>

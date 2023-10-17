@@ -191,10 +191,7 @@ async def listar_unidades():
         cursor = cnx.cursor(dictionary=True)
         cursor.execute("""SELECT * FROM UNIDADE""")
         unidades = cursor.fetchall()
-        if unidades:
-            return JSONResponse(content=unidades)
-        else:
-            return {"message": "Nenhuma unidade foi encontrada!"}
+        return JSONResponse(content=unidades)
     except mysql.connector.Error as err:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar as unidades: {err}")
     finally:
@@ -208,10 +205,7 @@ async def listar_unidades_escola(cnpj: str):
         cursor = cnx.cursor(dictionary=True)
         cursor.execute("""SELECT * FROM UNIDADE WHERE cnpjEscola = %s""", (cnpj,))
         unidades = cursor.fetchall()
-        if unidades:
-            return JSONResponse(content=unidades)
-        else:
-            return {"message": "Nenhuma unidade dessa escola foi encontrada!"}
+        return JSONResponse(content=unidades)
     except mysql.connector.Error as err:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar as unidades da escola: {err}")
     finally:
@@ -236,16 +230,15 @@ async def cadastrar_unidade(unidade: Unidade):
 #endregion
 
 #region Disciplinas
-@app.get("/unidades/{idUnidade}/disciplinas")
-async def listar_disciplinas(idUnidade: int):
+@app.get("/disciplinas")
+async def listar_disciplinas():
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
         cursor.execute("""
-            SELECT D.*
-            FROM DISCIPLINA D
-            JOIN oferta ON codigoDisciplina = D.codigo
-            WHERE idUnidade = %s""", (idUnidade,))
+            SELECT codigo, nome, idUnidade FROM DISCIPLINA D
+            JOIN oferta O ON D.codigo = O.codigoDisciplina
+        """)
         disciplinas = cursor.fetchall()
         return JSONResponse(content=disciplinas)
     except mysql.connector.Error as err:
@@ -254,17 +247,41 @@ async def listar_disciplinas(idUnidade: int):
         cursor.close()
         cnx.close()
 
+@app.get("/unidades/{idUnidade}/disciplinas")
+async def listar_disciplinas_unidade(idUnidade: str):
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("""
+            SELECT codigo, nome FROM DISCIPLINA D
+            JOIN oferta O ON D.codigo = O.codigoDisciplina
+            WHERE O.idUnidade = %s""", (idUnidade,))
+        disciplinas = cursor.fetchall()
+        return JSONResponse(content=disciplinas)
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar as disciplinas da unidade: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
+
 @app.post("/unidades/{idUnidade}/disciplinas")
-async def cadastrar_disciplina(idUnidade: int, disciplina: Disciplina):
+async def cadastrar_disciplina(idUnidade: str, disciplina: Disciplina):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor()
-        sql = "INSERT INTO DISCIPLINA (codigo, nome) VALUES (%s, %s)"
-        cursor.execute(sql, (disciplina.codigo, disciplina.nome))
+        sql = "INSERT INTO DISCIPLINA (nome) VALUES (%s)"
+        cursor.execute(sql, (disciplina.nome,))
         cnx.commit()
+    except mysql.connector.Error as err:
+        cnx.rollback()
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro no banco de dados: {err}")
 
-        sql = "INSERT INTO oferta (codigoDisciplina, idUnidade) VALUES (%s, %s)"  ### TODO: Caso esse insert não funcione, o insert anterior deve ser desfeito
-        cursor.execute(sql, (disciplina.codigo, idUnidade))
+    try:
+        sql = "SELECT codigo FROM DISCIPLINA WHERE nome = %s"
+        cursor.execute(sql, (disciplina.nome,))
+        codigo = cursor.fetchone()[0]
+        sql = "INSERT INTO oferta (codigoDisciplina, idUnidade) VALUES (%s, %s)"
+        cursor.execute(sql, (codigo, idUnidade))
         cnx.commit()
         return {"message": "Disciplina cadastrada com sucesso!"}
     except mysql.connector.Error as err:

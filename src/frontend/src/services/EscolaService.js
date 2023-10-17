@@ -54,18 +54,27 @@ const EscolaService = {
   //#endregion
 
   //#region Disciplina
-  addDisciplina: async (disciplina) => {
+  addDisciplina: async (idUnidade, disciplina) => {
     try {
-      const response = await axios.post(`${BASE_URL}/disciplinas`, disciplina);
+      const response = await axios.post(`${BASE_URL}/unidades/${idUnidade}/disciplinas`, disciplina);
       return response.data;
     } catch (error) {
       console.error(error);
     }
   },
   
-  getDisciplinasUnidade: async (id) => {
+  getDisciplinas: async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/unidades/${id}/disciplinas`);
+      const response = await axios.get(`${BASE_URL}/disciplinas`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  getDisciplinasUnidade: async (idUnidade) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/unidades/${idUnidade}/disciplinas`);
       return response.data;
     } catch (error) {
       console.error(error);

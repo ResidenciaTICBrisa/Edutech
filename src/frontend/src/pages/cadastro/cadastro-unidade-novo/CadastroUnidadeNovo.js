@@ -30,7 +30,7 @@ function CadastroUnidadeNovo() {
     console.log("Dados da Unidade", dadosUnidade);
     EscolaService.addUnidade(dadosUnidade).then((res) => {
       console.log(res);
-      // window.location.href = "/consulta/unidade";
+      window.location.href = "/consulta/unidade";
     });
   };
 

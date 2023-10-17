@@ -1,9 +1,6 @@
 import React from "react";
 import * as ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
@@ -13,16 +10,19 @@ import CadastroInstituicao from "./pages/cadastro/cadastro-intituicao/CadastroIn
 import CadastroInstituicaoNovo from "./pages/cadastro/cadastro-instituicao-novo/CadastroInstituicaoNovo";
 import CadastroAluno from "./pages/cadastro/cadastro-aluno/CadastroAluno";
 import CadastroAlunoNovo from "./pages/cadastro/cadastro-aluno-novo/CadastroAlunoNovo";
+import CadastroUnidadeNovo from "./pages/cadastro/cadastro-unidade-novo/CadastroUnidadeNovo";
+import CadastroDisciplinaNovo from "./pages/cadastro/cadastro-disciplina/CadastroDisciplinaNovo";
+
 import Consulta from "./pages/consulta/Consulta";
 import ConsultaInstituicao from "./pages/consulta/consulta-instituicao/ConsultaInstituicao";
 import ConsultaAluno from "./pages/consulta/consulta-aluno/ConsultaAluno";
+import ConsultaUnidade from "./pages/consulta/consulta-unidade/ConsultaUnidade";
+import ConsultaDisciplina from "./pages/consulta/consulta-disciplina/ConsultaDisciplina";
+
 import Predicao from "./pages/predicao/Predicao";
 import SaibaMais from "./pages/saiba_mais/SaibaMais";
 import Contato from "./pages/contato/Contato";
 import Login from "./pages/login/Login";
-import CadastroUnidadeNovo from "./pages/cadastro/cadastro-unidade-novo/CadastroUnidadeNovo";
-import ConsultaUnidade from "./pages/consulta/consulta-unidade/ConsultaUnidade";
-
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -32,11 +32,13 @@ const router = createBrowserRouter([
   { path: "/cadastro/aluno", element: <CadastroAluno /> },
   { path: "/cadastro/aluno/novo", element: <CadastroAlunoNovo /> },
   { path: "/cadastro/unidade", element: <CadastroUnidadeNovo /> },
+  { path: "/cadastro/disciplina", element: <CadastroDisciplinaNovo /> },
 
   { path: "/consulta/", element: <Consulta /> },
   { path: "/consulta/instituicao", element: <ConsultaInstituicao /> },
   { path: "/consulta/aluno", element: <ConsultaAluno /> },
   { path: "/consulta/unidade", element: <ConsultaUnidade /> },
+  { path: "/consulta/disciplina", element: <ConsultaDisciplina /> },
 
   { path: "/predicao", element: <Predicao /> },
 
@@ -44,7 +46,6 @@ const router = createBrowserRouter([
   { path: "/contato", element: <Contato /> },
   { path: "/login", element: <Login /> },
 ]);
-
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
