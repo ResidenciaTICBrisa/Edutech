@@ -1,10 +1,3 @@
-.text-cadastrar {
-  color: #fff;
-  font-size: 2.3rem;
-  margin-bottom: 5%;
-  font-weight: bold;
-}
-
 .div-fundo-content-cadastrar {
   display: flex;
   flex-direction: column;
@@ -57,16 +50,27 @@
   text-align: center;
 }
 
-.botao-cadastrar {
-  margin-top: 10%;
+.botao-cadastrar-unidade {
+  margin-top: 5%;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
-.caixa-texto {
+.caixa-texto-unidade {
   display: inline-block;
   margin-right: 10px;
+  margin-top: 2%;
   width: 300px;
   height: 40px;
+}
+
+.text-cadastrar-unidade {
+  color: #fff;
+  font-size: 2.3rem;
+  margin-bottom: 5%;
+  margin-top: 2%;
+  font-weight: bold;
 }
