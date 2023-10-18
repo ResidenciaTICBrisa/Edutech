@@ -108,8 +108,28 @@ const EscolaService = {
     } catch (error) {
       console.error(error);
     }
-  }
+  },
   //#endregion
+
+  //#region Avaliação
+  addAvaliacao: async (avaliacao) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/avaliacoes`, avaliacao);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  getAvaliacoes: async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/avaliacoes`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
 };
 
 export default EscolaService;

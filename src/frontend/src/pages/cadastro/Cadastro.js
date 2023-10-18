@@ -32,6 +32,10 @@ function Cadastro() {
         <Link to="professor">
           <button className="styled-button">Cadastro de Professor</button>
         </Link>
+
+        <Link to="avaliacao">
+          <button className="styled-button">Cadastro de Avaliação</button>
+        </Link>
       </div>
     </>
   );

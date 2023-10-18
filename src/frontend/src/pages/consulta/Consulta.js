@@ -32,6 +32,10 @@ function Consulta() {
         <Link to="professor">
           <button className="styled-button">Consulta de Professor</button>
         </Link>
+
+        <Link to="avaliacao">
+          <button className="styled-button">Consulta de Avaliação</button>
+        </Link>
       </div>
     </>
   );

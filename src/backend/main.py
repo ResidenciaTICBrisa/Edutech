@@ -14,6 +14,7 @@ from models.Unidade import Unidade
 from models.Turma import Turma
 from models.Disciplina import Disciplina
 from models.PessoaProfessor import PessoaProfessor
+from models.Avaliacao import Avaliacao
 
 
 # Carrega as variáveis do arquivo .env
@@ -383,3 +384,37 @@ def inserir_professor(cursor, professor):
     except mysql.connector.Error as err:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao inserir na tabela PESSOA: {err}")
 #endregion
+
+#region Unidades
+@app.get("/avaliacoes")
+async def listar_avaliacoes():
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("""SELECT * FROM AVALIACAO""")
+        avaliacoes = cursor.fetchall()
+        return JSONResponse(content=avaliacoes)
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar as avaliações: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
+
+@app.post("/avaliacoes")
+async def cadastrar_avaliacao(avaliacao: Avaliacao):
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor()
+        sql = "INSERT INTO AVALIACAO (tipo, peso) VALUES (%s, %s)"
+        cursor.execute(sql, (avaliacao.tipo, avaliacao.peso))
+        cnx.commit()
+        return {"message": "Avaliação cadastrada com sucesso!"}
+    except mysql.connector.Error as err:
+        cnx.rollback()
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro no banco de dados: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
+#endregion
+
+

@@ -14,6 +14,7 @@ import CadastroUnidadeNovo from "./pages/cadastro/cadastro-unidade-novo/Cadastro
 import CadastroDisciplinaNovo from "./pages/cadastro/cadastro-disciplina/CadastroDisciplinaNovo";
 import CadastroTurmaNovo from "./pages/cadastro/cadastro-turma-novo/CadastroTurmaNovo";
 import CadastroProfessorNovo from "./pages/cadastro/cadastro-professor-novo/CadastroProfessorNovo";
+import CadastroAvaliacaoNovo from "./pages/cadastro/cadastro-avaliacao-novo/CadastroAvaliacaoNovo";
 
 import Consulta from "./pages/consulta/Consulta";
 import ConsultaInstituicao from "./pages/consulta/consulta-instituicao/ConsultaInstituicao";
@@ -22,6 +23,7 @@ import ConsultaUnidade from "./pages/consulta/consulta-unidade/ConsultaUnidade";
 import ConsultaDisciplina from "./pages/consulta/consulta-disciplina/ConsultaDisciplina";
 import ConsultaTurma from "./pages/consulta/consulta-turma/ConsultaTurma";
 import ConsultaProfessor from "./pages/consulta/consulta-professor/ConsultaProfessor";
+import ConsultaAvaliacao from "./pages/consulta/consulta-avaliacao/ConsultaAvaliacao";
 
 import Predicao from "./pages/predicao/Predicao";
 import SaibaMais from "./pages/saiba_mais/SaibaMais";
@@ -40,6 +42,7 @@ const router = createBrowserRouter([
   { path: "/cadastro/disciplina", element: <CadastroDisciplinaNovo /> },
   { path: "/cadastro/turma", element: <CadastroTurmaNovo />},
   { path: "/cadastro/professor", element: <CadastroProfessorNovo />},
+  { path: "/cadastro/avaliacao", element: <CadastroAvaliacaoNovo />},
 
   { path: "/consulta/", element: <Consulta /> },
   { path: "/consulta/instituicao", element: <ConsultaInstituicao /> },
@@ -48,6 +51,7 @@ const router = createBrowserRouter([
   { path: "/consulta/disciplina", element: <ConsultaDisciplina /> },
   { path: "/consulta/turma", element: <ConsultaTurma /> },
   { path: "/consulta/professor", element: <ConsultaProfessor /> },
+  { path: "/consulta/avaliacao", element: <ConsultaAvaliacao /> },
 
   { path: "/predicao", element: <Predicao /> },
 
