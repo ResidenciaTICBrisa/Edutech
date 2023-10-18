@@ -34,10 +34,13 @@ function CadastroDisciplinaNovo() {
     <>
       <Header />
       <div className="dark-background">
-        <p className="text-cadastrar">Cadastro de Disciplina</p>
+        <p className="text-cadastrar-disciplina">Cadastro de Disciplina</p>
         <div className="div-fundo-content-cadastrar">
           <form onSubmit={handleSubmit}>
             <div className="caixa-texto">
+              <label className="label-aluno-span-text">
+              Id da Unidade
+              </label>
               <textarea
                 className="text-entrada"
                 placeholder="Id da Unidade"
@@ -46,6 +49,9 @@ function CadastroDisciplinaNovo() {
               />
             </div>
             <div className="caixa-texto">
+              <label className="label-aluno-span-text">
+              Nome da Disciplina
+              </label>
               <textarea
                 className="text-entrada"
                 placeholder="Nome da Disciplina"
