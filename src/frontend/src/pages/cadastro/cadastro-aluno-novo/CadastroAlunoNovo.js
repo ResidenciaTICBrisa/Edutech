@@ -46,14 +46,14 @@ function CadastroAlunoNovo() {
     <>
       <Header />
       <div className="dark-background">
-        <p className="text-cadastrar">Cadastro de Novo Aluno</p>
+        <p className="text-cadastrar-aluno-novo">Cadastro de Novo Aluno</p>
         <div className="div-fundo-content-cadastrar">
           <form onSubmit={handleSubmit}>
             <div className="caixa-texto-aluno">
               <label className="label-aluno-span-text">CPF</label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="000.000.000-00"
                 value={dadosAluno.cpf}
                 onChange={(e) => handleChangeTexto("cpf", e.target.value)}
@@ -64,7 +64,7 @@ function CadastroAlunoNovo() {
               <label className="label-aluno-span-text">Matricula</label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="000000"
                 value={dadosAluno.matricula}
                 onChange={(e) => handleChangeTexto("matricula", e.target.value)}
@@ -75,7 +75,7 @@ function CadastroAlunoNovo() {
               <label className="label-aluno-span-text">Nome</label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="Nome do Aluno"
                 value={dadosAluno.nome}
                 onChange={(e) => handleChangeTexto("nome", e.target.value)}
@@ -86,7 +86,7 @@ function CadastroAlunoNovo() {
               <label className="label-aluno-span-text">Gênero</label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="Gênero do Aluno"
                 value={dadosAluno.genero}
                 onChange={(e) => handleChangeTexto("genero", e.target.value)}
@@ -97,7 +97,7 @@ function CadastroAlunoNovo() {
               <label className="label-aluno-span-text">Estado</label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="Estado do Aluno"
                 value={dadosAluno.siglaEstado}
                 onChange={(e) =>
@@ -110,7 +110,7 @@ function CadastroAlunoNovo() {
               <label className="label-aluno-span-text">Cidade</label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="Cidade"
                 value={dadosAluno.cidade}
                 onChange={(e) => handleChangeTexto("cidade", e.target.value)}
@@ -121,7 +121,7 @@ function CadastroAlunoNovo() {
               <label className="label-aluno-span-text">Bairro</label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="Bairro"
                 value={dadosAluno.bairro}
                 onChange={(e) => handleChangeTexto("bairro", e.target.value)}
@@ -132,7 +132,7 @@ function CadastroAlunoNovo() {
               <label className="label-aluno-span-text">CEP</label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="cep"
                 value={dadosAluno.cep}
                 onChange={(e) => handleChangeTexto("cep", e.target.value)}
@@ -143,7 +143,7 @@ function CadastroAlunoNovo() {
               <label className="label-aluno-span-text">Logradouro</label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="logradouro"
                 value={dadosAluno.logradouro}
                 onChange={(e) =>
@@ -156,7 +156,7 @@ function CadastroAlunoNovo() {
               <label className="label-aluno-span-text">Número</label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="numero"
                 value={dadosAluno.numero}
                 onChange={(e) => handleChangeTexto("numero", e.target.value)}
@@ -167,7 +167,7 @@ function CadastroAlunoNovo() {
               <label className="label-aluno-span-text">Complemento</label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="complemento"
                 value={dadosAluno.complemento}
                 onChange={(e) =>
@@ -182,7 +182,7 @@ function CadastroAlunoNovo() {
               </label>
               <input
                 type="text"
-                className="text-entrada"
+                className="text-entrada-aluno-novo"
                 placeholder="Data de Nascimento"
                 value={dadosAluno.dataNascimento}
                 onChange={(e) =>
@@ -200,11 +200,11 @@ function CadastroAlunoNovo() {
               <input type="checkbox" className="checkbox-aluno-cadastrar" />
             </div>
 
-            <div className="botao-cadastrar">
-              <button className="button-cancelar-inst" onClick={handleCancelar}>
+            <div className="botao-cadastrar-aluno">
+              <button className="button-cancelar-aluno" onClick={handleCancelar}>
                 Cancelar
               </button>
-              <button className="button-cadastrar-inst" type="submit">
+              <button className="button-cadastrar-aluno" type="submit">
                 Cadastrar Aluno
               </button>
             </div>
