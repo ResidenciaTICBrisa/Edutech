@@ -41,10 +41,13 @@ function CadastroTurmaNovo() {
     <>
       <Header />
       <div className="dark-background">
-        <p className="text-cadastrar">Cadastro de Unidade</p>
+        <p className="text-cadastrar-turma">Cadastro de Turma</p>
         <div className="div-fundo-content-cadastrar">
           <form onSubmit={handleSubmit}>
             <div className="caixa-texto">
+              <label className="label-aluno-span-text">
+              Série
+              </label>
               <textarea
                 className="text-entrada"
                 placeholder="Série"
@@ -53,6 +56,9 @@ function CadastroTurmaNovo() {
               />
             </div>
             <div className="caixa-texto">
+              <label className="label-aluno-span-text">
+              Letra
+              </label>
               <textarea
                 className="text-entrada"
                 placeholder="Letra"
@@ -61,6 +67,9 @@ function CadastroTurmaNovo() {
               />
             </div>
             <div className="caixa-texto">
+              <label className="label-aluno-span-text">
+              Ano
+              </label>
               <textarea
                 className="text-entrada"
                 placeholder="Ano"
@@ -69,6 +78,9 @@ function CadastroTurmaNovo() {
               />
             </div>
             <div className="caixa-texto">
+              <label className="label-aluno-span-text">
+              id da Unidade
+              </label>
               <textarea
                 className="text-entrada"
                 placeholder="id da Unidade"
