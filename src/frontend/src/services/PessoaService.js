@@ -52,6 +52,24 @@ const PessoaService = {
       console.error(error);
     }
   },
+
+  addProfessor: async (professores) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/professores`, professores);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  getProfessores: async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/professores`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
 };
 
 export default PessoaService;

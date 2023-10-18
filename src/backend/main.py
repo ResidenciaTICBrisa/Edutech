@@ -13,6 +13,7 @@ from models.Escola import EscolaLogin, Escola
 from models.Unidade import Unidade
 from models.Turma import Turma
 from models.Disciplina import Disciplina
+from models.PessoaProfessor import PessoaProfessor
 
 
 # Carrega as variáveis do arquivo .env
@@ -114,16 +115,20 @@ def inserir_aluno(cursor, aluno):
     except mysql.connector.Error as err:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao inserir na tabela ALUNO: {err}")
 
-def inserir_no_banco(aluno: PessoaAluno):
+def inserir_no_banco(pessoa: any):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor()
-        inserir_pessoa(cursor, aluno)
-        inserir_aluno(cursor, aluno)
+        inserir_pessoa(cursor, pessoa)
+        if isinstance(pessoa, PessoaAluno):
+            inserir_aluno(cursor, pessoa)
+        else:
+            inserir_professor(cursor, pessoa)
         cnx.commit()
     except mysql.connector.Error as err:
-        cnx.rollback()
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro no banco de dados: {err}")
+        pass
+        # cnx.rollback()
+        # raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro no banco de dados: {err}")
     finally:
         cursor.close()
         cnx.close()
@@ -343,4 +348,38 @@ async def cadastrar_turma(idUnidade: int, turma: Turma):
     finally:
         cursor.close()
         cnx.close()
+#endregion
+
+#region Professores
+@app.get("/professores")
+async def listar_professores():
+    try:
+        cnx = connection_pool.get_connection()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("""SELECT * FROM PESSOA P JOIN PROFESSOR A ON P.matricula = A.matricula""")
+        professores = cursor.fetchall()
+        return JSONResponse(content=professores)
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar professores: {err}")
+    finally:
+        cursor.close()
+        cnx.close()
+
+@app.post("/professores")
+async def cadastrar_professores(professores: List[PessoaProfessor]):
+    try:
+        for professor in professores:
+            inserir_no_banco(professor)
+        return {"message": "Professores cadastrados com sucesso!."}
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao inserir dados no banco de dados: {err}")
+    
+def inserir_professor(cursor, professor):
+    try:
+        cursor.execute("""
+            INSERT INTO PROFESSOR (matricula, formacao)
+            VALUES (%s, %s)
+        """, (professor.matricula, professor.formacao))
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao inserir na tabela PESSOA: {err}")
 #endregion
