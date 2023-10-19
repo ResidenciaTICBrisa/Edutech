@@ -28,6 +28,7 @@ const ConsultaProfessor = () => {
               <th>Matrícula</th>
               <th>Nome</th>
               <th>Gênero</th>
+              <th>Formação</th>
               <th>Estado</th>
               <th>Cidade</th>
               <th>Bairro</th>
@@ -35,7 +36,7 @@ const ConsultaProfessor = () => {
               <th>Logradouro</th>
               <th>Número</th>
               <th>Complemento</th>
-              <th>Formação</th>
+              
             </tr>
           </thead>
           <tbody>
@@ -45,6 +46,7 @@ const ConsultaProfessor = () => {
                 <td>{pessoa.matricula}</td>
                 <td>{pessoa.nome}</td>
                 <td>{pessoa.genero}</td>
+                <td>{pessoa.formacao}</td>
                 <td>{pessoa.siglaEstado}</td>
                 <td>{pessoa.cidade}</td>
                 <td>{pessoa.bairro}</td>
@@ -52,7 +54,7 @@ const ConsultaProfessor = () => {
                 <td>{pessoa.logradouro}</td>
                 <td>{pessoa.numero}</td>
                 <td>{pessoa.complemento}</td>
-                <td>{pessoa.formacao}</td>
+                
               </tr>
             ))}
           </tbody>

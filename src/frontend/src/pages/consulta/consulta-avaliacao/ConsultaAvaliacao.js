@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 
 import "./ConsultaAvaliacao.css";
-import EscolaService from "../../../services/EscolaService";
+import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 const ConsultaAvaliacao = () => {
   const [dados, setDados] = React.useState([]);
 
   useEffect(() => {
-    EscolaService.getAvaliacoes().then((res) => {
+    InstituicaoService.getAvaliacoes().then((res) => {
       setDados(res);
     });
   }, []);
@@ -24,7 +24,7 @@ const ConsultaAvaliacao = () => {
           <thead>
             <tr>
               <th>Id da Avaliação</th>
-              <th>Tipo</th>
+              <th>Descrição</th>
               <th>Peso</th>
             </tr>
           </thead>
@@ -32,7 +32,7 @@ const ConsultaAvaliacao = () => {
             {dados.map((avaliacao, index) => (
               <tr key={index}>
                 <td>{avaliacao.idAvaliacao}</td>
-                <td>{avaliacao.tipo}</td>
+                <td>{avaliacao.descricao}</td>
                 <td>{avaliacao.peso}</td>
               </tr>
             ))}

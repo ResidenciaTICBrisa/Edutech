@@ -2,16 +2,16 @@ version: '3.0'
 
 services:
 
-  # frontend:
-  #   container_name: react_app
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile  # Caminho para o Dockerfile do frontend
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./frontend:/app
-  #     - node_modules:/app/node_modules  # Mapeamento para a pasta node_modules
+  frontend:
+    container_name: react_app
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - node_modules:/app/node_modules
 
   backend:
     container_name: fastapi_app
@@ -22,7 +22,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./backend:/app  # Montagem de volume para o código do backend
+      - ./backend:/app
 
   db:
     container_name: mysql

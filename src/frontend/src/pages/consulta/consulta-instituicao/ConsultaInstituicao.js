@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import "./ConsultaInstituicao.css";
-import EscolaService from "../../../services/EscolaService";
+import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 const ConsultaInstituicao = () => {
@@ -9,7 +9,7 @@ const ConsultaInstituicao = () => {
   const [dados, setDados] = React.useState([]);
 
   useEffect(() => {
-    EscolaService.getEscolas().then((res) => {
+    InstituicaoService.getInstituicoes().then((res) => {
       setDados(res);
     });
   }, []);

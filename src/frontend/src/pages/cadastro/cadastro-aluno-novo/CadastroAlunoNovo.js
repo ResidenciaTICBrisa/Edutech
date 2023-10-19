@@ -38,7 +38,8 @@ function CadastroAlunoNovo() {
     });
   };
 
-  const handleCancelar = () => {
+  const handleCancelar = (e) => {
+    e.preventDefault();
     window.location.href = "/cadastro/aluno";
   };
 

@@ -9,7 +9,7 @@ import asyncio
 from dotenv import load_dotenv
 
 from models.PessoaAluno import PessoaAluno
-from models.Escola import EscolaLogin, Escola
+from models.Instituicao import InstituicaoLogin, Instituicao
 from models.Unidade import Unidade
 from models.Turma import Turma
 from models.Disciplina import Disciplina
@@ -56,7 +56,7 @@ async def check_db_availability():
             )
         except mysql.connector.Error as err:
             print("------- MySQL is still unavailable. Trying again. -------")
-            await asyncio.sleep(300)
+            await asyncio.sleep(1)
 
 @app.on_event("startup")
 async def on_startup():
@@ -135,30 +135,30 @@ def inserir_no_banco(pessoa: any):
         cnx.close()
 #endregion
 
-#region Escolas
-@app.get("/escolas")
-async def listar_escolas():
+#region Instituições
+@app.get("/instituicoes")
+async def listar_instituicoes():
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-        cursor.execute("""SELECT cnpj, nome, cpfDirecao, email FROM ESCOLA""")
-        escolas = cursor.fetchall()
-        return JSONResponse(content=escolas)
+        cursor.execute("""SELECT cnpj, nome, cpfDirecao, email FROM INSTITUICAO""")
+        instituicoes = cursor.fetchall()
+        return JSONResponse(content=instituicoes)
     except mysql.connector.Error as err:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar escolas: {err}")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar instituições: {err}")
     finally:
         cursor.close()
         cnx.close()
 
-@app.post("/escolas")
-async def cadastrar_escola(escola: Escola):
+@app.post("/instituicoes")
+async def cadastrar_escola(instituicao: Instituicao):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor()
-        sql = "INSERT INTO ESCOLA (cnpj, nome, cpfDirecao, email, senha) VALUES (%s, %s, %s, %s, %s)"
-        cursor.execute(sql, (escola.cnpj, escola.nome, escola.cpfDirecao, escola.email, escola.senha))
+        sql = "INSERT INTO INSTITUICAO (cnpj, nome, cpfDirecao, email, senha) VALUES (%s, %s, %s, %s, %s)"
+        cursor.execute(sql, (instituicao.cnpj, instituicao.nome, instituicao.cpfDirecao, instituicao.email, instituicao.senha))
         cnx.commit()
-        return {"message": "Escola cadastrada com sucesso!"}
+        return {"message": "Instituicao cadastrada com sucesso!"}
     except mysql.connector.Error as err:
         cnx.rollback()
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro no banco de dados: {err}")
@@ -167,22 +167,22 @@ async def cadastrar_escola(escola: Escola):
         cnx.close()
 
 @app.post("/login")
-async def login(escola_login: EscolaLogin):
+async def login(instituicao_login: InstituicaoLogin):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM ESCOLA WHERE email = %s AND senha = %s", 
-                       (escola_login.email, escola_login.senha))
-        escola = cursor.fetchone()
-        if escola:
-            return {"message": "Login efetuado com sucesso!", "escola": escola}
+        cursor.execute("SELECT * FROM INSTITUICAO WHERE email = %s AND senha = %s", 
+                       (instituicao_login.email, instituicao_login.senha))
+        instituicao = cursor.fetchone()
+        if instituicao:
+            return {"message": "Login efetuado com sucesso!", "instituicao": instituicao}
         else:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Email ou senha incorretos!"
             )
     except mysql.connector.Error as err:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar escolas: {err}")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar instituicoes: {err}")
     finally:
         cursor.close()
         cnx.close()
@@ -204,16 +204,16 @@ async def listar_unidades():
         cursor.close()
         cnx.close()
 
-@app.get("/escolas/{cnpj}/unidades")
+@app.get("/instituicoes/{cnpj}/unidades")
 async def listar_unidades_escola(cnpj: str):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-        cursor.execute("""SELECT * FROM UNIDADE WHERE cnpjEscola = %s""", (cnpj,))
+        cursor.execute("""SELECT * FROM UNIDADE WHERE cnpjInstituicao = %s""", (cnpj,))
         unidades = cursor.fetchall()
         return JSONResponse(content=unidades)
     except mysql.connector.Error as err:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar as unidades da escola: {err}")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar as unidades da instituicao: {err}")
     finally:
         cursor.close()
         cnx.close()
@@ -223,8 +223,8 @@ async def cadastrar_unidade(unidade: Unidade):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor()
-        sql = "INSERT INTO UNIDADE (cnpjEscola, nivelEducacao, siglaEstado, cidade, bairro, cep, logradouro, numero, complemento, cpfCoordenador) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        cursor.execute(sql, (unidade.cnpjEscola, unidade.nivelEducacao, unidade.siglaEstado, unidade.cidade, unidade.bairro, unidade.cep, unidade.logradouro, unidade.numero, unidade.complemento, unidade.cpfCoordenador))
+        sql = "INSERT INTO UNIDADE (cnpjInstituicao, nivelEducacao, siglaEstado, cidade, bairro, cep, logradouro, numero, complemento, cpfCoordenador) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        cursor.execute(sql, (unidade.cnpjInstituicao, unidade.nivelEducacao, unidade.siglaEstado, unidade.cidade, unidade.bairro, unidade.cep, unidade.logradouro, unidade.numero, unidade.complemento, unidade.cpfCoordenador))
         cnx.commit()
         return {"message": "Unidade cadastrada com sucesso!"}
     except mysql.connector.Error as err:
@@ -405,8 +405,8 @@ async def cadastrar_avaliacao(avaliacao: Avaliacao):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor()
-        sql = "INSERT INTO AVALIACAO (tipo, peso) VALUES (%s, %s)"
-        cursor.execute(sql, (avaliacao.tipo, avaliacao.peso))
+        sql = "INSERT INTO AVALIACAO (descricao, peso) VALUES (%s, %s)"
+        cursor.execute(sql, (avaliacao.descricao, avaliacao.peso))
         cnx.commit()
         return {"message": "Avaliação cadastrada com sucesso!"}
     except mysql.connector.Error as err:

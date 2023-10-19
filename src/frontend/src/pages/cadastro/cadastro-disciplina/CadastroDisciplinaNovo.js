@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./CadastroDisciplinaNovo.css";
-import EscolaService from "../../../services/EscolaService";
+import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 function CadastroDisciplinaNovo() {
@@ -20,7 +20,7 @@ function CadastroDisciplinaNovo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Dados da Disciplina", dadosDisciplina);
-    EscolaService.addDisciplina(dadosDisciplina.idUnidade, { nome: dadosDisciplina.nome }).then((res) => {
+    InstituicaoService.addDisciplina(dadosDisciplina.idUnidade, { nome: dadosDisciplina.nome }).then((res) => {
       console.log(res);
       // window.location.href = "/consulta/disciplina";
     });

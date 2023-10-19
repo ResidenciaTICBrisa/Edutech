@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 import "./CadastroAvaliacaoNovo.css";
-import EscolaService from "../../../services/EscolaService";
+import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 function CadastroAvaliacaoNovo() {
   const [dadosAvaliacao, setDadosAvaliacao] = useState({
-    tipo: "",
+    descricao: "",
     peso: "",
   });
 
@@ -20,7 +20,7 @@ function CadastroAvaliacaoNovo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Dados da Avaliação", dadosAvaliacao);
-    EscolaService.addAvaliacao(dadosAvaliacao).then((res) => {
+    InstituicaoService.addAvaliacao(dadosAvaliacao).then((res) => {
       console.log(res);
       window.location.href = "/consulta/avaliacao";
     });
@@ -40,9 +40,9 @@ function CadastroAvaliacaoNovo() {
             <div className="caixa-texto">
               <textarea
                 className="text-entrada"
-                placeholder="Tipo"
-                value={dadosAvaliacao.tipo}
-                onChange={(e) => handleChangeTexto("tipo", e.target.value)}
+                placeholder="Descrição"
+                value={dadosAvaliacao.descricao}
+                onChange={(e) => handleChangeTexto("descricao", e.target.value)}
               />
             </div>
             <div className="caixa-texto">

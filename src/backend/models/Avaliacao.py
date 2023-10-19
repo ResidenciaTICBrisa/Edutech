@@ -1,5 +1,5 @@
 from pydantic import BaseModel
 
 class Avaliacao(BaseModel):
-    tipo: str
+    descricao: str
     peso: float

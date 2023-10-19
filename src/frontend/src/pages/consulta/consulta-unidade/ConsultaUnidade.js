@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 
 import "./ConsultaUnidade.css";
-import EscolaService from "../../../services/EscolaService";
+import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 const ConsultaUnidade = () => {
   const [dados, setDados] = React.useState([]);
 
   useEffect(() => {
-    EscolaService.getUnidades().then((res) => {
+    InstituicaoService.getUnidades().then((res) => {
       setDados(res);
     });
   }, []);
@@ -24,7 +24,7 @@ const ConsultaUnidade = () => {
           <thead>
             <tr>
               <th>id Unidade</th>
-              <th>CNPJ da Escola</th>
+              <th>CNPJ da Instituicao</th>
               <th>Nível de Educação</th>
               <th>Estado</th>
               <th>Cidade</th>
@@ -40,7 +40,7 @@ const ConsultaUnidade = () => {
             {dados.map((unidade, index) => (
               <tr key={index}>
                 <td>{unidade.idUnidade}</td>
-                <td>{unidade.cnpjEscola}</td>
+                <td>{unidade.cnpjInstituicao}</td>
                 <td>{unidade.nivelEducacao}</td>
                 <td>{unidade.siglaEstado}</td>
                 <td>{unidade.cidade}</td>

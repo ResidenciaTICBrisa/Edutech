@@ -2,22 +2,22 @@ CREATE DATABASE IF NOT EXISTS studentdatabase;
 
 USE studentdatabase; -- TODO: Ids autoincrement e Alterar tipos numéricos como cnpj e cpf para varchar
 
-CREATE TABLE IF NOT EXISTS ESCOLA (
+CREATE TABLE IF NOT EXISTS INSTITUICAO (
     cnpj       VARCHAR(18) NOT NULL,
     nome       VARCHAR(50) NOT NULL,
     cpfDirecao VARCHAR(14) NOT NULL,
     email      VARCHAR(50) NOT NULL,
     senha      VARCHAR(30) NOT NULL,
     
-	  CONSTRAINT ESCOLA_PK PRIMARY KEY (cnpj)
+	  CONSTRAINT INSTITUICAO_PK PRIMARY KEY (cnpj)
 ) ENGINE = InnoDB;
 
-INSERT INTO ESCOLA (cnpj, nome, cpfDirecao, email, senha) VALUES
-('00.000.000/0000-00', 'Escola Teste', '000.000.000-00', 'escola@email.com', 'senha');
+INSERT INTO INSTITUICAO (cnpj, nome, cpfDirecao, email, senha) VALUES
+('00.000.000/0000-00', 'Instituicao Teste', '000.000.000-00', 'escola@email.com', 'senha');
 
 CREATE TABLE IF NOT EXISTS UNIDADE (
     idUnidade      INT          AUTO_INCREMENT,
-    cnpjEscola     VARCHAR(18)  NOT NULL,
+    cnpjInstituicao     VARCHAR(18)  NOT NULL,
     nivelEducacao  ENUM('Superior', 'Médio', 'Fundamental', 'Cursinho') NOT NULL,
     siglaEstado    CHAR(2)      NOT NULL,
     cidade         VARCHAR(50)  NOT NULL,
@@ -29,8 +29,8 @@ CREATE TABLE IF NOT EXISTS UNIDADE (
     cpfCoordenador VARCHAR(14)  NOT NULL,
     
     CONSTRAINT UNIDADE_PK PRIMARY KEY (idUnidade),
-    CONSTRAINT UNIDADE_ESCOLA_FK FOREIGN KEY (cnpjEscola)
-      REFERENCES ESCOLA (cnpj)
+    CONSTRAINT UNIDADE_INSTITUICAO_FK FOREIGN KEY (cnpjInstituicao)
+      REFERENCES INSTITUICAO (cnpj)
       ON DELETE CASCADE
       ON UPDATE CASCADE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1;
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS DISCIPLINA (
 
 CREATE TABLE IF NOT EXISTS AVALIACAO (
     idAvaliacao INT         AUTO_INCREMENT,
-    tipo        VARCHAR(30) NOT NULL,
+    descricao   VARCHAR(30) NOT NULL,
     peso        FLOAT       NOT NULL,
     
     CONSTRAINT AVALIACAO_PK PRIMARY KEY (idAvaliacao)

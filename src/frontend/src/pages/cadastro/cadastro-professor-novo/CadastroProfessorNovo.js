@@ -9,6 +9,7 @@ function CadastroProfessorNovo() {
     matricula: "",
     nome: "",
     genero: "",
+    formacao: "",
     siglaEstado: "",
     cidade: "",
     bairro: "",
@@ -16,7 +17,6 @@ function CadastroProfessorNovo() {
     logradouro: "",
     numero: "",
     complemento: "",
-    formacao: "",
   });
 
   const handleChangeTexto = (nomeCaixa, novoTexto) => {
@@ -33,7 +33,7 @@ function CadastroProfessorNovo() {
     data.push(dadosProfessor);
     PessoaService.addProfessor(data).then((res) => {
       console.log(res);
-      window.location.href = "/consulta/professor";
+      // window.location.href = "/consulta/professor";
     });
   };
 
@@ -75,7 +75,7 @@ function CadastroProfessorNovo() {
               <input
                 type="text"
                 className="text-entrada"
-                placeholder="Nome do Aluno"
+                placeholder="Nome"
                 value={dadosProfessor.nome}
                 onChange={(e) => handleChangeTexto("nome", e.target.value)}
               />
@@ -86,9 +86,24 @@ function CadastroProfessorNovo() {
               <input
                 type="text"
                 className="text-entrada"
-                placeholder="Gênero do Aluno"
+                placeholder="Gênero"
                 value={dadosProfessor.genero}
                 onChange={(e) => handleChangeTexto("genero", e.target.value)}
+              />
+            </div>
+
+            <div className="caixa-texto-aluno">
+              <label className="label-aluno-span-text">
+                Formação
+              </label>
+              <input
+                type="text"
+                className="text-entrada"
+                placeholder="Formação"
+                value={dadosProfessor.formacao}
+                onChange={(e) =>
+                  handleChangeTexto("formacao", e.target.value)
+                }
               />
             </div>
 
@@ -97,7 +112,7 @@ function CadastroProfessorNovo() {
               <input
                 type="text"
                 className="text-entrada"
-                placeholder="Estado do Aluno"
+                placeholder="Estado"
                 value={dadosProfessor.siglaEstado}
                 onChange={(e) =>
                   handleChangeTexto("siglaEstado", e.target.value)
@@ -132,7 +147,7 @@ function CadastroProfessorNovo() {
               <input
                 type="text"
                 className="text-entrada"
-                placeholder="cep"
+                placeholder="CEP"
                 value={dadosProfessor.cep}
                 onChange={(e) => handleChangeTexto("cep", e.target.value)}
               />
@@ -143,7 +158,7 @@ function CadastroProfessorNovo() {
               <input
                 type="text"
                 className="text-entrada"
-                placeholder="logradouro"
+                placeholder="Logradouro"
                 value={dadosProfessor.logradouro}
                 onChange={(e) =>
                   handleChangeTexto("logradouro", e.target.value)
@@ -156,7 +171,7 @@ function CadastroProfessorNovo() {
               <input
                 type="text"
                 className="text-entrada"
-                placeholder="numero"
+                placeholder="Número"
                 value={dadosProfessor.numero}
                 onChange={(e) => handleChangeTexto("numero", e.target.value)}
               />
@@ -167,25 +182,10 @@ function CadastroProfessorNovo() {
               <input
                 type="text"
                 className="text-entrada"
-                placeholder="complemento"
+                placeholder="Complemento"
                 value={dadosProfessor.complemento}
                 onChange={(e) =>
                   handleChangeTexto("complemento", e.target.value)
-                }
-              />
-            </div>
-
-            <div className="caixa-texto-aluno">
-              <label className="label-aluno-span-text">
-                Formação
-              </label>
-              <input
-                type="text"
-                className="text-entrada"
-                placeholder="Formação"
-                value={dadosProfessor.formacao}
-                onChange={(e) =>
-                  handleChangeTexto("formacao", e.target.value)
                 }
               />
             </div>

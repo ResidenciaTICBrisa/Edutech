@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./CadastroInstituicaoNovo.css";
-import EscolaService from "../../../services/EscolaService";
+import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 function CadastroInstituicaoNovo() {
@@ -23,14 +23,14 @@ function CadastroInstituicaoNovo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Dados da Instituição", dadosInstituicao);
-    EscolaService.addEscola(dadosInstituicao).then((res) => {
+    InstituicaoService.addInstituicao(dadosInstituicao).then((res) => {
       console.log(res);
-      window.location.href = "/consulta/instituicao";
+      window.location.href = "/cadastro/unidade";
     });
   };
 
   const handleCancelar = () => {
-    window.location.href = "/cadastro/instituicao";
+    window.location.href = "/cadastro";
   };
 
   return (
@@ -68,7 +68,7 @@ function CadastroInstituicaoNovo() {
               </label>
               <textarea
                 className="text-entrada"
-                placeholder="CPF Direção"
+                placeholder="CPF da Direção"
                 value={dadosInstituicao.cpfDirecao}
                 onChange={(e) =>
                   handleChangeTexto("cpfDirecao", e.target.value)

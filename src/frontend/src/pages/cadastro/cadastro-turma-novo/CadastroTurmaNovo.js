@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./CadastroTurmaNovo.css";
-import EscolaService from "../../../services/EscolaService";
+import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 function CadastroTurmaNovo() {
@@ -22,14 +22,14 @@ function CadastroTurmaNovo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Dados da Turma", dadosTurma);
-    EscolaService.addTurma(dadosTurma.idUnidade, {
+    InstituicaoService.addTurma(dadosTurma.idUnidade, {
       serie: dadosTurma.serie,
       letra: dadosTurma.letra,
       ano: dadosTurma.ano,
       idUnidade: dadosTurma.idUnidade,
     }).then((res) => {
       console.log(res);
-      window.location.href = "/consulta/turma";
+      // window.location.href = "/consulta/turma";
     });
   };
 
@@ -45,9 +45,7 @@ function CadastroTurmaNovo() {
         <div className="div-fundo-content-cadastrar">
           <form onSubmit={handleSubmit}>
             <div className="caixa-texto">
-              <label className="label-aluno-span-text">
-              Série
-              </label>
+              <label className="label-aluno-span-text">Série</label>
               <textarea
                 className="text-entrada"
                 placeholder="Série"
@@ -56,9 +54,7 @@ function CadastroTurmaNovo() {
               />
             </div>
             <div className="caixa-texto">
-              <label className="label-aluno-span-text">
-              Letra
-              </label>
+              <label className="label-aluno-span-text">Letra</label>
               <textarea
                 className="text-entrada"
                 placeholder="Letra"
@@ -67,9 +63,7 @@ function CadastroTurmaNovo() {
               />
             </div>
             <div className="caixa-texto">
-              <label className="label-aluno-span-text">
-              Ano
-              </label>
+              <label className="label-aluno-span-text">Ano</label>
               <textarea
                 className="text-entrada"
                 placeholder="Ano"
@@ -78,12 +72,10 @@ function CadastroTurmaNovo() {
               />
             </div>
             <div className="caixa-texto">
-              <label className="label-aluno-span-text">
-              id da Unidade
-              </label>
+              <label className="label-aluno-span-text">Id da Unidade</label>
               <textarea
                 className="text-entrada"
-                placeholder="id da Unidade"
+                placeholder="Id da Unidade"
                 value={dadosTurma.idUnidade}
                 onChange={(e) => handleChangeTexto("idUnidade", e.target.value)}
               />
