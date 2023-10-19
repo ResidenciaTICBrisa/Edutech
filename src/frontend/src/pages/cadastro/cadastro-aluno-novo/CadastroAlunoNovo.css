@@ -25,6 +25,16 @@
   font-size: 1.1em;
 }
 
+.text-entrada-aluno-novo {
+  margin-top: 5%;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .label-aluno-span {
   color: #fff;
   font-size: 1.1rem;
@@ -66,9 +76,18 @@
 
 .caixa-texto-aluno {
   display: inline-block;
+  margin-top: 2%;
   margin-right: 10px;
   width: 300px;
   height: 40px;
+}
+
+.text-cadastrar-aluno-novo {
+  color: #fff;
+  font-size: 2.3rem;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  font-weight: bold;
 }
 
 .button-cadastro-aluno-cadastrar {
@@ -89,8 +108,8 @@
 
 .caixa-checkbox-aluno-cadastrar {
   display: flex;
-  /* align-items: center;  */
   display: inline-block;
+  margin-top: 2%;
 }
 
 .checkbox-aluno-cadastrar {
@@ -122,4 +141,44 @@
 
 .label-checkbox-aluno-cadastrar {
   font-size: 16px; /* Tamanho da fonte do rótulo da caixa de seleção */
+}
+
+.div-fundo-content-cadastrar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.botao-cadastrar-aluno {
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.button-cadastrar-aluno {
+  font-size: 1.3rem;
+  background-color: #0ec46f;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+.button-cancelar-aluno {
+  font-size: 1.3rem;
+  background-color: #e02020;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
 }

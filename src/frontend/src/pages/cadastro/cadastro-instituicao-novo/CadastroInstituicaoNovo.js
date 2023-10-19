@@ -37,10 +37,13 @@ function CadastroInstituicaoNovo() {
     <>
       <Header />
       <div className="dark-background">
-        <p className="text-cadastrar">Cadastro de Instituição</p>
+        <p className="text-cadastrar-inst">Cadastro de Instituição</p>
         <div className="div-fundo-content-cadastrar">
           <form onSubmit={handleSubmit}>
             <div className="caixa-texto">
+              <label className="label-aluno-span-text">
+                Nome
+              </label>
               <textarea
                 className="text-entrada"
                 placeholder="Nome"
@@ -49,6 +52,9 @@ function CadastroInstituicaoNovo() {
               />
             </div>
             <div className="caixa-texto">
+              <label className="label-aluno-span-text">
+                CNPJ
+              </label>
               <textarea
                 className="text-entrada"
                 placeholder="CNPJ"
@@ -57,9 +63,12 @@ function CadastroInstituicaoNovo() {
               />
             </div>
             <div className="caixa-texto">
+              <label className="label-aluno-span-text">
+              CPF Direção
+              </label>
               <textarea
                 className="text-entrada"
-                placeholder="Cpf Direcao"
+                placeholder="CPF Direção"
                 value={dadosInstituicao.cpfDirecao}
                 onChange={(e) =>
                   handleChangeTexto("cpfDirecao", e.target.value)
@@ -67,6 +76,9 @@ function CadastroInstituicaoNovo() {
               />
             </div>
             <div className="caixa-texto">
+              <label className="label-aluno-span-text">
+              Email
+              </label>
               <textarea
                 className="text-entrada"
                 placeholder="Email"
@@ -75,6 +87,9 @@ function CadastroInstituicaoNovo() {
               />
             </div>
             <div className="caixa-texto">
+              <label className="label-aluno-span-text">
+              Senha
+              </label>
               <textarea
                 className="text-entrada"
                 placeholder="Senha"
