@@ -1,85 +1,126 @@
-USE studentdatabase;
-
-INSERT INTO INSTITUICAO (cnpj, nome, cpfDirecao, email, senha) VALUES
-('31726521000154', 'Instituicao Teste', '000.000.000-00', 'escola@email.com', 'senha');
-
-INSERT INTO UNIDADE (cnpjInstituicao, nivelEducacao, siglaEstado, cidade, bairro, cep, logradouro, numero, cpfCoordenador)
+-- Inserções na tabela INSTITUICAO
+INSERT INTO INSTITUICAO (cnpj, nome, cpfDirecao, email, senha)
 VALUES
-('31726521000154', 'Superior', 'SP', 'São Paulo', 'Centro', '00000-000', 'Rua A', 123, '111.111.111-11'),
-('31726521000154', 'Médio', 'RJ', 'Rio de Janeiro', 'Copacabana', '11111-111', 'Avenida B', 456, '222.222.222-22'),
-('31726521000154', 'Fundamental', 'MG', 'Belo Horizonte', 'Barreiro', '22222-222', 'Travessa C', 789, '333.333.333-33');
+    ('12345678901234', 'Instituicao A', '12345678901', 'insta@email.com', 'senha123'),
+    ('98765432109876', 'Instituicao B', '98765432109', 'instb@email.com', 'senha456'),
+    ('11111111111111', 'Instituicao C', '11111111111', 'instc@email.com', 'senha789'),
+    ('22222222222222', 'Instituicao D', '22222222222', 'instd@email.com', 'senhaabc'),
+    ('33333333333333', 'Instituicao E', '33333333333', 'inste@email.com', 'senhaxyz');
 
-INSERT INTO TURMA (serie, letra, ano, idUnidade)
+-- Inserções na tabela UNIDADE
+INSERT INTO UNIDADE (cnpjInstituicao, nivelEducacao, siglaEstado, cidade, bairro, cep, logradouro, numero, complemento, cpfCoordenador, telefone)
 VALUES
-(1, 'A', '2023-01-01', 1),
-(2, 'B', '2023-01-01', 2),
-(3, 'C', '2023-01-01', 3);
+    ('12345678901234', 'Superior', 'SP', 'Sao Paulo', 'Centro', '01234-567', 'Avenida 1', 123, 'Sala 101', '12345678901', '123-456-7890'),
+    ('12345678901234', 'Médio', 'SP', 'Sao Paulo', 'Perdizes', '01234-567', 'Rua 2', 456, NULL, '12345678901', '123-456-7890'),
+    ('98765432109876', 'Superior', 'RJ', 'Rio de Janeiro', 'Copacabana', '98765-432', 'Avenida 3', 789, NULL, '98765432109', '987-654-3210'),
+    ('11111111111111', 'Fundamental', 'MG', 'Belo Horizonte', 'Savassi', '11111-111', 'Rua 4', 101, NULL, '11111111111', '111-111-1111'),
+    ('22222222222222', 'Superior', 'SP', 'Sao Paulo', 'Vila Mariana', '22222-222', 'Avenida 5', 234, NULL, '22222222222', '222-222-2222');
 
-INSERT INTO DISCIPLINA (nome)
+-- Inserções na tabela PESSOA (Alunos)
+INSERT INTO PESSOA (cpf, matricula, nome, genero, siglaEstado, cidade, bairro, cep, logradouro, numero, complemento, telefone)
 VALUES
-('Matemática'),
-('História'),
-('Ciências');
+    ('12345678901', 1, 'Joao Silva', 'M', 'SP', 'Sao Paulo', 'Centro', '01234-567', 'Avenida 1', 123, 'Apto 101', '111-111-1111'),
+    ('98765432109', 2, 'Maria Souza', 'F', 'RJ', 'Rio de Janeiro', 'Copacabana', '98765-432', 'Rua 2', 456, NULL, '222-222-2222'),
+    ('11111111111', 3, 'Pedro Santos', 'M', 'MG', 'Belo Horizonte', 'Savassi', '11111-111', 'Rua 3', 789, 'Sala 201', '333-333-3333'),
+    ('22222222222', 4, 'Ana Ferreira', 'F', 'SP', 'Sao Paulo', 'Vila Mariana', '22222-222', 'Avenida 4', 101, NULL, '444-444-4444'),
+    ('33333333333', 5, 'Lucas Oliveira', 'M', 'RJ', 'Rio de Janeiro', 'Ipanema', '33333-333', 'Rua 5', 567, 'Loja 301', '555-555-5555'),
+	('66666666666', 6, 'Joao Silva', 'M', 'SP', 'Sao Paulo', 'Centro', '01234-567', 'Avenida 1', 123, 'Apto 101', '111-111-1111'),
+    ('77777777777', 7, 'Maria Souza', 'F', 'RJ', 'Rio de Janeiro', 'Copacabana', '98765-432', 'Rua 2', 456, NULL, '222-222-2222'),
+    ('88888888888', 8, 'Pedro Santos', 'M', 'MG', 'Belo Horizonte', 'Savassi', '11111-111', 'Rua 3', 789, 'Sala 201', '333-333-3333'),
+    ('99999999999', 9, 'Ana Ferreira', 'F', 'SP', 'Sao Paulo', 'Vila Mariana', '22222-222', 'Avenida 4', 101, NULL, '444-444-4444'),
+    ('10101010101', 10, 'Lucas Oliveira', 'M', 'RJ', 'Rio de Janeiro', 'Ipanema', '33333-333', 'Rua 5', 567, 'Loja 301', '555-555-5555');
 
-INSERT INTO PESSOA (cpf, matricula, nome, genero, siglaEstado, cidade, bairro, cep, logradouro, numero, complemento)
+-- Inserções na tabela ALUNO
+INSERT INTO ALUNO (matricula, dataNascimento, acessaInternet, educacaoSuperior)
 VALUES
-('111.111.111-11', 1, 'Aluno 1', 'M', 'SP', 'São Paulo', 'Centro', '00000-000', 'Rua A', 123, 'Apto 101'),
-('222.222.222-22', 2, 'Aluno 2', 'F', 'RJ', 'Rio de Janeiro', 'Copacabana', '11111-111', 'Avenida B', 456, 'Casa 2'),
-('333.333.333-33', 3, 'Aluno 3', 'M', 'MG', 'Belo Horizonte', 'Barreiro', '22222-222', 'Travessa C', 789, NULL),
-('444.444.444-44', 4, 'Professor 1', 'M', 'SP', 'São Paulo', 'Centro', '00000-000', 'Rua D', 321, 'Sala 101'),
-('555.555.555-55', 5, 'Professor 2', 'F', 'RJ', 'Rio de Janeiro', 'Copacabana', '11111-111', 'Avenida E', 654, 'Sala 2'),
-('666.666.666-66', 6, 'Professor 3', 'M', 'MG', 'Belo Horizonte', 'Barreiro', '22222-222', 'Travessa F', 987, 'Sala 3');
+    (1, '2000-01-01', 1, 1),
+    (2, '2001-02-02', 1, 0),
+    (3, '2002-03-03', 1, 1),
+    (4, '2003-04-04', 1, 0),
+    (5, '2004-05-05', 1, 1);
 
-INSERT INTO ALUNO (matricula, dataNascimento, acessaInternet)
-VALUES
-(1, '2000-01-01', 1),
-(2, '2001-02-02', 0),
-(3, '2002-03-03', 1);
-
+-- Inserções na tabela PROFESSOR
 INSERT INTO PROFESSOR (matricula, formacao)
 VALUES
-(4, 'Doutor em Matemática'),
-(5, 'Mestre em História'),
-(6, 'Bacharel em Ciências');
+    (6, 'Doutor em Matematica'),
+    (7, 'Mestre em Portugues'),
+    (8, 'Doutor em Historia'),
+    (9, 'Mestre em Ciencias'),
+    (10, 'Doutor em Geografia');
 
-INSERT INTO AVALIACAO (descricao, peso)
+-- Inserções na tabela TURMA
+INSERT INTO TURMA (serie, letra, ano, idUnidade)
 VALUES
-('Prova 1', 0.3),
-('Trabalho em Grupo', 0.2),
-('Apresentação Oral', 0.1);
+    (1, 'A', '2023-01-01', 1),
+    (2, 'B', '2023-01-01', 2),
+    (3, 'C', '2023-01-01', 3),
+    (1, 'D', '2023-01-01', 4),
+    (2, 'E', '2023-01-01', 5);
 
-INSERT INTO ALOCACAO_leciona (codigoDisciplina, matriculaProfessor)
+-- Inserções na tabela DISCIPLINA
+INSERT INTO DISCIPLINA (nome)
 VALUES
-(1, 4),
-(2, 5),
-(3, 6);
+    ('Matematica'),
+    ('Portugues'),
+    ('Historia'),
+    ('Ciencias'),
+    ('Geografia');
 
-INSERT INTO telefone_UNIDADE (idUnidade, telefone)
+-- Inserções na tabela AVALIACAO
+INSERT INTO AVALIACAO (descricao, peso, idDisciplina)
 VALUES
-(1, '123-456-7890'),
-(2, '987-654-3210'),
-(3, '555-555-5555');
+    ('Prova 1', 0.3, 1),
+    ('Prova 2', 0.3, 1),
+    ('Trabalho', 0.2, 2),
+    ('Apresentacao', 0.2, 2),
+    ('Exercicios', 0.2, 3);
 
-INSERT INTO telefone_PESSOA (matricula, telefone)
+-- Inserções na tabela NOTA_ALUNO (notas dos alunos nas avaliações)
+INSERT INTO NOTA_ALUNO (matriculaAluno, idAvaliacao, nota)
 VALUES
-(1, '111-222-3333'),
-(2, '444-555-6666'),
-(3, '777-888-9999');
+    (1, 1, 7.5),
+    (1, 2, 8.0),
+    (2, 1, 6.0),
+    (2, 2, 5.5),
+    (3, 1, 9.0),
+    (3, 2, 8.5),
+    (4, 1, 4.0),
+    (4, 2, 4.5),
+    (5, 1, 7.0),
+    (5, 2, 7.5);
 
+-- Inserções na tabela ministra (associação de professores a disciplinas)
+INSERT INTO ministra (codigoDisciplina, matriculaProfessor)
+VALUES
+    (1, 6),
+    (2, 7),
+    (3, 8),
+    (4, 9),
+    (5, 10);
+
+-- Inserções na tabela oferta (associação de disciplinas a unidades)
 INSERT INTO oferta (idUnidade, codigoDisciplina)
 VALUES
-(1, 1),
-(2, 2),
-(3, 3);
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5);
 
+-- Inserções na tabela compoe (associação de alunos a turmas)
 INSERT INTO compoe (idTurma, matriculaAluno)
 VALUES
-(1, 1),
-(2, 2),
-(3, 3);
+    (1, 1),
+    (2, 2),
+    (3, 3),
+    (4, 4),
+    (5, 5);
 
-INSERT INTO cursa (idTurma, codigoDisciplina)
+-- Inserções na tabela cursa (registro de desempenho acadêmico de alunos)
+INSERT INTO cursa (matricula, codigoDisciplina, faltas, situacao, horasEstudoSemana, reprovacoes)
 VALUES
-(1, 1),
-(2, 2),
-(3, 3);
+    (1, 1, 2, 'Aprovado', 10, 0),
+    (2, 2, 3, 'Reprovado', 12, 1),
+    (3, 3, 1, 'Aprovado', 8, 0),
+    (4, 4, 5, 'Reprovado', 15, 2),
+    (5, 5, 0, 'Aprovado', 9, 0);

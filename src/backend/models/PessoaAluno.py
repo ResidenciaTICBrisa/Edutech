@@ -14,4 +14,5 @@ class PessoaAluno(BaseModel):
     complemento: str
     dataNascimento: str
     acessaInternet: bool
+    telefone: str
     idTurma: int

@@ -13,3 +13,5 @@ class PessoaProfessor(BaseModel):
     numero: int
     complemento: str
     formacao: str
+    telefone: str
+    disciplinas: list
