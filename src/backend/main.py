@@ -75,13 +75,15 @@ async def listar_alunos():
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
         cursor.execute("""
-            SELECT * FROM PESSOA P
+            SELECT P.*, A.*, T.serie, T.letra, T.ano FROM PESSOA P
             JOIN ALUNO A ON P.matricula = A.matricula
-            WHERE P.matricula = A.matricula
+            JOIN compoe C ON A.matricula = C.matriculaAluno
+            JOIN TURMA T ON C.idTurma = T.idTurma
         """)
         alunos = cursor.fetchall()
         for aluno in alunos:
             aluno['dataNascimento'] = aluno['dataNascimento'].strftime('%Y-%m-%d')
+            aluno['ano'] = aluno['ano'].strftime('%Y-%m-%d')
         return JSONResponse(content=alunos)
     except mysql.connector.Error as err:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao consultar alunos: {err}")
@@ -106,6 +108,15 @@ def inserir_pessoa(cursor, aluno):
         """, (aluno.cpf, aluno.matricula, aluno.nome, aluno.genero, aluno.siglaEstado, aluno.cidade, aluno.bairro, aluno.cep, aluno.logradouro, aluno.numero, aluno.complemento))
     except mysql.connector.Error as err:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao inserir na tabela PESSOA: {err}")
+
+    try:
+        cursor.execute("""
+            INSERT INTO compoe (matricula, idTurma)
+            VALUES (%s, %s)
+        """, (aluno.matricula, aluno.idTurma))
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao inserir na tabela compoe: {err}")
+
 
 def inserir_aluno(cursor, aluno):
     try:
@@ -151,7 +162,7 @@ async def listar_instituicoes():
         cnx.close()
 
 @app.post("/instituicoes")
-async def cadastrar_escola(instituicao: Instituicao):
+async def cadastrar_instituicao(instituicao: Instituicao):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor()
@@ -195,7 +206,11 @@ async def listar_unidades():
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-        cursor.execute("""SELECT * FROM UNIDADE""")
+        cursor.execute("""
+            SELECT I.nome, U.*, T.telefone FROM UNIDADE U
+            JOIN INSTITUICAO I ON U.cnpjInstituicao = I.cnpj
+            JOIN telefone_UNIDADE T ON U.idUnidade = T.idUnidade
+        """)
         unidades = cursor.fetchall()
         return JSONResponse(content=unidades)
     except mysql.connector.Error as err:
@@ -205,11 +220,15 @@ async def listar_unidades():
         cnx.close()
 
 @app.get("/instituicoes/{cnpj}/unidades")
-async def listar_unidades_escola(cnpj: str):
+async def listar_unidades_instituicao(cnpj: str):
     try:
         cnx = connection_pool.get_connection()
         cursor = cnx.cursor(dictionary=True)
-        cursor.execute("""SELECT * FROM UNIDADE WHERE cnpjInstituicao = %s""", (cnpj,))
+        cursor.execute("""
+            SELECT U.*, T.telefone FROM UNIDADE U
+            JOIN telefone_UNIDADE T ON U.idUnidade = T.idUnidade
+            WHERE cnpjInstituicao = %s
+        """, (cnpj,))
         unidades = cursor.fetchall()
         return JSONResponse(content=unidades)
     except mysql.connector.Error as err:
@@ -296,7 +315,6 @@ async def cadastrar_disciplina(idUnidade: str, disciplina: Disciplina):
     finally:
         cursor.close()
         cnx.close()
-
 #endregion
 
 #region Turmas
@@ -385,7 +403,7 @@ def inserir_professor(cursor, professor):
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao inserir na tabela PESSOA: {err}")
 #endregion
 
-#region Unidades
+#region Avaliações
 @app.get("/avaliacoes")
 async def listar_avaliacoes():
     try:

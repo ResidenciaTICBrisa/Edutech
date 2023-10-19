@@ -39,6 +39,9 @@ const ConsultaAluno = () => {
               <th>Complemento</th>
               <th>Data de Nascimento</th>
               <th>Acessa Internet</th>
+              <th>Série</th>
+              <th>Letra</th>
+              <th>Ano</th>
             </tr>
           </thead>
           <tbody>
@@ -57,6 +60,9 @@ const ConsultaAluno = () => {
                 <td>{pessoa.complemento}</td>
                 <td>{pessoa.dataNascimento}</td>
                 <td>{pessoa.acessaInternet ? 'Sim' : 'Não'}</td>
+                <td>{pessoa.serie}</td>
+                <td>{pessoa.letra}</td>
+                <td>{pessoa.ano}</td>
               </tr>
             ))}
           </tbody>

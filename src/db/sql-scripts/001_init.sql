@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS studentdatabase;
 
-USE studentdatabase; -- TODO: Ids autoincrement e Alterar tipos numéricos como cnpj e cpf para varchar
+USE studentdatabase;
 
 CREATE TABLE IF NOT EXISTS INSTITUICAO (
     cnpj       VARCHAR(18) NOT NULL,
@@ -11,9 +11,6 @@ CREATE TABLE IF NOT EXISTS INSTITUICAO (
     
 	  CONSTRAINT INSTITUICAO_PK PRIMARY KEY (cnpj)
 ) ENGINE = InnoDB;
-
-INSERT INTO INSTITUICAO (cnpj, nome, cpfDirecao, email, senha) VALUES
-('00.000.000/0000-00', 'Instituicao Teste', '000.000.000-00', 'escola@email.com', 'senha');
 
 CREATE TABLE IF NOT EXISTS UNIDADE (
     idUnidade      INT          AUTO_INCREMENT,
