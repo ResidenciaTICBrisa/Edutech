@@ -1,9 +1,9 @@
-.button-container {
+.button-container-cadastro {
     display: flex;
     flex-direction: column;
 }
 
-.styled-button {
+.styled-button-cadastro {
     background-color: #0ec46f;
     color: #FFF;
     padding: 10px 20px;
@@ -11,8 +11,109 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 20%;
+    height: 7rem;
 }
 
-.styled-button:hover {
+.styled-button-cadastro:hover {
     background-color: #2980b9;
 }
+
+.div-fundo-cadastro {
+    text-align: center;
+    background-color: #1c3f50;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 1%;
+    margin-top: 2%;
+    margin-bottom: 0%;
+}
+
+.div-fundo-cadastro {
+    text-align: center;
+    background-color: #1c3f50;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 1%;
+    margin-top: 2%;
+    margin-bottom: 0%;
+  }
+  
+  .text-cadastro-cadastro {
+    color: #fff;
+    font-size: 2.3rem;
+    margin-bottom: 2%;
+    font-weight: bold;
+    margin-top: 3%;
+  }
+  
+  .div-fundo-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .h1-cadastro-cadastro {
+    color: #fff;
+    font-size: 1.5em;
+    padding: 10%;
+    width: 40%;
+    text-align: center;
+    margin-left: 30%;
+    margin-top: -7%;
+  }
+  
+  .img-cadastro-cadastro {
+    width: 11rem;
+    height: 11rem;
+  }
+
+  .child-cadastro-1 {
+    width: 50%;
+    margin: 1px;
+    margin-top: 1%;
+    margin-bottom: 9px;
+    text-align: center;
+  }
+  
+  .child-cadastro {
+    width: 50%;
+    margin: 1px;
+    margin-top: 1%;
+    margin-bottom: 9px;
+    flex: 1;
+    text-align: center;
+  }
+  
+  .child-cadastro + .child-cadastro {
+    margin-left: -13%;
+  }
+  
+  .img-cadastro-cadastro-content {
+    margin-left: 1%;
+  }
+
+  .content-cadastro {
+    height: auto;
+  }
+  
+  .button-cadastro-cadastro {
+    font-size: 1.3rem;
+    background-color: #0ec46f;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+  }
+  
+  .button-cadastro:hover {
+    background-color: #007bff;
+  }
+  
+  .button-cadastro:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  

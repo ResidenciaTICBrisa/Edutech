@@ -2,9 +2,18 @@
   color: #fff;
   font-size: 2.3rem;
   margin-bottom: 7%;
+  margin-top: 2%;
   font-weight: bold;
 }
-
+.div-fundo-instituicao {
+  text-align: center;
+  background-color: #1c3f50;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 1%;
+  margin-top: 2%;
+  margin-bottom: 0%;
+}
 .div-fundo-content {
   display: flex;
   justify-content: space-between;
@@ -29,7 +38,7 @@
   width: 50%;
   margin: 1px;
   margin-top: 10px;
-  margin-bottom: 90px;
+  margin-bottom: 9px;
   flex: 1;
   text-align: center;
 }
