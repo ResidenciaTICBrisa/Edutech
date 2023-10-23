@@ -545,6 +545,7 @@ async def predicao_desempenho_disciplina(disciplina: str, avaliacao: str):
         new_df = new_df.astype({
             'disciplina': str,
             'matricula': int,
+            'nome': str,
             'school': str,
             'sex': str,
             'age': int,

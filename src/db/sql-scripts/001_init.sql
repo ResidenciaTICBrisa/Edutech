@@ -168,6 +168,7 @@ CREATE VIEW DadosAlunosPredicao AS
 SELECT
     D.nome AS disciplina,
     A.matricula,
+    P.nome
     I.nome AS school,
     P.genero AS sex,
     TIMESTAMPDIFF(YEAR, A.dataNascimento, CURDATE()) AS age,
