@@ -22,7 +22,7 @@ function CadastroDisciplinaNovo() {
     console.log("Dados da Disciplina", dadosDisciplina);
     InstituicaoService.addDisciplina(dadosDisciplina.idUnidade, { nome: dadosDisciplina.nome }).then((res) => {
       console.log(res);
-      // window.location.href = "/consulta/disciplina";
+      window.location.href = "/consulta/disciplina";
     });
   };
 

@@ -16,6 +16,7 @@ function CadastroUnidadeNovo() {
     numero: "",
     complemento: "",
     cpfCoordenador: "",
+    telefone: "",
   });
 
   const handleChangeTexto = (nomeCaixa, novoTexto) => {
@@ -151,6 +152,21 @@ function CadastroUnidadeNovo() {
                 }
               />
             </div>
+
+            <div className="caixa-texto-unidade">
+              <label className="label-aluno-span-text">
+                Telefone
+              </label>
+              <textarea
+                className="text-entrada"
+                placeholder="Telefone"
+                value={dadosUnidade.telefone}
+                onChange={(e) =>
+                  handleChangeTexto("telefone", e.target.value)
+                }
+              />
+            </div>
+
             <div className="botao-cadastrar-unidade">
               <button className="button-cancelar-inst" onClick={handleCancelar}>
                 Cancelar

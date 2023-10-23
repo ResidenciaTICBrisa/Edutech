@@ -37,11 +37,16 @@ const ConsultaAluno = () => {
               <th>Logradouro</th>
               <th>Número</th>
               <th>Complemento</th>
+              <th>Telefone</th>
               <th>Data de Nascimento</th>
               <th>Acessa Internet</th>
+              <th>Quer Educação Superior</th>
               <th>Série</th>
               <th>Letra</th>
               <th>Ano</th>
+              <th>Código da Disciplina</th>
+              <th>Faltas</th>
+              <th>Situação</th>
             </tr>
           </thead>
           <tbody>
@@ -58,11 +63,16 @@ const ConsultaAluno = () => {
                 <td>{pessoa.logradouro}</td>
                 <td>{pessoa.numero}</td>
                 <td>{pessoa.complemento}</td>
+                <td>{pessoa.telefone}</td>
                 <td>{pessoa.dataNascimento}</td>
                 <td>{pessoa.acessaInternet ? 'Sim' : 'Não'}</td>
+                <td>{pessoa.educacaoSuperior ? 'Sim' : 'Não'}</td>
                 <td>{pessoa.serie}</td>
                 <td>{pessoa.letra}</td>
                 <td>{pessoa.ano}</td>
+                <td>{pessoa.codigoDisciplina}</td>
+                <td>{pessoa.faltas}</td>
+                <td>{pessoa.situacao}</td>
               </tr>
             ))}
           </tbody>

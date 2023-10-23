@@ -34,6 +34,7 @@ const ConsultaUnidade = () => {
               <th>Número</th>
               <th>Complemento</th>
               <th>CPF do Coordenador</th>
+              <th>Telefone</th>
             </tr>
           </thead>
           <tbody>
@@ -50,6 +51,7 @@ const ConsultaUnidade = () => {
                 <td>{unidade.numero}</td>
                 <td>{unidade.complemento}</td>
                 <td>{unidade.cpfCoordenador}</td>
+                <td>{unidade.telefone}</td>
               </tr>
             ))}
           </tbody>

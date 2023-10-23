@@ -51,41 +51,6 @@ CREATE TABLE IF NOT EXISTS PESSOA (
     CONSTRAINT PESSOA_UK UNIQUE KEY (cpf)
 ) ENGINE = InnoDB AUTO_INCREMENT = 1;
 
-CREATE TABLE IF NOT EXISTS TURMA (
-    idTurma   INT     AUTO_INCREMENT,
-    serie     INT     NOT NULL,
-    letra     CHAR(2) NOT NULL,
-    ano       DATE    NOT NULL,
-    idUnidade INT     NOT NULL,
-    
-    CONSTRAINT TURMA_PK PRIMARY KEY (idTurma),
-    CONSTRAINT TURMA_UNIDADE_FK FOREIGN KEY (idUnidade)
-      REFERENCES UNIDADE (idUnidade)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1;
-
-CREATE TABLE IF NOT EXISTS DISCIPLINA (
-    codigo INT         AUTO_INCREMENT,
-    nome   VARCHAR(30) NOT NULL,
-    
-    CONSTRAINT DISCIPLINA_PK PRIMARY KEY (codigo),
-    CONSTRAINT DISCIPLINA_UK UNIQUE KEY (nome)
-) ENGINE = InnoDB AUTO_INCREMENT = 1;
-
-CREATE TABLE IF NOT EXISTS AVALIACAO (
-    idAvaliacao  INT         AUTO_INCREMENT,
-    descricao    VARCHAR(30) NOT NULL,
-    peso         FLOAT       NOT NULL,
-    idDisciplina INT         NOT NULL,
-    
-    CONSTRAINT AVALIACAO_PK PRIMARY KEY (idAvaliacao),
-    CONSTRAINT AVALIACAO_DISCIPLINA_FK FOREIGN KEY (idDisciplina)
-      REFERENCES DISCIPLINA (codigo)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1;
-
 CREATE TABLE IF NOT EXISTS ALUNO (
     matricula        INT     NOT NULL,
     dataNascimento   DATE    NOT NULL,
@@ -110,21 +75,26 @@ CREATE TABLE IF NOT EXISTS PROFESSOR (
       ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS NOTA_ALUNO (
-    idNota INT AUTO_INCREMENT,
-    matriculaAluno INT NOT NULL,
-    idAvaliacao INT NOT NULL,
-    nota        FLOAT NOT NULL,
+CREATE TABLE IF NOT EXISTS TURMA (
+    idTurma   INT     AUTO_INCREMENT,
+    serie     INT     NOT NULL,
+    letra     CHAR(2) NOT NULL,
+    ano       DATE    NOT NULL,
+    idUnidade INT     NOT NULL,
     
-    CONSTRAINT NOTA_ALUNO_PK PRIMARY KEY (idNota),
-    CONSTRAINT NOTA_ALUNO_ALUNO_FK FOREIGN KEY (matriculaAluno)
-      REFERENCES ALUNO (matricula)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE,
-    CONSTRAINT NOTA_ALUNO_AVALIACAO_FK FOREIGN KEY (idAvaliacao)
-      REFERENCES AVALIACAO (idAvaliacao)
+    CONSTRAINT TURMA_PK PRIMARY KEY (idTurma),
+    CONSTRAINT TURMA_UNIDADE_FK FOREIGN KEY (idUnidade)
+      REFERENCES UNIDADE (idUnidade)
       ON DELETE CASCADE
       ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 1;
+
+CREATE TABLE IF NOT EXISTS DISCIPLINA (
+    codigo INT         AUTO_INCREMENT,
+    nome   VARCHAR(30) NOT NULL,
+    
+    CONSTRAINT DISCIPLINA_PK PRIMARY KEY (codigo),
+    CONSTRAINT DISCIPLINA_UK UNIQUE KEY (nome)
 ) ENGINE = InnoDB AUTO_INCREMENT = 1;
 
 CREATE TABLE IF NOT EXISTS ministra (
@@ -173,11 +143,13 @@ CREATE TABLE IF NOT EXISTS compoe (
 CREATE TABLE IF NOT EXISTS cursa (
     matricula         INT NOT NULL,
     codigoDisciplina  INT NOT NULL,
-    faltas            INT NOT NULL,
-    situacao          ENUM('Aprovado', 'Reprovado', 'Cursando') NOT NULL,
-    horasEstudoSemana INT NOT NULL,
-    reprovacoes       INT NOT NULL,
-  
+    horasEstudoSemana INT NOT NULL DEFAULT 0,
+    reprovacoes       INT NOT NULL DEFAULT 0,
+    faltas            INT NOT NULL DEFAULT 0,
+    notaAvaliacao1    FLOAT NOT NULL DEFAULT 0,
+    notaAvaliacao2    FLOAT NOT NULL DEFAULT 0,
+    notaAvaliacao3    FLOAT NOT NULL DEFAULT 0,
+    
     CONSTRAINT cursa_PK PRIMARY KEY (matricula, codigoDisciplina),
     CONSTRAINT cursa_ALUNO_FK FOREIGN KEY (matricula)
       REFERENCES ALUNO (matricula)
@@ -189,30 +161,30 @@ CREATE TABLE IF NOT EXISTS cursa (
       ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
+-- Views
+DROP VIEW IF EXISTS DadosAlunosPredicao;
 
--- VIEWS
 CREATE VIEW DadosAlunosPredicao AS
 SELECT
-    P.nome AS NomeDoAluno,
-    P.matricula AS Matricula,
-    T.serie AS Serie,
-    T.letra AS Letra,
-    T.ano AS Ano,
-    C.horasEstudoSemana AS HorasDeEstudoSemanal,
-    C.faltas AS Faltas,
-    D.nome AS NomeDaDisciplina,
-    GROUP_CONCAT(
-        CONCAT(AV.descricao, ': ', COALESCE(NA.nota, 'N/A')) 
-        ORDER BY AV.idAvaliacao 
-        SEPARATOR ', '
-    ) AS NotasDasAvaliacoes
-FROM PESSOA P
-JOIN ALUNO A ON P.matricula = A.matricula
-JOIN cursa C ON A.matricula = C.matricula
-JOIN DISCIPLINA D ON C.codigoDisciplina = D.codigo
-JOIN compoe CP ON A.matricula = CP.matriculaAluno
-JOIN TURMA T ON CP.idTurma = T.idTurma
-LEFT JOIN ministra M ON D.codigo = M.codigoDisciplina
-LEFT JOIN AVALIACAO AV ON M.codigoDisciplina = AV.idDisciplina
-LEFT JOIN NOTA_ALUNO NA ON C.matricula = NA.matriculaAluno AND AV.idAvaliacao = NA.idAvaliacao
-GROUP BY P.nome, P.matricula, T.serie, T.letra, T.ano, C.horasEstudoSemana, C.faltas, D.nome
+    D.nome AS disciplina,
+    A.matricula,
+    I.nome AS school,
+    P.genero AS sex,
+    TIMESTAMPDIFF(YEAR, A.dataNascimento, CURDATE()) AS age,
+    C.horasEstudoSemana AS studytime,
+    C.reprovacoes AS failures,
+    A.educacaoSuperior AS higher,
+    A.acessaInternet AS internet,
+    C.faltas AS absences,
+    C.notaAvaliacao1 AS G1,
+    C.notaAvaliacao2 AS G2,
+    C.notaAvaliacao3 AS G3
+FROM
+    ALUNO A
+    INNER JOIN PESSOA P ON A.matricula = P.matricula
+    INNER JOIN cursa C ON A.matricula = C.matricula
+    INNER JOIN DISCIPLINA D ON C.codigoDisciplina = D.codigo
+    INNER JOIN compoe cp ON A.matricula = cp.matriculaAluno
+    INNER JOIN TURMA T ON cp.idTurma = T.idTurma
+    INNER JOIN UNIDADE U ON T.idUnidade = U.idUnidade
+    INNER JOIN INSTITUICAO I ON U.cnpjInstituicao = I.cnpj;

@@ -2,7 +2,7 @@ FROM tiangolo/uvicorn-gunicorn:python3.9
 
 COPY . /app/
 
-RUN pip install -qqq --upgrade pip
+# RUN pip install -qqq --upgrade pip
 
 RUN pip install -r requirements.txt
 

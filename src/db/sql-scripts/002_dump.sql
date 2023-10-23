@@ -66,29 +66,6 @@ VALUES
     ('Ciencias'),
     ('Geografia');
 
--- Inserções na tabela AVALIACAO
-INSERT INTO AVALIACAO (descricao, peso, idDisciplina)
-VALUES
-    ('Prova 1', 0.3, 1),
-    ('Prova 2', 0.3, 1),
-    ('Trabalho', 0.2, 2),
-    ('Apresentacao', 0.2, 2),
-    ('Exercicios', 0.2, 3);
-
--- Inserções na tabela NOTA_ALUNO (notas dos alunos nas avaliações)
-INSERT INTO NOTA_ALUNO (matriculaAluno, idAvaliacao, nota)
-VALUES
-    (1, 1, 7.5),
-    (1, 2, 8.0),
-    (2, 1, 6.0),
-    (2, 2, 5.5),
-    (3, 1, 9.0),
-    (3, 2, 8.5),
-    (4, 1, 4.0),
-    (4, 2, 4.5),
-    (5, 1, 7.0),
-    (5, 2, 7.5);
-
 -- Inserções na tabela ministra (associação de professores a disciplinas)
 INSERT INTO ministra (codigoDisciplina, matriculaProfessor)
 VALUES
@@ -117,10 +94,10 @@ VALUES
     (5, 5);
 
 -- Inserções na tabela cursa (registro de desempenho acadêmico de alunos)
-INSERT INTO cursa (matricula, codigoDisciplina, faltas, situacao, horasEstudoSemana, reprovacoes)
+INSERT INTO cursa (matricula, codigoDisciplina, horasEstudoSemana, reprovacoes, faltas, notaAvaliacao1, notaAvaliacao2, notaAvaliacao3)
 VALUES
-    (1, 1, 2, 'Aprovado', 10, 0),
-    (2, 2, 3, 'Reprovado', 12, 1),
-    (3, 3, 1, 'Aprovado', 8, 0),
-    (4, 4, 5, 'Reprovado', 15, 2),
-    (5, 5, 0, 'Aprovado', 9, 0);
+    (1, 1, 2, 1, 10, 5, 6, 7),
+    (2, 2, 3, 0, 12, 7, 4, 5),
+    (3, 3, 1, 0, 8, 3, 8, 9),
+    (4, 4, 5, 0, 15, 2, 3, 4),
+    (5, 5, 0, 0, 9, 9, 9, 2);

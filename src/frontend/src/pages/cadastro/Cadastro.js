@@ -9,9 +9,6 @@ function Cadastro() {
     <>
       <Header />
       <div className="dark-background button-container">
-        <Link to="aluno">
-          <button className="styled-button">Cadastro de Aluno</button>
-        </Link>
 
         <Link to="instituicao">
           <button className="styled-button">Cadastro de Instituição</button>
@@ -21,20 +18,20 @@ function Cadastro() {
           <button className="styled-button">Cadastro de Unidade</button>
         </Link>
 
-        <Link to="disciplina">
-          <button className="styled-button">Cadastro de Disciplina</button>
-        </Link>
-
         <Link to="turma">
           <button className="styled-button">Cadastro de Turma</button>
+        </Link>
+
+        <Link to="disciplina">
+          <button className="styled-button">Cadastro de Disciplina</button>
         </Link>
 
         <Link to="professor">
           <button className="styled-button">Cadastro de Professor</button>
         </Link>
 
-        <Link to="avaliacao">
-          <button className="styled-button">Cadastro de Avaliação</button>
+        <Link to="aluno">
+          <button className="styled-button">Cadastro de Aluno</button>
         </Link>
       </div>
     </>

@@ -36,7 +36,8 @@ const ConsultaProfessor = () => {
               <th>Logradouro</th>
               <th>Número</th>
               <th>Complemento</th>
-              
+              <th>Telefone</th>
+              <th>disciplinasMinistradas</th>
             </tr>
           </thead>
           <tbody>
@@ -54,7 +55,8 @@ const ConsultaProfessor = () => {
                 <td>{pessoa.logradouro}</td>
                 <td>{pessoa.numero}</td>
                 <td>{pessoa.complemento}</td>
-                
+                <td>{pessoa.telefone}</td>
+                <td>{pessoa.disciplinasMinistradas}</td>
               </tr>
             ))}
           </tbody>

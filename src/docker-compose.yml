@@ -1,9 +1,9 @@
-version: '3.0'
+version: "3.0"
 
 services:
-
   frontend:
     container_name: react_app
+    image: react_image
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -22,6 +22,7 @@ services:
     depends_on:
       - db
     volumes:
+      - ./backend/ml:/app/ml
       - ./backend:/app
 
   db:

@@ -1,8 +1,11 @@
 fastapi
 mysql-connector-python
 pandas
+numpy
 requests
+fastai
 openpyxl
 python-multipart
 asyncio
 python-dotenv
+joblib
