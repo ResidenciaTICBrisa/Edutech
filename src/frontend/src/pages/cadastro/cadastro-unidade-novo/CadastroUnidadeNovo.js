@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 import "./CadastroUnidadeNovo.css";
-import EscolaService from "../../../services/EscolaService";
+import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 function CadastroUnidadeNovo() {
   const [dadosUnidade, setdadosUnidade] = useState({
-    cnpjEscola: "",
+    cnpjInstituicao: "",
     nivelEducacao: "",
     siglaEstado: "",
     cidade: "",
@@ -16,6 +16,7 @@ function CadastroUnidadeNovo() {
     numero: "",
     complemento: "",
     cpfCoordenador: "",
+    telefone: "",
   });
 
   const handleChangeTexto = (nomeCaixa, novoTexto) => {
@@ -28,7 +29,7 @@ function CadastroUnidadeNovo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Dados da Unidade", dadosUnidade);
-    EscolaService.addUnidade(dadosUnidade).then((res) => {
+    InstituicaoService.addUnidade(dadosUnidade).then((res) => {
       console.log(res);
       window.location.href = "/consulta/unidade";
     });
@@ -47,30 +48,30 @@ function CadastroUnidadeNovo() {
           <form onSubmit={handleSubmit}>
             <div className="caixa-texto-unidade">
               <label className="label-aluno-span-text">
-              CNPJ da Escola
+                CNPJ da Instituição
               </label>
               <textarea
                 className="text-entrada"
-                placeholder="CNPJ da Escola"
-                value={dadosUnidade.cnpjEscola}
-                onChange={(e) => handleChangeTexto("cnpjEscola", e.target.value)}
+                placeholder="CNPJ da Instituição"
+                value={dadosUnidade.cnpjInstituicao}
+                onChange={(e) =>
+                  handleChangeTexto("cnpjInstituicao", e.target.value)
+                }
               />
             </div>
             <div className="caixa-texto-unidade">
-              <label className="label-aluno-span-text">
-              Nivel de Educacao
-              </label>
+              <label className="label-aluno-span-text">Nivel de Educacao</label>
               <textarea
                 className="text-entrada"
                 placeholder="Nivel de Educacao"
                 value={dadosUnidade.nivelEducacao}
-                onChange={(e) => handleChangeTexto("nivelEducacao", e.target.value)}
+                onChange={(e) =>
+                  handleChangeTexto("nivelEducacao", e.target.value)
+                }
               />
             </div>
             <div className="caixa-texto-unidade">
-              <label className="label-aluno-span-text">
-              Sigla do Estado
-              </label>
+              <label className="label-aluno-span-text">Sigla do Estado</label>
               <textarea
                 className="text-entrada"
                 placeholder="Sigla do Estado"
@@ -81,9 +82,7 @@ function CadastroUnidadeNovo() {
               />
             </div>
             <div className="caixa-texto-unidade">
-              <label className="label-aluno-span-text">
-              Cidade
-              </label>
+              <label className="label-aluno-span-text">Cidade</label>
               <textarea
                 className="text-entrada"
                 placeholder="Cidade"
@@ -92,9 +91,7 @@ function CadastroUnidadeNovo() {
               />
             </div>
             <div className="caixa-texto-unidade">
-              <label className="label-aluno-span-text">
-              Bairro
-              </label>
+              <label className="label-aluno-span-text">Bairro</label>
               <textarea
                 className="text-entrada"
                 placeholder="Bairro"
@@ -103,9 +100,7 @@ function CadastroUnidadeNovo() {
               />
             </div>
             <div className="caixa-texto-unidade">
-              <label className="label-aluno-span-text">
-              CEP
-              </label>
+              <label className="label-aluno-span-text">CEP</label>
               <textarea
                 className="text-entrada"
                 placeholder="CEP"
@@ -114,20 +109,18 @@ function CadastroUnidadeNovo() {
               />
             </div>
             <div className="caixa-texto-unidade">
-              <label className="label-aluno-span-text">
-              Logradouro
-              </label>
+              <label className="label-aluno-span-text">Logradouro</label>
               <textarea
                 className="text-entrada"
                 placeholder="Logradouro"
                 value={dadosUnidade.logradouro}
-                onChange={(e) => handleChangeTexto("logradouro", e.target.value)}
+                onChange={(e) =>
+                  handleChangeTexto("logradouro", e.target.value)
+                }
               />
             </div>
             <div className="caixa-texto-unidade">
-              <label className="label-aluno-span-text">
-              Número
-              </label>
+              <label className="label-aluno-span-text">Número</label>
               <textarea
                 className="text-entrada"
                 placeholder="Número"
@@ -136,27 +129,44 @@ function CadastroUnidadeNovo() {
               />
             </div>
             <div className="caixa-texto-unidade">
-              <label className="label-aluno-span-text">
-              Complemento
-              </label>
+              <label className="label-aluno-span-text">Complemento</label>
               <textarea
                 className="text-entrada"
                 placeholder="Complemento"
                 value={dadosUnidade.complemento}
-                onChange={(e) => handleChangeTexto("complemento", e.target.value)}
+                onChange={(e) =>
+                  handleChangeTexto("complemento", e.target.value)
+                }
               />
             </div>
             <div className="caixa-texto-unidade">
               <label className="label-aluno-span-text">
-              CPF do Coordenador
+                CPF do Coordenador
               </label>
               <textarea
                 className="text-entrada"
                 placeholder="CPF do Coordenador"
                 value={dadosUnidade.cpfCoordenador}
-                onChange={(e) => handleChangeTexto("cpfCoordenador", e.target.value)}
+                onChange={(e) =>
+                  handleChangeTexto("cpfCoordenador", e.target.value)
+                }
               />
             </div>
+
+            <div className="caixa-texto-unidade">
+              <label className="label-aluno-span-text">
+                Telefone
+              </label>
+              <textarea
+                className="text-entrada"
+                placeholder="Telefone"
+                value={dadosUnidade.telefone}
+                onChange={(e) =>
+                  handleChangeTexto("telefone", e.target.value)
+                }
+              />
+            </div>
+
             <div className="botao-cadastrar-unidade">
               <button className="button-cancelar-inst" onClick={handleCancelar}>
                 Cancelar

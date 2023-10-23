@@ -16,8 +16,13 @@ function CadastroAlunoNovo() {
     logradouro: "",
     numero: "",
     complemento: "",
+    telefone: "",
     dataNascimento: "",
     acessaInternet: true,
+    educacaoSuperior: true,
+    serie: "",
+    letra: "",
+    ano: "",
   });
 
   const handleChangeTexto = (nomeCaixa, novoTexto) => {
@@ -34,11 +39,12 @@ function CadastroAlunoNovo() {
     data.push(dadosAluno);
     PessoaService.addAlunos(data).then((res) => {
       console.log(res);
-      window.location.href = "/consulta/aluno";
+      // window.location.href = "/consulta/aluno";
     });
   };
 
-  const handleCancelar = () => {
+  const handleCancelar = (e) => {
+    e.preventDefault();
     window.location.href = "/cadastro/aluno";
   };
 
@@ -98,7 +104,7 @@ function CadastroAlunoNovo() {
               <input
                 type="text"
                 className="text-entrada-aluno-novo"
-                placeholder="Estado do Aluno"
+                placeholder="Estado"
                 value={dadosAluno.siglaEstado}
                 onChange={(e) =>
                   handleChangeTexto("siglaEstado", e.target.value)
@@ -133,7 +139,7 @@ function CadastroAlunoNovo() {
               <input
                 type="text"
                 className="text-entrada-aluno-novo"
-                placeholder="cep"
+                placeholder="CEP"
                 value={dadosAluno.cep}
                 onChange={(e) => handleChangeTexto("cep", e.target.value)}
               />
@@ -144,7 +150,7 @@ function CadastroAlunoNovo() {
               <input
                 type="text"
                 className="text-entrada-aluno-novo"
-                placeholder="logradouro"
+                placeholder="Logradouro"
                 value={dadosAluno.logradouro}
                 onChange={(e) =>
                   handleChangeTexto("logradouro", e.target.value)
@@ -157,7 +163,7 @@ function CadastroAlunoNovo() {
               <input
                 type="text"
                 className="text-entrada-aluno-novo"
-                placeholder="numero"
+                placeholder="Número"
                 value={dadosAluno.numero}
                 onChange={(e) => handleChangeTexto("numero", e.target.value)}
               />
@@ -168,10 +174,23 @@ function CadastroAlunoNovo() {
               <input
                 type="text"
                 className="text-entrada-aluno-novo"
-                placeholder="complemento"
+                placeholder="Complemento"
                 value={dadosAluno.complemento}
                 onChange={(e) =>
                   handleChangeTexto("complemento", e.target.value)
+                }
+              />
+            </div>
+
+            <div className="caixa-texto-aluno">
+              <label className="label-aluno-span-text">Telefone</label>
+              <input
+                type="text"
+                className="text-entrada-aluno-novo"
+                placeholder="Telefone"
+                value={dadosAluno.telefone}
+                onChange={(e) =>
+                  handleChangeTexto("telefone", e.target.value)
                 }
               />
             </div>
@@ -197,7 +216,59 @@ function CadastroAlunoNovo() {
               O aluno possui acesso à Internet em casa?
             </label>
             <div className="caixa-checkbox-aluno-cadastrar">
-              <input type="checkbox" className="checkbox-aluno-cadastrar" />
+              <input type="checkbox" value={dadosAluno.acessaInternet} className="checkbox-aluno-cadastrar" />
+            </div>
+
+            <label className="label-aluno-span">
+              O aluno quer fazer educação superior?
+            </label>
+            <div className="caixa-checkbox-aluno-cadastrar">
+              <input type="checkbox" value={dadosAluno.educacaoSuperior} className="checkbox-aluno-cadastrar" />
+            </div>
+
+            <div className="caixa-texto-aluno">
+              <label className="label-aluno-span-text">
+                Série
+              </label>
+              <input
+                type="text"
+                className="text-entrada-aluno-novo"
+                placeholder="Série"
+                value={dadosAluno.serie}
+                onChange={(e) =>
+                  handleChangeTexto("serie", e.target.value)
+                }
+              />
+            </div>
+
+            <div className="caixa-texto-aluno">
+              <label className="label-aluno-span-text">
+                Turma
+              </label>
+              <input
+                type="text"
+                className="text-entrada-aluno-novo"
+                placeholder="Turma"
+                value={dadosAluno.letra}
+                onChange={(e) =>
+                  handleChangeTexto("letra", e.target.value)
+                }
+              />
+            </div>
+
+            <div className="caixa-texto-aluno">
+              <label className="label-aluno-span-text">
+                Ano de Ingresso
+              </label>
+              <input
+                type="text"
+                className="text-entrada-aluno-novo"
+                placeholder="Ano de Ingresso"
+                value={dadosAluno.ano}
+                onChange={(e) =>
+                  handleChangeTexto("ano", e.target.value)
+                }
+              />
             </div>
 
             <div className="botao-cadastrar-aluno">

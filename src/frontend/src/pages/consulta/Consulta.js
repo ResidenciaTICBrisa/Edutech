@@ -8,7 +8,6 @@ import disciplina from "../../img/disciplina.png";
 import turma from "../../img/turma.png";
 import unidade from "../../img/unidade.png";
 import instituicao from "../../img/instituicao.png";
-import pensar from "../../img/pensar.png";
 
 function Consulta() {
   return (
@@ -19,31 +18,19 @@ function Consulta() {
         <div className="div-fundo-content">
           <div className="child-consulta-1">
             <div className="img-consulta-consulta-content">
-              <img
-                className="img-consulta-consulta"
-                src={aluno}
-                alt="Aluno"
-              />
+              <img className="img-consulta-consulta" src={aluno} alt="Aluno" />
             </div>
             <Link to="aluno">
               <div className="content-consulta">
                 <button className="button-consulta-consulta">
-                Consultar Aluno
+                  Consultar Aluno
                 </button>
               </div>
             </Link>
           </div>
 
-          {/* <div className="img-consulta-consulta-content">
-              <img
-                className="img-consulta-consulta"
-                src={pensar}
-                alt="pensar"
-              />
-            </div> */}
-
           <div className="child-consulta-1">
-          <div className="img-consulta-consulta-content">
+            <div className="img-consulta-consulta-content">
               <img
                 className="img-consulta-consulta"
                 src={instituicao}
@@ -60,9 +47,8 @@ function Consulta() {
           </div>
         </div>
         <div className="div-fundo-content">
-
           <div className="child-consulta">
-          <div className="img-consulta-consulta-content">
+            <div className="img-consulta-consulta-content">
               <img
                 className="img-consulta-consulta"
                 src={unidade}
@@ -79,14 +65,14 @@ function Consulta() {
           </div>
 
           <div className="child-consulta">
-          <div className="img-consulta-consulta-content">
+            <div className="img-consulta-consulta-content">
               <img
                 className="img-consulta-consulta"
                 src={disciplina}
                 alt="Consultar Disciplina"
               />
             </div>
-            <Link to="/consulta/consulta/novo">
+            <Link to="disciplina">
               <div className="content-consulta">
                 <button className="button-consulta-consulta">
                   Consultar Disciplina
@@ -96,7 +82,7 @@ function Consulta() {
           </div>
 
           <div className="child-consulta">
-          <div className="img-consulta-consulta-content">
+            <div className="img-consulta-consulta-content">
               <img
                 className="img-consulta-consulta"
                 src={turma}
@@ -112,10 +98,13 @@ function Consulta() {
             </Link>
           </div>
         </div>
-        
-        <div><br/></div>
-        <div><br/></div>
 
+        <div>
+          <br />
+        </div>
+        <div>
+          <br />
+        </div>
       </div>
     </>
   );

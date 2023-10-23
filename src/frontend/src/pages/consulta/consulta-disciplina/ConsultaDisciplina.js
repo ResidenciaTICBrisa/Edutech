@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 
 import "./ConsultaDisciplina.css";
-import EscolaService from "../../../services/EscolaService";
+import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 const ConsultaDisciplina = () => {
   const [dados, setDados] = React.useState([]);
 
   useEffect(() => {
-    EscolaService.getDisciplinas().then((res) => {
+    InstituicaoService.getDisciplinas().then((res) => {
       setDados(res);
     });
   }, []);

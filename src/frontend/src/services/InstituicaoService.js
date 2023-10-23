@@ -2,21 +2,21 @@ import axios from "axios";
 
 const BASE_URL = process.env.REACT_APP_API_URL;
 
-const EscolaService = {
+const InstituicaoService = {
 
-  //#region Escola
-  addEscola: async (escola) => {
+  //#region Instituicao
+  addInstituicao: async (instituicao) => {
     try {
-      const response = await axios.post(`${BASE_URL}/escolas`, escola);
+      const response = await axios.post(`${BASE_URL}/instituicoes`, instituicao);
       return response.data;
     } catch (error) {
       console.error(error);
     }
   },
 
-  getEscolas: async () => {
+  getInstituicoes: async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/escolas`);
+      const response = await axios.get(`${BASE_URL}/instituicoes`);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -43,9 +43,9 @@ const EscolaService = {
     }
   },
 
-  getUnidadesEscola: async (cnpj) => {
+  getUnidadesInstituicao: async (cnpj) => {
     try {
-      const response = await axios.get(`${BASE_URL}/escolas/${cnpj}/unidades`);
+      const response = await axios.get(`${BASE_URL}/instituicoes/${cnpj}/unidades`);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -108,8 +108,20 @@ const EscolaService = {
     } catch (error) {
       console.error(error);
     }
-  }
+  },
   //#endregion
+
+  //#region Predição
+  getInfoPredicao: async (disciplina, avaliacao) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/predicao/${disciplina}/avaliacao/${avaliacao}`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+  //#endregion
+
 };
 
-export default EscolaService;
+export default InstituicaoService;

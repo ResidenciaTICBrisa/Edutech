@@ -8,7 +8,6 @@ import disciplina from "../../img/disciplina.png";
 import turma from "../../img/turma.png";
 import unidade from "../../img/unidade.png";
 import instituicao from "../../img/instituicao.png";
-import pensar from "../../img/pensar.png";
 
 function Cadastro() {
   return (
@@ -19,31 +18,19 @@ function Cadastro() {
         <div className="div-fundo-content">
           <div className="child-cadastro-1">
             <div className="img-cadastro-cadastro-content">
-              <img
-                className="img-cadastro-cadastro"
-                src={aluno}
-                alt="Aluno"
-              />
+              <img className="img-cadastro-cadastro" src={aluno} alt="Aluno" />
             </div>
             <Link to="aluno">
               <div className="content-cadastro">
                 <button className="button-cadastro-cadastro">
-                Cadastrar Aluno
+                  Cadastrar Aluno
                 </button>
               </div>
             </Link>
           </div>
 
-          {/* <div className="img-cadastro-cadastro-content">
-              <img
-                className="img-cadastro-cadastro"
-                src={pensar}
-                alt="pensar"
-              />
-            </div> */}
-
           <div className="child-cadastro-1">
-          <div className="img-cadastro-cadastro-content">
+            <div className="img-cadastro-cadastro-content">
               <img
                 className="img-cadastro-cadastro"
                 src={instituicao}
@@ -60,9 +47,8 @@ function Cadastro() {
           </div>
         </div>
         <div className="div-fundo-content">
-
           <div className="child-cadastro">
-          <div className="img-cadastro-cadastro-content">
+            <div className="img-cadastro-cadastro-content">
               <img
                 className="img-cadastro-cadastro"
                 src={unidade}
@@ -79,7 +65,7 @@ function Cadastro() {
           </div>
 
           <div className="child-cadastro">
-          <div className="img-cadastro-cadastro-content">
+            <div className="img-cadastro-cadastro-content">
               <img
                 className="img-cadastro-cadastro"
                 src={disciplina}
@@ -96,7 +82,7 @@ function Cadastro() {
           </div>
 
           <div className="child-cadastro">
-          <div className="img-cadastro-cadastro-content">
+            <div className="img-cadastro-cadastro-content">
               <img
                 className="img-cadastro-cadastro"
                 src={turma}
@@ -112,10 +98,13 @@ function Cadastro() {
             </Link>
           </div>
         </div>
-        
-        <div><br/></div>
-        <div><br/></div>
 
+        <div>
+          <br />
+        </div>
+        <div>
+          <br />
+        </div>
       </div>
     </>
   );

@@ -29,6 +29,11 @@
   text-align: center;
   margin-left: 30%;
   margin-top: -7%;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 .img-cadastro-aluno {

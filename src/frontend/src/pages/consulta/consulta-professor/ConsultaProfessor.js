@@ -1,27 +1,25 @@
 import React, { useEffect } from "react";
 
-import "./ConsultaAluno.css";
+import "./ConsultaProfessor.css";
 import PessoaService from "../../../services/PessoaService";
 import Header from "../../../components/header/Header";
 
-const ConsultaAluno = () => {
+const ConsultaProfessor = () => {
 
   const [dados, setDados] = React.useState([]);
 
   useEffect(() => {
-    PessoaService.getAlunos().then((res) => {
+    PessoaService.getProfessores().then((res) => {
       setDados(res);
     });
   }, []);
-
-
 
   return (
     <>
       <Header />
       <div className="dark-background">
         <div>
-          <h1>Consulta de Alunos</h1>
+          <h1>Consulta de Professores</h1>
         </div>
         <table>
           <thead>
@@ -30,6 +28,7 @@ const ConsultaAluno = () => {
               <th>Matrícula</th>
               <th>Nome</th>
               <th>Gênero</th>
+              <th>Formação</th>
               <th>Estado</th>
               <th>Cidade</th>
               <th>Bairro</th>
@@ -38,12 +37,7 @@ const ConsultaAluno = () => {
               <th>Número</th>
               <th>Complemento</th>
               <th>Telefone</th>
-              <th>Data de Nascimento</th>
-              <th>Acessa Internet</th>
-              <th>Quer Educação Superior</th>
-              <th>Série</th>
-              <th>Letra</th>
-              <th>Ano</th>
+              <th>disciplinasMinistradas</th>
             </tr>
           </thead>
           <tbody>
@@ -53,6 +47,7 @@ const ConsultaAluno = () => {
                 <td>{pessoa.matricula}</td>
                 <td>{pessoa.nome}</td>
                 <td>{pessoa.genero}</td>
+                <td>{pessoa.formacao}</td>
                 <td>{pessoa.siglaEstado}</td>
                 <td>{pessoa.cidade}</td>
                 <td>{pessoa.bairro}</td>
@@ -61,12 +56,7 @@ const ConsultaAluno = () => {
                 <td>{pessoa.numero}</td>
                 <td>{pessoa.complemento}</td>
                 <td>{pessoa.telefone}</td>
-                <td>{pessoa.dataNascimento}</td>
-                <td>{pessoa.acessaInternet ? 'Sim' : 'Não'}</td>
-                <td>{pessoa.educacaoSuperior ? 'Sim' : 'Não'}</td>
-                <td>{pessoa.serie}</td>
-                <td>{pessoa.letra}</td>
-                <td>{pessoa.ano}</td>
+                <td>{pessoa.disciplinasMinistradas}</td>
               </tr>
             ))}
           </tbody>
@@ -76,4 +66,4 @@ const ConsultaAluno = () => {
   );
 }
 
-export default ConsultaAluno;
+export default ConsultaProfessor;

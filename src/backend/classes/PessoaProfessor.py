@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class PessoaAluno(BaseModel):
+class PessoaProfessor(BaseModel):
     cpf: str
     matricula: int
     nome: str
@@ -12,5 +12,6 @@ class PessoaAluno(BaseModel):
     logradouro: str
     numero: int
     complemento: str
-    dataNascimento: str
-    acessaInternet: bool
+    formacao: str
+    telefone: str
+    disciplinas: list
