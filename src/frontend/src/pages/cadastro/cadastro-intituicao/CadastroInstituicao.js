@@ -35,7 +35,7 @@ function CadastroInstituicao() {
   return (
     <>
       <Header />
-      <div className="dark-background">
+      <div className="div-fundo-instituicao">
         <p className="text-cadastro">Página de Cadastramento de Instituição</p>
         <div className="div-fundo-content">
           <div className="child">
