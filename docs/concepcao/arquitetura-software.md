@@ -152,3 +152,4 @@ O [Jupyter Notebook](https://jupyter.org) é um aplicativo da web de código abe
 | 1.2    | 06/09/2023 | Adição de texto introdutório                                           | Carlos Vaz             |
 | 2.0    | 14/09/2023 | Adição da descrição das tecnologias, rich picture e diagrama de pastas | Luís Lins, Renan Girão |
 | 2.1    | 15/09/2023 | Adição do DE-R e DLD                                                   | Luís Lins, Renan Girão |
+| 3.0    | 20/10/2023 | Atualização do DE-R e DLD                                                   |  Renan Girão |

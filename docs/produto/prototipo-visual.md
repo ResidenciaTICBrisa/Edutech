@@ -26,16 +26,23 @@ Link para vizualizar pelo <a href="//www.figma.com/file/XwP1NJtDg7cglLqzlTQaDP/U
 
 ### Login
 
+![Tela_login](https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio/assets/137415620/e22fd738-535e-4338-8c31-344d4d1af694)
+
+
+
 ### Home
+![Home](https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio/assets/137415620/8d02db18-c815-4c3e-a69e-2a69abbaf8f2)
 
 ### Pagina de predição
 
+![predicao](https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio/assets/137415620/309f72f5-375c-4f72-ac3d-a5e14ea51734)
+
 ### Pagina de consulta
-
+![consulta](https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio/assets/137415620/f156325a-591e-4291-a60b-ffb2b6f8852d)
 ### Pagina para visualizações de gráficos
-
+![visualizacaograficos](https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio/assets/137415620/eb7640d3-fae7-4cb6-945d-0b578e60c652)
 ### Pagina de feedback
-
+![feedback](https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio/assets/137415620/e07d426c-8888-43d3-b30e-31dffc51a62c)
 <!-- ## Referências -->
 
 ## Versionamento
@@ -44,3 +51,4 @@ Link para vizualizar pelo <a href="//www.figma.com/file/XwP1NJtDg7cglLqzlTQaDP/U
 | ------ | ---------- | ---------------------------- | ----------- |
 | 1.0    | 23/08/2023 | Criação do conteúdo          | Mariana Rio |
 | 2.0    | 06/09/2023 | Adição de texto introdutório | Carlos Vaz  |
+| 2.0    | 20/10/2023 | Adição de imagens | Renan Girão  |

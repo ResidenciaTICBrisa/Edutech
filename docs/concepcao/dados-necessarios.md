@@ -69,3 +69,4 @@ Aqui estão as descrições para as colunas de dados:
 | 1.0    | 09/08/2023 | Criação do conteúdo                                     | Luís Lins      |
 | 2.0    | 08/09/2023 | Atualização do conteúdo                                 | FauseSkyWalker |
 | 3.0    | 14/09/2023 | Remove informações sobre dataset antigo e melhora texto | Luís Lins      |
+| 4.0    | 20/10/2023 |Descrição dos dados                                      | Renan Girão    |
