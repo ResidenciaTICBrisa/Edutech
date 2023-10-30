@@ -171,7 +171,7 @@ SELECT
     P.nome,
     I.nome AS school,
     P.genero AS sex,
-    TIMESTAMPDIFF(YEAR, A.dataNascimento, CURDATE()) AS age,
+    YEAR(CURDATE()) - YEAR(A.dataNascimento) AS age,
     C.horasEstudoSemana AS studytime,
     C.reprovacoes AS failures,
     A.educacaoSuperior AS higher,

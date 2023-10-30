@@ -77,52 +77,54 @@ const Predicao = () => {
           </div>
           <button onClick={search}>Buscar</button>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>Disciplina</th>
-              <th>Nome</th>
-              <th>Matrícula</th>
-              <th>Instituição</th>
-              <th>Gênero</th>
-              <th>Idade</th>
-              <th>Horas de Estudo Semanais</th>
-              <th>Reprovações</th>
-              <th>Aluno quer fazer educação superior</th>
-              <th>Tem acesso à internet</th>
-              <th>Faltas</th>
-              {filtro.avaliacao === "G1" ? <th>Previsão da Nota 1</th> : ""}
-              <th>Nota 1</th>
-              {filtro.avaliacao === "G2" ? <th>Previsão da Nota 2</th> : ""}
-              <th>Nota 2</th>
-              {filtro.avaliacao === "G3" ? <th>Previsão da Nota 3</th> : ""}
-              <th>Nota 3</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dados.map((pessoa, index) => (
-              <tr key={index}>
-                <td>{pessoa.disciplina}</td>
-                <td>{pessoa.nome}</td>
-                <td>{pessoa.matricula}</td>
-                <td>{pessoa.school}</td>
-                <td>{pessoa.sex}</td>
-                <td>{pessoa.age}</td>
-                <td>{pessoa.studytime}</td>
-                <td>{pessoa.failures}</td>
-                <td>{pessoa.higher ? "Sim" : "Não"}</td>
-                <td>{pessoa.internet ? "Sim" : "Não"}</td>
-                <td>{pessoa.absences}</td>
-                {filtro.avaliacao === "G1" ? <td>{pessoa.previsao_G1}</td> : ""}
-                <td>{pessoa.G1}</td>
-                {filtro.avaliacao === "G2" ? <td>{pessoa.previsao_G2}</td> : ""}
-                <td>{pessoa.G2}</td>
-                {filtro.avaliacao === "G3" ? <td>{pessoa.previsao_G3}</td> : ""}
-                <td>{pessoa.G3}</td>
+        {!dados ? <h1>Sem dados</h1> :
+          <table>
+            <thead>
+              <tr>
+                <th>Disciplina</th>
+                <th>Nome</th>
+                <th>Matrícula</th>
+                <th>Instituição</th>
+                <th>Gênero</th>
+                <th>Idade</th>
+                <th>Horas de Estudo Semanais</th>
+                <th>Reprovações</th>
+                <th>Aluno quer fazer educação superior</th>
+                <th>Tem acesso à internet</th>
+                <th>Faltas</th>
+                {filtro.avaliacao === "G1" ? <th>Previsão da Nota 1</th> : ""}
+                <th>Nota 1</th>
+                {filtro.avaliacao === "G2" ? <th>Previsão da Nota 2</th> : ""}
+                <th>Nota 2</th>
+                {filtro.avaliacao === "G3" ? <th>Previsão da Nota 3</th> : ""}
+                <th>Nota 3</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {dados.map((pessoa, index) => (
+                <tr key={index}>
+                  <td>{pessoa.disciplina}</td>
+                  <td>{pessoa.nome}</td>
+                  <td>{pessoa.matricula}</td>
+                  <td>{pessoa.school}</td>
+                  <td>{pessoa.sex}</td>
+                  <td>{pessoa.age}</td>
+                  <td>{pessoa.studytime}</td>
+                  <td>{pessoa.failures}</td>
+                  <td>{pessoa.higher ? "Sim" : "Não"}</td>
+                  <td>{pessoa.internet ? "Sim" : "Não"}</td>
+                  <td>{pessoa.absences}</td>
+                  {filtro.avaliacao === "G1" ? <td>{pessoa.previsao_G1}</td> : ""}
+                  <td>{pessoa.G1}</td>
+                  {filtro.avaliacao === "G2" ? <td>{pessoa.previsao_G2}</td> : ""}
+                  <td>{pessoa.G2}</td>
+                  {filtro.avaliacao === "G3" ? <td>{pessoa.previsao_G3}</td> : ""}
+                  <td>{pessoa.G3}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        }
       </div>
     </>
   );

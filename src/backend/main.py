@@ -540,6 +540,10 @@ async def predicao_desempenho_disciplina(disciplina: str, avaliacao: str):
     try:
         learn = joblib.load(f"models/modelo_{disciplina}_{avaliacao}.pkl")
 
+        if (learn is None):
+            await treinar_modelo_de_disciplina(disciplina, avaliacao)
+            learn = joblib.load(f"models/modelo_{disciplina}_{avaliacao}.pkl")
+
         dados_alunos = await listar_dados_alunos(disciplina)
         new_df = pd.DataFrame(dados_alunos)
         new_df = new_df.astype({
