@@ -7,6 +7,7 @@ import Header from "../../../components/header/Header";
 
 const ConsultaAluno = () => {
   const [dados, setDados] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -17,12 +18,28 @@ const ConsultaAluno = () => {
     });
   }, []);
 
+  const customFilter = (pessoa) => {
+    const searchLower = searchTerm.toLowerCase();
+
+    return Object.values(pessoa).some((value) =>
+      (value && value.toString().toLowerCase().includes(searchLower))
+    );
+  };
+
   return (
     <>
       <Header />
       <div className="dark-background">
         <div>
           <h1>Consulta de Alunos</h1>
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Pesquisar por qualquer coluna"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
         <table>
           <thead>
@@ -55,8 +72,10 @@ const ConsultaAluno = () => {
 
           {!dados ? <h2>Sem dados</h2> :
             <tbody>
-              {dados.map((pessoa, index) => (
-                <tr key={index}>
+              {dados
+                .filter(customFilter)
+                .map((pessoa, index) => (
+                  <tr key={index}>
                   <td>{pessoa.cpf}</td>
                   <td>{pessoa.matricula}</td>
                   <td>{pessoa.nome}</td>

@@ -7,6 +7,7 @@ import Header from "../../../components/header/Header";
 
 const ConsultaInstituicao = () => {
   const [dados, setDados] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -17,6 +18,13 @@ const ConsultaInstituicao = () => {
     });
   }, []);
 
+  const customFilter = (pessoa) => {
+    const searchLower = searchTerm.toLowerCase();
+
+    return Object.values(pessoa).some((value) =>
+      (value && value.toString().toLowerCase().includes(searchLower))
+    );
+  };
 
   return (
     <>
@@ -24,6 +32,14 @@ const ConsultaInstituicao = () => {
       <div className="dark-background">
         <div>
           <h1>Consulta de Instituições</h1>
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Pesquisar por qualquer coluna"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
         <table>
           <thead>
@@ -42,12 +58,14 @@ const ConsultaInstituicao = () => {
 
           {!dados ? <h2>Sem dados</h2> :
             <tbody>
-              {dados.map((pessoa, index) => (
-                <tr key={index}>
-                  <td>{pessoa.cnpj}</td>
-                  <td>{pessoa.nome}</td>
-                  <td>{pessoa.cpfDirecao}</td>
-                  <td>{pessoa.email}</td>
+              {dados
+                .filter(customFilter)
+                .map((instituicao, index) => (
+                  <tr key={index}>
+                  <td>{instituicao.cnpj}</td>
+                  <td>{instituicao.nome}</td>
+                  <td>{instituicao.cpfDirecao}</td>
+                  <td>{instituicao.email}</td>
                 </tr>
               ))}
             </tbody>

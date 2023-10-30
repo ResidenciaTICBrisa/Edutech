@@ -7,6 +7,7 @@ import Header from "../../../components/header/Header";
 
 const ConsultaTurma = () => {
   const [dados, setDados] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -17,12 +18,28 @@ const ConsultaTurma = () => {
     });
   }, []);
 
+  const customFilter = (pessoa) => {
+    const searchLower = searchTerm.toLowerCase();
+
+    return Object.values(pessoa).some((value) =>
+      (value && value.toString().toLowerCase().includes(searchLower))
+    );
+  };
+
   return (
     <>
       <Header />
       <div className="dark-background">
         <div>
           <h1>Consulta de Turmas</h1>
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Pesquisar por qualquer coluna"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
         <table>
           <thead>
@@ -42,13 +59,15 @@ const ConsultaTurma = () => {
 
           {!dados ? <h2>Sem dados</h2> :
             <tbody>
-              {dados.map((unidade, index) => (
-                <tr key={index}>
-                  <td>{unidade.idTurma}</td>
-                  <td>{unidade.serie}</td>
-                  <td>{unidade.letra}</td>
-                  <td>{unidade.ano}</td>
-                  <td>{unidade.idUnidade}</td>
+              {dados
+                .filter(customFilter)
+                .map((turma, index) => (
+                  <tr key={index}>
+                  <td>{turma.idTurma}</td>
+                  <td>{turma.serie}</td>
+                  <td>{turma.letra}</td>
+                  <td>{turma.ano}</td>
+                  <td>{turma.idUnidade}</td>
                 </tr>
               ))}
             </tbody>

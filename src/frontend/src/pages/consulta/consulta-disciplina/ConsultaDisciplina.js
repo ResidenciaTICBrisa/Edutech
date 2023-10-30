@@ -7,6 +7,7 @@ import Header from "../../../components/header/Header";
 
 const ConsultaDisciplina = () => {
   const [dados, setDados] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -17,12 +18,28 @@ const ConsultaDisciplina = () => {
     });
   }, []);
 
+  const customFilter = (pessoa) => {
+    const searchLower = searchTerm.toLowerCase();
+
+    return Object.values(pessoa).some((value) =>
+      (value && value.toString().toLowerCase().includes(searchLower))
+    );
+  };
+
   return (
     <>
       <Header />
       <div className="dark-background">
         <div>
           <h1>Consulta de Disciplinas</h1>
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Pesquisar por qualquer coluna"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
         <table>
           <thead>
@@ -40,11 +57,13 @@ const ConsultaDisciplina = () => {
 
           {!dados ? <h2>Sem dados</h2> :
             <tbody>
-              {dados.map((unidade, index) => (
-                <tr key={index}>
-                  <td>{unidade.codigo}</td>
-                  <td>{unidade.nome}</td>
-                  <td>{unidade.idUnidade}</td>
+              {dados
+                .filter(customFilter)
+                .map((disciplina, index) => (
+                  <tr key={index}>
+                  <td>{disciplina.codigo}</td>
+                  <td>{disciplina.nome}</td>
+                  <td>{disciplina.idUnidade}</td>
                 </tr>
               ))}
             </tbody>

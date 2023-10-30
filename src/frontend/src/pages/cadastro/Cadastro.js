@@ -31,6 +31,19 @@ function Cadastro() {
 
           <div className="child-cadastro-1">
             <div className="img-cadastro-cadastro-content">
+              <img className="img-cadastro-cadastro" src={aluno} alt="Aluno" />
+            </div>
+            <Link to="professor">
+              <div className="content-cadastro">
+                <button className="button-cadastro-cadastro">
+                  Cadastrar Professor
+                </button>
+              </div>
+            </Link>
+          </div>
+
+          <div className="child-cadastro-1">
+            <div className="img-cadastro-cadastro-content">
               <img
                 className="img-cadastro-cadastro"
                 src={instituicao}

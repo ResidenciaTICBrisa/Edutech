@@ -7,6 +7,7 @@ import Header from "../../../components/header/Header";
 
 const ConsultaUnidade = () => {
   const [dados, setDados] = React.useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -17,12 +18,28 @@ const ConsultaUnidade = () => {
     });
   }, []);
 
+  const customFilter = (pessoa) => {
+    const searchLower = searchTerm.toLowerCase();
+
+    return Object.values(pessoa).some((value) =>
+      (value && value.toString().toLowerCase().includes(searchLower))
+    );
+  };
+
   return (
     <>
       <Header />
       <div className="dark-background">
         <div>
           <h1>Consulta de Unidades</h1>
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Pesquisar por qualquer coluna"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
         <table>
           <thead>
@@ -50,23 +67,25 @@ const ConsultaUnidade = () => {
 
           {!dados ? <h2>Sem dados</h2> :
             <tbody>
-              {dados.map((unidade, index) => (
-                <tr key={index}>
-                  <td>{unidade.idUnidade}</td>
-                  <td>{unidade.nome}</td>
-                  <td>{unidade.cnpjInstituicao}</td>
-                  <td>{unidade.nivelEducacao}</td>
-                  <td>{unidade.siglaEstado}</td>
-                  <td>{unidade.cidade}</td>
-                  <td>{unidade.bairro}</td>
-                  <td>{unidade.cep}</td>
-                  <td>{unidade.logradouro}</td>
-                  <td>{unidade.numero}</td>
-                  <td>{unidade.complemento}</td>
-                  <td>{unidade.cpfCoordenador}</td>
-                  <td>{unidade.telefone}</td>
-                </tr>
-              ))}
+              {dados
+                .filter(customFilter)
+                .map((unidade, index) => (
+                  <tr key={index}>
+                    <td>{unidade.idUnidade}</td>
+                    <td>{unidade.nome}</td>
+                    <td>{unidade.cnpjInstituicao}</td>
+                    <td>{unidade.nivelEducacao}</td>
+                    <td>{unidade.siglaEstado}</td>
+                    <td>{unidade.cidade}</td>
+                    <td>{unidade.bairro}</td>
+                    <td>{unidade.cep}</td>
+                    <td>{unidade.logradouro}</td>
+                    <td>{unidade.numero}</td>
+                    <td>{unidade.complemento}</td>
+                    <td>{unidade.cpfCoordenador}</td>
+                    <td>{unidade.telefone}</td>
+                  </tr>
+                ))}
             </tbody>
           }
         </table>

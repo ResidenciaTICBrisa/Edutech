@@ -33,7 +33,7 @@ function CadastroProfessorNovo() {
     data.push(dadosProfessor);
     PessoaService.addProfessor(data).then((res) => {
       console.log(res);
-      // window.location.href = "/consulta/professor";
+      window.location.href = "/consulta/professor";
     });
   };
 

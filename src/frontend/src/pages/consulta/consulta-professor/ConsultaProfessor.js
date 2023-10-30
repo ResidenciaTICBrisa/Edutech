@@ -7,6 +7,7 @@ import Header from "../../../components/header/Header";
 
 const ConsultaProfessor = () => {
   const [dados, setDados] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -17,12 +18,29 @@ const ConsultaProfessor = () => {
     });
   }, []);
 
+  const customFilter = (pessoa) => {
+    const searchLower = searchTerm.toLowerCase();
+
+    return Object.values(pessoa).some((value) =>
+      (value && value.toString().toLowerCase().includes(searchLower))
+    );
+  };
+
+
   return (
     <>
       <Header />
       <div className="dark-background">
         <div>
           <h1>Consulta de Professores</h1>
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Pesquisar por qualquer coluna"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
         <table>
           <thead>
@@ -51,24 +69,26 @@ const ConsultaProfessor = () => {
 
           {!dados ? <h2>Sem dados</h2> :
             <tbody>
-              {dados.map((pessoa, index) => (
-                <tr key={index}>
-                  <td>{pessoa.cpf}</td>
-                  <td>{pessoa.matricula}</td>
-                  <td>{pessoa.nome}</td>
-                  <td>{pessoa.genero}</td>
-                  <td>{pessoa.formacao}</td>
-                  <td>{pessoa.siglaEstado}</td>
-                  <td>{pessoa.cidade}</td>
-                  <td>{pessoa.bairro}</td>
-                  <td>{pessoa.cep}</td>
-                  <td>{pessoa.logradouro}</td>
-                  <td>{pessoa.numero}</td>
-                  <td>{pessoa.complemento}</td>
-                  <td>{pessoa.telefone}</td>
-                  <td>{pessoa.disciplinasMinistradas}</td>
-                </tr>
-              ))}
+              {dados
+                .filter(customFilter)
+                .map((pessoa, index) => (
+                  <tr key={index}>
+                    <td>{pessoa.cpf}</td>
+                    <td>{pessoa.matricula}</td>
+                    <td>{pessoa.nome}</td>
+                    <td>{pessoa.genero}</td>
+                    <td>{pessoa.formacao}</td>
+                    <td>{pessoa.siglaEstado}</td>
+                    <td>{pessoa.cidade}</td>
+                    <td>{pessoa.bairro}</td>
+                    <td>{pessoa.cep}</td>
+                    <td>{pessoa.logradouro}</td>
+                    <td>{pessoa.numero}</td>
+                    <td>{pessoa.complemento}</td>
+                    <td>{pessoa.telefone}</td>
+                    <td>{pessoa.disciplinasMinistradas}</td>
+                  </tr>
+                ))}
             </tbody>
           }
         </table>
