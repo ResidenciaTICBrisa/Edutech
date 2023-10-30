@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Oval } from "react-loader-spinner";
 
 import "./ConsultaUnidade.css";
 import InstituicaoService from "../../../services/InstituicaoService";
@@ -6,10 +7,13 @@ import Header from "../../../components/header/Header";
 
 const ConsultaUnidade = () => {
   const [dados, setDados] = React.useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     InstituicaoService.getUnidades().then((res) => {
       setDados(res);
+      setIsLoading(false);
     });
   }, []);
 
@@ -38,25 +42,33 @@ const ConsultaUnidade = () => {
               <th>Telefone</th>
             </tr>
           </thead>
-          <tbody>
-            {dados.map((unidade, index) => (
-              <tr key={index}>
-                <td>{unidade.idUnidade}</td>
-                <td>{unidade.nome}</td>
-                <td>{unidade.cnpjInstituicao}</td>
-                <td>{unidade.nivelEducacao}</td>
-                <td>{unidade.siglaEstado}</td>
-                <td>{unidade.cidade}</td>
-                <td>{unidade.bairro}</td>
-                <td>{unidade.cep}</td>
-                <td>{unidade.logradouro}</td>
-                <td>{unidade.numero}</td>
-                <td>{unidade.complemento}</td>
-                <td>{unidade.cpfCoordenador}</td>
-                <td>{unidade.telefone}</td>
-              </tr>
-            ))}
-          </tbody>
+          {isLoading && (
+            <div className="loader-container">
+              <Oval color="#007bff" height={100} width={100} />
+            </div>
+          )}
+
+          {!dados ? <h2>Sem dados</h2> :
+            <tbody>
+              {dados.map((unidade, index) => (
+                <tr key={index}>
+                  <td>{unidade.idUnidade}</td>
+                  <td>{unidade.nome}</td>
+                  <td>{unidade.cnpjInstituicao}</td>
+                  <td>{unidade.nivelEducacao}</td>
+                  <td>{unidade.siglaEstado}</td>
+                  <td>{unidade.cidade}</td>
+                  <td>{unidade.bairro}</td>
+                  <td>{unidade.cep}</td>
+                  <td>{unidade.logradouro}</td>
+                  <td>{unidade.numero}</td>
+                  <td>{unidade.complemento}</td>
+                  <td>{unidade.cpfCoordenador}</td>
+                  <td>{unidade.telefone}</td>
+                </tr>
+              ))}
+            </tbody>
+          }
         </table>
       </div>
     </>

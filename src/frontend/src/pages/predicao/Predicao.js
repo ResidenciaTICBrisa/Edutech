@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/header/Header";
+import { Oval } from "react-loader-spinner";
 
+import Header from "../../components/header/Header";
 import "./Predicao.css";
 import InstituicaoService from "../../services/InstituicaoService";
 
@@ -12,15 +13,15 @@ const Predicao = () => {
   });
   const [disciplinas, setDisciplinas] = useState([]);
   const avaliacoes = ["G1", "G2", "G3"];
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     getDisciplinas();
-    search(); // Chame search durante a primeira renderização
   }, []);
 
   const handleChangeTexto = (campo, valor) => {
-    setFiltro({ ...filtro, [campo]: valor });
     setDados([]);
+    setFiltro({ ...filtro, [campo]: valor });
   };
 
   const getDisciplinas = () => {
@@ -28,6 +29,9 @@ const Predicao = () => {
       const nomesDisciplinas = disciplinas.map((disciplina) => disciplina.nome);
       const disciplinasUnicas = [...new Set(nomesDisciplinas)];
       setDisciplinas(disciplinasUnicas);
+      setIsLoading(false);
+    }, (error) => {
+      console.log(error);
     });
   };
 
@@ -37,7 +41,13 @@ const Predicao = () => {
       filtro.avaliacao
     ).then((res) => {
       setDados(res);
+      setIsLoading(false);
     });
+  };
+
+  const handleSearchButtonClick = () => {
+    setIsLoading(true);
+    search();
   };
 
   return (
@@ -75,31 +85,37 @@ const Predicao = () => {
               ))}
             </select>
           </div>
-          <button onClick={search}>Buscar</button>
+          <button onClick={handleSearchButtonClick}>Buscar</button>
         </div>
-        {!dados ? <h1>Sem dados</h1> :
-          <table>
-            <thead>
-              <tr>
-                <th>Disciplina</th>
-                <th>Nome</th>
-                <th>Matrícula</th>
-                <th>Instituição</th>
-                <th>Gênero</th>
-                <th>Idade</th>
-                <th>Horas de Estudo Semanais</th>
-                <th>Reprovações</th>
-                <th>Aluno quer fazer educação superior</th>
-                <th>Tem acesso à internet</th>
-                <th>Faltas</th>
-                {filtro.avaliacao === "G1" ? <th>Previsão da Nota 1</th> : ""}
-                <th>Nota 1</th>
-                {filtro.avaliacao === "G2" ? <th>Previsão da Nota 2</th> : ""}
-                <th>Nota 2</th>
-                {filtro.avaliacao === "G3" ? <th>Previsão da Nota 3</th> : ""}
-                <th>Nota 3</th>
-              </tr>
-            </thead>
+        <table>
+          <thead>
+            <tr>
+              <th>Disciplina</th>
+              <th>Nome</th>
+              <th>Matrícula</th>
+              <th>Instituição</th>
+              <th>Gênero</th>
+              <th>Idade</th>
+              <th>Horas de Estudo Semanais</th>
+              <th>Reprovações</th>
+              <th>Aluno quer fazer educação superior</th>
+              <th>Tem acesso à internet</th>
+              <th>Faltas</th>
+              {filtro.avaliacao === "G1" ? <th>Previsão da Nota 1</th> : ""}
+              <th>Nota 1</th>
+              {filtro.avaliacao === "G2" ? <th>Previsão da Nota 2</th> : ""}
+              <th>Nota 2</th>
+              {filtro.avaliacao === "G3" ? <th>Previsão da Nota 3</th> : ""}
+              <th>Nota 3</th>
+            </tr>
+          </thead>
+          {isLoading && (
+            <div className="loader-container">
+              <Oval color="#007bff" height={100} width={100} />
+            </div>
+          )}
+
+          {!dados ? <h2>Sem dados</h2> :
             <tbody>
               {dados.map((pessoa, index) => (
                 <tr key={index}>
@@ -123,8 +139,8 @@ const Predicao = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
-        }
+          }
+        </table>
       </div>
     </>
   );

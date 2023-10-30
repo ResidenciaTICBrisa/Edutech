@@ -29,6 +29,23 @@ function Consulta() {
             </Link>
           </div>
 
+          <div className="child-consulta">
+            <div className="img-consulta-consulta-content">
+              <img
+                className="img-consulta-consulta"
+                src={aluno}
+                alt="Consultar Unidade"
+              />
+            </div>
+            <Link to="professor">
+              <div className="content-consulta">
+                <button className="button-consulta-consulta">
+                  Consultar Professor
+                </button>
+              </div>
+            </Link>
+          </div>
+
           <div className="child-consulta-1">
             <div className="img-consulta-consulta-content">
               <img
@@ -105,7 +122,7 @@ function Consulta() {
         <div>
           <br />
         </div>
-      </div>
+      </div >
     </>
   );
 }

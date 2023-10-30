@@ -13,6 +13,7 @@ import asyncio
 from dotenv import load_dotenv
 from fastai.tabular.all import *
 import joblib
+import time
 
 from classes.PessoaAluno import PessoaAluno
 from classes.Instituicao import InstituicaoLogin, Instituicao
@@ -526,7 +527,7 @@ async def treinar_modelo_de_disciplina(disciplina: str, avaliacao: str):
         to = TabularPandas(df, procs, cat_names, cont_names, y_names=avaliacao, splits=RandomSplitter(seed=42)(df)).dataloaders(bs=24)
 
         learn = tabular_learner(to)
-        learn.fit_one_cycle(5)
+        learn.fit_one_cycle(10)
 
         joblib.dump(learn, f"models/modelo_{disciplina}_{avaliacao}.pkl")
 
@@ -538,9 +539,11 @@ async def treinar_modelo_de_disciplina(disciplina: str, avaliacao: str):
 @app.get("/predicao/{disciplina}/avaliacao/{avaliacao}")
 async def predicao_desempenho_disciplina(disciplina: str, avaliacao: str):
     try:
-        learn = joblib.load(f"models/modelo_{disciplina}_{avaliacao}.pkl")
-
-        if (learn is None):
+        time.sleep(1)
+        arquivo = f"models/modelo_{disciplina}_{avaliacao}.pkl"
+        if os.path.exists(arquivo):
+            learn = joblib.load(arquivo)
+        else:
             await treinar_modelo_de_disciplina(disciplina, avaliacao)
             learn = joblib.load(f"models/modelo_{disciplina}_{avaliacao}.pkl")
 
