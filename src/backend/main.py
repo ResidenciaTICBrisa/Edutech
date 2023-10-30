@@ -537,7 +537,7 @@ async def treinar_modelo_de_disciplina(disciplina: str, avaliacao: str):
 
 @app.get("/predicao/{disciplina}/avaliacao/{avaliacao}")
 async def predicao_desempenho_disciplina(disciplina: str, avaliacao: str):
-    # try:
+    try:
         learn = joblib.load(f"models/modelo_{disciplina}_{avaliacao}.pkl")
 
         dados_alunos = await listar_dados_alunos(disciplina)
@@ -568,7 +568,7 @@ async def predicao_desempenho_disciplina(disciplina: str, avaliacao: str):
         resultado[previsaoAvaliacao] = resultado[previsaoAvaliacao].apply(lambda x: round(x, 2))
 
         return resultado.to_dict(orient="records")
-    # except:
+    except:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Erro ao fazer previsões.")
 
 # endregion
