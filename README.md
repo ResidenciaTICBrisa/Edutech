@@ -7,6 +7,7 @@
 ## Como Executar
 ### 1. Clone o repositório:
 
+
 ```
 git clone https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio.git
 cd 06_AcompanhamentoEnsinoMedio
