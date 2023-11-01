@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import "./CadastroTurmaNovo.css";
 import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 function CadastroTurmaNovo() {
+  const navigate = useNavigate();
   const [dadosTurma, setdadosTurma] = useState({
     serie: "",
     letra: "",
@@ -21,20 +23,15 @@ function CadastroTurmaNovo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Dados da Turma", dadosTurma);
-    InstituicaoService.addTurma(dadosTurma.idUnidade, {
-      serie: dadosTurma.serie,
-      letra: dadosTurma.letra,
-      ano: dadosTurma.ano,
-      idUnidade: dadosTurma.idUnidade,
-    }).then((res) => {
-      console.log(res);
-      // window.location.href = "/consulta/turma";
+    InstituicaoService.addTurma(dadosTurma.idUnidade, dadosTurma).then((res) => {
+      if (res) {
+        navigate("/consulta/turma");
+      }
     });
   };
 
   const handleCancelar = () => {
-    window.location.href = "/cadastro";
+    navigate("/cadastro");
   };
 
   return (

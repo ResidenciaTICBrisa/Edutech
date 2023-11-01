@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import * as XLSX from "xlsx";
+import { useNavigate } from 'react-router-dom';
 
 import ButtonUploadComponent from "../../../components/button_upload/ButtonUpload";
 import add_document from "../../../img/add_document.png";
@@ -10,6 +11,8 @@ import Header from "../../../components/header/Header";
 import "./CadastroAluno.css";
 
 function CadastroAluno() {
+
+  const navigate = useNavigate();
 
   const handleFileSelected = (file) => {
     if (!file) {
@@ -50,16 +53,9 @@ function CadastroAluno() {
 
     alunos.shift(); // Remove o cabeçalho
 
-    console.log(alunos)
-
-    PessoaService.addAlunos(alunos)
-      .then((response) => {
-        console.log(response)
-        // setRedirect(true);
-      })
-      .catch((error) => {
-        console.error("Erro ao cadastrar alunos:", error);
-      });
+    PessoaService.addAlunos(alunos).then((response) => {
+      navigate("/consulta/aluno");
+    });
   };
 
   return (

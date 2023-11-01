@@ -13,7 +13,7 @@ const PessoaService = {
       const response = await axios.post(`${BASE_URL}/login`, loginData);
       return response.data;
     } catch (error) {
-      console.error(error);
+      alert("Erro: " + error.response.data.detail);
     }
   },
 
@@ -31,7 +31,7 @@ const PessoaService = {
       const response = await axios.get(`${BASE_URL}/alunos`);
       return response.data;
     } catch (error) {
-      console.error(error);
+      alert("Erro: " + error.response.data.detail);
     }
   },
 
@@ -40,7 +40,7 @@ const PessoaService = {
       const response = await axios.post(`${BASE_URL}/alunos`, alunos);
       return response.data;
     } catch (error) {
-      console.error(error);
+      alert("Erro ao cadastrar instituição: " + error.response.data.detail);
     }
   },
 
@@ -49,7 +49,7 @@ const PessoaService = {
       const response = await axios.get(`${BASE_URL}/alunos/${matricula}`);
       return response.data;
     } catch (error) {
-      console.error(error);
+      alert("Erro: " + error.response.data.detail);
     }
   },
 
@@ -58,7 +58,7 @@ const PessoaService = {
       const response = await axios.post(`${BASE_URL}/professores`, professores);
       return response.data;
     } catch (error) {
-      console.error(error);
+      alert("Erro ao cadastrar professor: " + error.response.data.detail);
     }
   },
 
@@ -67,7 +67,7 @@ const PessoaService = {
       const response = await axios.get(`${BASE_URL}/professores`);
       return response.data;
     } catch (error) {
-      console.error(error);
+      alert("Erro: " + error.response.data.detail);
     }
   },
 };

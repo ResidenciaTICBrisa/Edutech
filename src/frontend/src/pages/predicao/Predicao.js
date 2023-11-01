@@ -64,7 +64,6 @@ const Predicao = () => {
               id="disciplina"
               onChange={(e) => handleChangeTexto("disciplina", e.target.value)}
             >
-              <option value="">Selecione uma disciplina</option>
               {disciplinas.map((disciplina, index) => (
                 <option key={index} value={disciplina}>
                   {disciplina}

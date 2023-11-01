@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import "./CadastroInstituicaoNovo.css";
 import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 function CadastroInstituicaoNovo() {
+  const navigate = useNavigate();
   const [dadosInstituicao, setdadosInstituicao] = useState({
     nome: "",
     cnpj: "",
@@ -22,15 +24,15 @@ function CadastroInstituicaoNovo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Dados da Instituição", dadosInstituicao);
     InstituicaoService.addInstituicao(dadosInstituicao).then((res) => {
-      console.log(res);
-      window.location.href = "/cadastro/unidade";
+      if (res) {
+        navigate("/consulta/unidade");
+      }
     });
   };
 
   const handleCancelar = () => {
-    window.location.href = "/cadastro";
+    navigate("/cadastro");
   };
 
   return (
@@ -64,7 +66,7 @@ function CadastroInstituicaoNovo() {
             </div>
             <div className="caixa-texto">
               <label className="label-aluno-span-text">
-              CPF Direção
+                CPF Direção
               </label>
               <textarea
                 className="text-entrada"
@@ -77,7 +79,7 @@ function CadastroInstituicaoNovo() {
             </div>
             <div className="caixa-texto">
               <label className="label-aluno-span-text">
-              Email
+                Email
               </label>
               <textarea
                 className="text-entrada"
@@ -88,7 +90,7 @@ function CadastroInstituicaoNovo() {
             </div>
             <div className="caixa-texto">
               <label className="label-aluno-span-text">
-              Senha
+                Senha
               </label>
               <textarea
                 className="text-entrada"

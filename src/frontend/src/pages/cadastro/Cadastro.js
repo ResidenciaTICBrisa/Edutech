@@ -85,7 +85,7 @@ function Cadastro() {
                 alt="Cadastrar Disciplina"
               />
             </div>
-            <Link to="/cadastro/cadastro/novo">
+            <Link to="disciplina">
               <div className="content-cadastro">
                 <button className="button-cadastro-cadastro">
                   Cadastrar Disciplina

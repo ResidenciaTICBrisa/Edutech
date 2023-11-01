@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import "./CadastroDisciplinaNovo.css";
 import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 function CadastroDisciplinaNovo() {
+  const navigate = useNavigate();
   const [dadosDisciplina, setdadosDisciplina] = useState({
     idUnidade: "",
     nome: "",
@@ -21,13 +23,14 @@ function CadastroDisciplinaNovo() {
     e.preventDefault();
     console.log("Dados da Disciplina", dadosDisciplina);
     InstituicaoService.addDisciplina(dadosDisciplina.idUnidade, { nome: dadosDisciplina.nome }).then((res) => {
-      console.log(res);
-      window.location.href = "/consulta/disciplina";
+      if (res) {
+        navigate("/consulta/disciplina");
+      }
     });
   };
 
   const handleCancelar = () => {
-    window.location.href = "/cadastro";
+    navigate("/cadastro");
   };
 
   return (
@@ -39,7 +42,7 @@ function CadastroDisciplinaNovo() {
           <form onSubmit={handleSubmit}>
             <div className="caixa-texto">
               <label className="label-aluno-span-text">
-              Id da Unidade
+                Id da Unidade
               </label>
               <textarea
                 className="text-entrada"
@@ -50,7 +53,7 @@ function CadastroDisciplinaNovo() {
             </div>
             <div className="caixa-texto">
               <label className="label-aluno-span-text">
-              Nome da Disciplina
+                Nome da Disciplina
               </label>
               <textarea
                 className="text-entrada"

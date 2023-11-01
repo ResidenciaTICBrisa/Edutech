@@ -1,5 +1,6 @@
 import React from "react";
 import * as XLSX from "xlsx";
+import { useNavigate } from 'react-router-dom';
 
 import ButtonUpload from "../../../components/button_upload/ButtonUpload";
 import add_document from "../../../img/add_document.png";
@@ -8,6 +9,7 @@ import Header from "../../../components/header/Header";
 import "./CadastroInstituicao.css";
 
 function CadastroInstituicao() {
+  const navigate = useNavigate();
   const handleFileSelected = (file) => {
     if (!file) {
       console.error("Nenhum arquivo selecionado.");
@@ -29,7 +31,7 @@ function CadastroInstituicao() {
   };
 
   const handleCadastro = () => {
-    window.location.href = "/cadastro/instituicao/novo";
+    navigate("/cadastro/instituicao/novo");
   };
 
   return (

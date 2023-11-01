@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 import "./CadastroUnidadeNovo.css";
 import InstituicaoService from "../../../services/InstituicaoService";
 import Header from "../../../components/header/Header";
 
 function CadastroUnidadeNovo() {
+  const navigate = useNavigate();
   const [dadosUnidade, setdadosUnidade] = useState({
     cnpjInstituicao: "",
     nivelEducacao: "",
@@ -28,15 +30,15 @@ function CadastroUnidadeNovo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Dados da Unidade", dadosUnidade);
     InstituicaoService.addUnidade(dadosUnidade).then((res) => {
-      console.log(res);
-      window.location.href = "/consulta/unidade";
+      if (res) {
+        navigate("/consulta/unidade");
+      }
     });
   };
 
   const handleCancelar = () => {
-    window.location.href = "/cadastro";
+    navigate("/cadastro");
   };
 
   return (

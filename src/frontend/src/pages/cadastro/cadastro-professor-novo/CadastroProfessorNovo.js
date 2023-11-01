@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import "./CadastroProfessorNovo.css";
 import PessoaService from "../../../services/PessoaService";
 import Header from "../../../components/header/Header";
 
 function CadastroProfessorNovo() {
+  const navigate = useNavigate();
   const [dadosProfessor, setDadosProfessor] = useState({
     cpf: "",
     matricula: "",
@@ -17,6 +20,8 @@ function CadastroProfessorNovo() {
     logradouro: "",
     numero: "",
     complemento: "",
+    telefone: "",
+    disciplinas: "",
   });
 
   const handleChangeTexto = (nomeCaixa, novoTexto) => {
@@ -28,17 +33,18 @@ function CadastroProfessorNovo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Dados do Professor", dadosProfessor);
+    dadosProfessor.disciplinas = dadosProfessor.disciplinas.split(",");
     let data = [];
     data.push(dadosProfessor);
     PessoaService.addProfessor(data).then((res) => {
-      console.log(res);
-      window.location.href = "/consulta/professor";
+      if (res) {
+        navigate("/consulta/professor");
+      }
     });
   };
 
   const handleCancelar = () => {
-    window.location.href = "/cadastro";
+    navigate("/cadastro");
   };
 
   return (
@@ -186,6 +192,32 @@ function CadastroProfessorNovo() {
                 value={dadosProfessor.complemento}
                 onChange={(e) =>
                   handleChangeTexto("complemento", e.target.value)
+                }
+              />
+            </div>
+
+            <div className="caixa-texto-aluno">
+              <label className="label-aluno-span-text">Telefone</label>
+              <input
+                type="text"
+                className="text-entrada"
+                placeholder="Telefone"
+                value={dadosProfessor.telefone}
+                onChange={(e) =>
+                  handleChangeTexto("telefone", e.target.value)
+                }
+              />
+            </div>
+
+            <div className="caixa-texto-aluno">
+              <label className="label-aluno-span-text">Disciplinas</label>
+              <input
+                type="text"
+                className="text-entrada"
+                placeholder="1,3,7"
+                value={dadosProfessor.disciplinas}
+                onChange={(e) =>
+                  handleChangeTexto("disciplinas", e.target.value)
                 }
               />
             </div>

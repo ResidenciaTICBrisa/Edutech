@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import "./CadastroAlunoNovo.css";
 import PessoaService from "../../../services/PessoaService";
 import Header from "../../../components/header/Header";
 
 function CadastroAlunoNovo() {
+  const navigate = useNavigate();
   const [dadosAluno, setDadosAluno] = useState({
     cpf: "",
     matricula: "",
@@ -23,6 +26,7 @@ function CadastroAlunoNovo() {
     serie: "",
     letra: "",
     ano: "",
+    disciplinasCursadas: "",
   });
 
   const handleChangeTexto = (nomeCaixa, novoTexto) => {
@@ -34,18 +38,19 @@ function CadastroAlunoNovo() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Dados do Aluno", dadosAluno);
+    dadosAluno.disciplinasCursadas = dadosAluno.disciplinasCursadas.split(",");
     let data = [];
     data.push(dadosAluno);
     PessoaService.addAlunos(data).then((res) => {
-      console.log(res);
-      // window.location.href = "/consulta/aluno";
+      if (res) {
+        navigate("/consulta/aluno");
+      }
     });
   };
 
   const handleCancelar = (e) => {
     e.preventDefault();
-    window.location.href = "/cadastro/aluno";
+    navigate("/cadastro/aluno");
   };
 
   return (
@@ -267,6 +272,21 @@ function CadastroAlunoNovo() {
                 value={dadosAluno.ano}
                 onChange={(e) =>
                   handleChangeTexto("ano", e.target.value)
+                }
+              />
+            </div>
+
+            <div className="caixa-texto-aluno">
+              <label className="label-aluno-span-text">
+                Disciplinas
+              </label>
+              <input
+                type="text"
+                className="text-entrada-aluno-novo"
+                placeholder="5,2,1"
+                value={dadosAluno.disciplinasCursadas}
+                onChange={(e) =>
+                  handleChangeTexto("disciplinasCursadas", e.target.value)
                 }
               />
             </div>

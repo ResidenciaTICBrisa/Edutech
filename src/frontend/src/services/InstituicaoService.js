@@ -10,7 +10,7 @@ const InstituicaoService = {
       const response = await axios.post(`${BASE_URL}/instituicoes`, instituicao);
       return response.data;
     } catch (error) {
-      console.error(error);
+      alert("Erro ao cadastrar instituição: " + error.response.data.detail);
     }
   },
 
@@ -30,7 +30,7 @@ const InstituicaoService = {
       const response = await axios.post(`${BASE_URL}/unidades`, unidade);
       return response.data;
     } catch (error) {
-      console.error(error);
+      alert("Erro ao cadastrar unidade: " + error.response.data.detail);
     }
   },
 
@@ -59,7 +59,7 @@ const InstituicaoService = {
       const response = await axios.post(`${BASE_URL}/unidades/${idUnidade}/disciplinas`, disciplina);
       return response.data;
     } catch (error) {
-      console.error(error);
+      alert("Erro ao cadastrar disciplina: " + error.response.data.detail);
     }
   },
   
@@ -88,7 +88,7 @@ const InstituicaoService = {
       const response = await axios.post(`${BASE_URL}/unidades/${idUnidade}/turmas`, turma);
       return response.data;
     } catch (error) {
-      console.error(error);
+      alert("Erro ao cadastrar turma: " + error.response.data.detail);
     }
   },
 
@@ -117,7 +117,7 @@ const InstituicaoService = {
       const response = await axios.get(`${BASE_URL}/predicao/${disciplina}/avaliacao/${avaliacao}`);
       return response.data;
     } catch (error) {
-      console.error(error);
+      alert("Erro ao consultar predições: " + error.response.data.detail);
     }
   },
   //#endregion

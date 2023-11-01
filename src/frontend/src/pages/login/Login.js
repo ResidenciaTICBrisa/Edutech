@@ -20,12 +20,9 @@ function Login() {
       senha: password,
     };
 
-    PessoaService.login(loginData).then((response) => {
-      if (response) {
-        console.log("Login realizado com sucesso!", response.escola);
+    PessoaService.login(loginData).then((res) => {
+      if (res) {
         navigate("/");
-      } else {
-        window.window.alert("Erro ao realizar login!");
       }
     });
   };
