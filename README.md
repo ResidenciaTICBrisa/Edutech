@@ -13,6 +13,7 @@ cd 06_AcompanhamentoEnsinoMedio
 ```
 ### 2. Execute o Docker Compose:
 
+
 ```
 docker-compose up --build
 ```
