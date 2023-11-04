@@ -1,9 +1,58 @@
-.login-contato-title {
+.txtsaiba {
+    font-size: 27px;
+    color: #ffffff;
+    line-height: 1.5;
+    margin-right: 10rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+.txtselect {
+    color: #0ec46f;
+    font-size: 27px;
+    line-height: 1.5;
+    margin-right: 10rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+.wrap-saiba {
+    width: 490px;
+    background-color: #012230;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 77px 55px 33px 55px;
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
+    margin-right: 5rem;
+    margin-top: 7rem;
+}
+
+.login-saiba-title {
+    font-family: Nunito, sans-serif;
+    display: block;
+    font-size: 30px;
+    color: azure;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.login-saiba-title2 {
     font-family: Nunito, sans-serif;
     display: block;
     font-size: 20px;
     color: azure;
     line-height: 1.4;
-    text-align: center;
-    margin-top: 3rem;
+    text-align: justify;
+    margin-top: 1rem;
+}
+
+.login-saiba-title img {
+    width: 200px;
+}
+
+.wrap-input-saiba {
+    width: 100%;
+    position: relative;
+    margin-bottom: 37px;
+    margin-top: 20px;
 }

@@ -1,0 +1,43 @@
+.predicao {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: -9%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.predicao-fundo {
+    display:block;
+    box-sizing: content-box;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;;
+}
+
+.select-container {
+    margin-right: 1rem;
+}
+
+select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-button {
+    background-color: #0EC46F;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #5bc997;
+}
+  

@@ -24,8 +24,10 @@ import ConsultaTurma from "./pages/consulta/consulta-turma/ConsultaTurma";
 import ConsultaProfessor from "./pages/consulta/consulta-professor/ConsultaProfessor";
 
 import Predicao from "./pages/predicao/Predicao";
+import HomeSaibaMais from "./pages/saiba_mais/home_saibamais/HomeSaibaMais";
 import SaibaMais from "./pages/saiba_mais/SaibaMais";
 import Contato from "./pages/contato/Contato";
+import HomeContato from "./pages/contato/home_contato/HomeContato";
 import Login from "./pages/login/Login";
 
 
@@ -51,8 +53,10 @@ const router = createBrowserRouter([
 
   { path: "/predicao", element: <Predicao /> },
 
+  { path: "/saibamais", element: <HomeSaibaMais /> },
   { path: "/saiba-mais", element: <SaibaMais /> },
   { path: "/contato", element: <Contato /> },
+  { path: "/contatohome", element: <HomeContato /> },
   { path: "/login", element: <Login /> },
 ]);
 

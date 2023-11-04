@@ -8,6 +8,7 @@ import disciplina from "../../img/disciplina.png";
 import turma from "../../img/turma.png";
 import unidade from "../../img/unidade.png";
 import instituicao from "../../img/instituicao.png";
+import professor from "../../img/professor.png";
 
 function Cadastro() {
   return (
@@ -16,7 +17,7 @@ function Cadastro() {
       <div className="div-fundo-cadastro">
         <p className="text-cadastro-cadastro">O que deseja cadastrar?</p>
         <div className="div-fundo-content">
-          <div className="child-cadastro-1">
+          <div className="child-cadastro">
             <div className="img-cadastro-cadastro-content">
               <img className="img-cadastro-cadastro" src={aluno} alt="Aluno" />
             </div>
@@ -29,9 +30,9 @@ function Cadastro() {
             </Link>
           </div>
 
-          <div className="child-cadastro-1">
+          <div className="child-cadastro">
             <div className="img-cadastro-cadastro-content">
-              <img className="img-cadastro-cadastro" src={aluno} alt="Aluno" />
+              <img className="img-cadastro-cadastro" src={professor} alt="professor" />
             </div>
             <Link to="professor">
               <div className="content-cadastro">
@@ -42,7 +43,7 @@ function Cadastro() {
             </Link>
           </div>
 
-          <div className="child-cadastro-1">
+          <div className="child-cadastro">
             <div className="img-cadastro-cadastro-content">
               <img
                 className="img-cadastro-cadastro"

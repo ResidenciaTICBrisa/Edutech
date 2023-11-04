@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body, html {
@@ -20,17 +19,18 @@ body, html {
     flex-wrap: wrap;
     align-items: center;
     justify-content: right;
-    padding: 200px;
+    padding: 1rem;
     background-color: #0c3547;
     position: relative;
+    box-sizing: border-box;
 }
 
 .container-img {
     position: absolute;
-    left: 13rem;
+    left: 15rem;
     width: 45rem;
     height: 35rem;
-    top: 13rem;
+    top: 16rem;
 }
 
 .header-login{
@@ -56,7 +56,9 @@ body, html {
 }
 
 .wrap-login {
-    width: 490px;
+    margin-right: 10rem;
+    margin-top: 7rem;
+    width: 300px;
     background-color: #012230;
     border-radius: 10px;
     overflow: hidden;
