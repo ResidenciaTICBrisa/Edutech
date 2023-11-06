@@ -74,7 +74,7 @@ function Consulta() {
               />
             </div>
             <Link to="unidade">
-              <div className="content-consulta">
+              <div className="content-consulta-1">
                 <button className="button-consulta-consulta">
                   Consultar Unidade
                 </button>
@@ -91,7 +91,7 @@ function Consulta() {
               />
             </div>
             <Link to="disciplina">
-              <div className="content-consulta">
+              <div className="content-consulta-1">
                 <button className="button-consulta-consulta">
                   Consultar Disciplina
                 </button>
@@ -108,7 +108,7 @@ function Consulta() {
               />
             </div>
             <Link to="turma">
-              <div className="content-consulta">
+              <div className="content-consulta-1">
                 <button className="button-consulta-consulta">
                   Consultar Turma
                 </button>
@@ -117,12 +117,6 @@ function Consulta() {
           </div>
         </div>
 
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
       </div >
     </>
   );

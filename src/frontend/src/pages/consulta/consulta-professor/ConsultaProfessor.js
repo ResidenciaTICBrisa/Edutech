@@ -31,11 +31,12 @@ const ConsultaProfessor = () => {
     <>
       <Header />
       <div className="dark-background">
-        <div>
+        <div className="fundinho">
           <h1>Consulta de Professores</h1>
         </div>
-        <div>
+        <div class="search-bar">
           <input
+            class="search-input"
             type="text"
             placeholder="Pesquisar por qualquer coluna"
             value={searchTerm}

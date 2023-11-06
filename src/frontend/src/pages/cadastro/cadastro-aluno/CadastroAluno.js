@@ -98,6 +98,7 @@ function CadastroAluno() {
               </div>
             </div>
           </div>
+          <div className="espaco-cadastro-in-p"></div>
         </div>
       </div>
     </>

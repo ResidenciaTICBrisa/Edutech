@@ -62,7 +62,7 @@ function CadastroDisciplinaNovo() {
                 onChange={(e) => handleChangeTexto("nome", e.target.value)}
               />
             </div>
-            <div className="botao-cadastrar">
+            <div className="botao-cadastrar-disc">
               <button className="button-cancelar-inst" onClick={handleCancelar}>
                 Cancelar
               </button>

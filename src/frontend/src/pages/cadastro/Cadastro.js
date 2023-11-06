@@ -112,13 +112,7 @@ function Cadastro() {
             </Link>
           </div>
         </div>
-
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
+        <div className="espaco-cadastro-in-p"></div>
       </div>
     </>
   );

@@ -58,11 +58,11 @@
   text-align: center;
 }
 
-.botao-cadastrar {
-  margin-top: 10%;
+.botao-cadastrar-turma {
+  margin-top: 24rem;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10%;
+  margin-bottom: 2%;
 }
 
 .caixa-texto {

@@ -28,23 +28,12 @@
     margin-top: 2%;
     margin-bottom: 0%;
 }
-
-.div-fundo-cadastro {
-    text-align: center;
-    background-color: #1c3f50;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 1%;
-    margin-top: 2%;
-    margin-bottom: 0%;
-  }
-  
   .text-cadastro-cadastro {
     color: #fff;
     font-size: 2.3rem;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
     font-weight: bold;
-    margin-top: 3%;
+    margin-top: 4%;
   }
   
   .div-fundo-content {
@@ -116,4 +105,6 @@
     background-color: #ccc;
     cursor: not-allowed;
   }
-  
+  .espaco-cadastro-in {
+    margin: 5rem;
+  }
