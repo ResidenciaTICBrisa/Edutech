@@ -4,7 +4,51 @@ Este documento apresenta os dados necessários para o desenvolvimento e o melhor
 
 ## Descrição
 
-lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
+# Descrições das Colunas de Dados
+
+Aqui estão as descrições para as colunas de dados:
+
+1. **sex** (Gênero do estudante):
+   - **Descrição**: Esta coluna indica o gênero do estudante.
+   - **Tipo**: Caracter
+   - **Quantidade de Valores Únicos**: 2
+   - **Valores**: M (Male), F (Female)
+
+2. **age** (Idade do estudante):
+   - **Descrição**: Esta coluna representa a idade do estudante.
+   - **Tipo**: Número inteiro
+   - **Quantidade de Valores Únicos**: 8
+   - **Valores**: 15 a 22
+
+3. **studytime** (Tempo de estudo semanal):
+   - **Descrição**: Esta coluna indica o tempo de estudo semanal do estudante.
+   - **Tipo**: Número inteiro
+   - **Quantidade de Valores Únicos**: 4
+   - **Valores**: 1 (<2 hours), 2 (2 to 5 hours), 3 (5 to 10 hours), 4 (>10 hours)
+
+4. **failures** (Número de reprovações):
+   - **Descrição**: Esta coluna representa o número de reprovações do estudante.
+   - **Tipo**: Número inteiro
+   - **Quantidade de Valores Únicos**: 4
+   - **Valores**: 0 a 3
+
+5. **higher** (Quer fazer educação superior):
+   - **Descrição**: Esta coluna indica se o estudante tem interesse em prosseguir com a educação superior.
+   - **Tipo**: Booleano
+   - **Quantidade de Valores Únicos**: 2
+   - **Valores**: True (yes), False (no)
+
+6. **internet** (Tem acesso à internet em casa):
+   - **Descrição**: Esta coluna indica se o estudante tem acesso à internet em casa.
+   - **Tipo**: Booleano
+   - **Quantidade de Valores Únicos**: 2
+   - **Valores**: True (yes), False (no)
+
+7. **absences** (Número de faltas):
+   - **Descrição**: Esta coluna representa o número de faltas do estudante.
+   - **Tipo**: Número Inteiro
+   - **Quantidade de Valores Únicos**: 94
+   - **Valores**: 0 a 93
 
 ## Dicionário de Dados
 
@@ -25,3 +69,4 @@ lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ip
 | 1.0    | 09/08/2023 | Criação do conteúdo                                     | Luís Lins      |
 | 2.0    | 08/09/2023 | Atualização do conteúdo                                 | FauseSkyWalker |
 | 3.0    | 14/09/2023 | Remove informações sobre dataset antigo e melhora texto | Luís Lins      |
+| 4.0    | 20/10/2023 |Descrição dos dados                                      | Renan Girão    |

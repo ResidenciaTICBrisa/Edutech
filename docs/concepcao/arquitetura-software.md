@@ -29,7 +29,98 @@ O [Jupyter Notebook](https://jupyter.org) é um aplicativo da web de código abe
 ![Diagrama de Pastas](../imagens/diagrama_pastas.png)
 
 ## Modelagem e Desenho do Banco de Dados
+#### Entidades
 
+* *Escola*:  A entidade "Escola" representa a instituição de ensino particular afetada pelo problema. 
+
+* *Unidade*: A entidade "Unidade da Escola" se refere às diferentes divisões ou campus da escola. Ela pode conter informações sobre localização geográfica, estrutura física e recursos disponíveis em cada unidade.
+
+* *Pessoa*: A entidade "Pessoa" é uma entidade abstrata que engloba tanto "Aluno" quanto "Professor". Ela representa indivíduos associados à escola que serão objetos de análise e previsão.
+  
+  * Aluno: A entidade "Aluno" representa os estudantes matriculados na escola. Ela contém informações pessoais dos alunos.
+
+  * Professor: A entidade "Professor" representa os educadores da escola. Ela inclui informações sobre o corpo docente.
+
+* *Turma*: A entidade "Turma" engloba grupos de alunos que frequentam as disciplinas juntos.
+
+* *Disciplina*: A entidade "Turma" engloba grupos de alunos que frequentam as disciplinas juntos.
+
+* *Avalição*:  A entidade "Avaliação" contém informações sobre as avaliações realizadas nas disciplinas, como provas, trabalhos e notas. 
+
+#### Atributos
+
+**ESCOLA**:
+
+- CNPJ: Número de Identificação Fiscal da escola.
+- Nome: Nome da escola.
+- CPF da Direção: Número de Identificação Fiscal do diretor da escola.
+
+**UNIDADE**:
+
+- ID da Unidade: Identificador único da unidade.
+- Nível de Educação: Nível de ensino oferecido pela unidade.
+- Telefone (opcional): Número de telefone da unidade.
+- Endereço: Informações sobre o endereço da unidade, incluindo sigla do estado, cidade, bairro, CEP, logradouro, número e complemento.
+- CPF do Coordenador: Número de Identificação Fiscal do coordenador da unidade.
+
+**PESSOA**:
+
+- CPF: Número de Identificação Fiscal da pessoa.
+- Matrícula: Número de matrícula da pessoa.
+- Nome: Nome da pessoa.
+- Gênero: Gênero da pessoa.
+- Telefone (opcional): Número de telefone da pessoa.
+- Endereço: Informações sobre o endereço da pessoa, incluindo sigla do estado, cidade, bairro, CEP, logradouro, número e complemento.
+
+**ALUNO**:
+
+- Data de Nascimento: Data de nascimento do aluno.
+- Acesso à Internet: Indicação se o aluno possui acesso à internet.
+
+**PROFESSOR**:
+
+- Formação: Nível de formação e qualificação do professor.
+
+**TURMA**:
+
+- ID da Turma: Identificador único da turma.
+- Série: Série da turma.
+- Letra: Letra que distingue turmas da mesma série.
+- Ano: Ano letivo da turma.
+- Unidade: Unidade à qual a turma está vinculada.
+
+**DISCIPLINA**:
+
+- Código: Código único da disciplina.
+- Nome: Nome da disciplina.
+
+**AVALIAÇÃO**:
+
+- ID da Avaliação: Identificador único da avaliação.
+- Tipo: Tipo de avaliação (por exemplo, prova, trabalho).
+- ID da Disciplina: Identificador da disciplina à qual a avaliação está associada.
+- Peso: Peso da avaliação no cálculo da nota final.
+
+
+#### Relacionamentos
+
+1. **ESCOLA - tem - UNIDADE (1:n)**
+   - **Descrição**: Uma escola tem uma ou mais unidades, e uma unidade pertence somente a uma escola. Isso indica a relação de propriedade das unidades em relação à escola.
+
+2. **UNIDADE - oferta - DISCIPLINA (n:m)**
+   - **Descrição**: Uma unidade oferta várias disciplinas, e uma disciplina pode ser ofertada por várias unidades. Esse é um relacionamento de muitos-para-muitos, indicando que várias unidades oferecem várias disciplinas.
+
+3. **UNIDADE - possui - TURMA (1:n)**
+   - **Descrição**: Uma unidade possui várias turmas, e uma turma é possuída por somente uma unidade. Isso representa a relação entre as unidades e as turmas que estão sob a administração de cada unidade.
+
+4. **PROFESSOR - leciona - DISCIPLINA (n:m) => entidade relacional**
+   - **Descrição**: Um professor leciona uma ou mais disciplinas, e uma disciplina pode ser lecionada por vários professores. Para representar um relacionamento muitos-para-muitos entre professores e disciplinas, você pode usar uma entidade relacional intermediária para registrar essas associações.
+
+5. **ALUNO - compõe - TURMA (n:m)**
+   - **Descrição**: Um aluno compõe uma ou mais turmas, e uma turma é composta por vários alunos. Isso denota a relação de pertencimento dos alunos às turmas em que estão matriculados.
+
+6. **TURMA - cursa - DISCIPLINA (n:m)**
+   - **Descrição**: Uma turma cursa uma ou mais disciplinas, e uma disciplina pode ser cursada por várias turmas. Isso representa a relação entre as turmas e as disciplinas que são ministradas dentro de cada turma.
 ### Diagrama Lógico de Dados (DLD)
 
 ![Diagrama Lógico de Dados](../imagens/DiagramaDados.jpg)
