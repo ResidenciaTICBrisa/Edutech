@@ -1,0 +1,78 @@
+.div-fundo-home-saibamais {
+    padding: 20px;
+    margin: 7%;
+    margin-top: 5%;
+  }
+  
+  .div-fundo-content-home-saibamais {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .text-home-saibamais {
+    color: #0EC46F;
+    font-size: 2.4rem;
+    margin-bottom: 7%;
+    margin-top: 9%;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .a-home-voltar {
+    color: #0EC46F;
+  }
+  
+  .a-home-voltar:hover  {
+    background-color: #ffffff;
+    text-decoration: underline;
+  }
+  
+  .a-home-saibamais {
+    color: white;
+  }
+  
+  .a-home:hover  {
+    background-color: #0EC46F;
+    text-decoration: underline;
+  }
+  
+  .p-home-saibamais {
+    font-size: 1.4rem;
+    text-align: justify;
+    margin-top: 2rem;
+    margin-left: 4rem;
+    margin-bottom: 8cqmin;
+    color: #fff;
+    font-size: 1.3rem;
+    padding: 0rem;
+    width: 80%;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  
+  .img-home-saibamais {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+  }
+  
+  .child-home-saibamais {
+    width: 100%;
+    background-color: #1C3F50;
+    border-radius: 20px;
+    margin: -1%;
+  }
+  
+  .child-home-img {
+    width: 100%;
+    background-color: #fcfcfc;
+  }
+  
+  .child-home-saibamais + .child-home-saibamais-img {
+    margin-left: 15%;
+  }
+  
+  .img-home-content {
+    margin-left: 0%;
+  }

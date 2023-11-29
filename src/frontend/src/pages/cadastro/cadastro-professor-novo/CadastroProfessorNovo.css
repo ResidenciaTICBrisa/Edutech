@@ -1,0 +1,135 @@
+.text-cadastrar {
+  color: #fff;
+  font-size: 2.3rem;
+  margin-bottom: 7%;
+  margin-top: 2%;
+  font-weight: bold;
+}
+
+.div-fundo-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  color: #fff;
+  font-size: 1.5em;
+  padding: 10%;
+  width: 40%;
+  text-align: center;
+  margin-left: 20%;
+  margin-top: -7%;
+}
+
+.label-aluno {
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.label-aluno-span {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-right: 0%;
+}
+
+.label-aluno-span-text {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-right: 0.3%;
+  margin-bottom: 100px;
+}
+
+.img-cadastro-aluno-cadastrar {
+  width: 17%;
+  height: 17%;
+}
+
+.child-aluno-cadastrar {
+  width: 50%;
+  margin: 1px;
+  margin-top: 10px;
+  margin-bottom: 90px;
+  flex: 1;
+  text-align: center;
+}
+
+.child-aluno-cadastrar + .child-aluno-cadastrar {
+  margin-left: -13%;
+}
+
+.img-cadastro-aluno-cadastrar-content {
+  margin-left: 14%;
+}
+
+.content-aluno-cadastrar {
+  height: auto;
+}
+
+.caixa-texto-aluno {
+  display: inline-block;
+  margin-right: 10px;
+  width: 300px;
+  height: 40px;
+}
+
+.button-cadastro-aluno-cadastrar {
+  font-size: 1.3rem;
+  background-color: #0ec46f;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.espaco-cadastro {
+  margin: 10px;
+}
+
+.caixa-checkbox-aluno-cadastrar {
+  display: flex;
+  /* align-items: center;  */
+  display: inline-block;
+}
+
+.checkbox-aluno-cadastrar {
+  display: inline-block;
+  vertical-align: middle;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: #fff;
+  border: 2px solid #0ec46f;
+  border-radius: 4px;
+  position: relative;
+}
+
+.checkbox-aluno-cadastrar:checked {
+  background-color: #1c3f50;
+}
+
+.checkbox-aluno-cadastrar:checked::after {
+  content: '\2713'; /* Código Unicode para a marca de seleção (✓) */
+  font-size: 16px; /* Tamanho da fonte da marca de seleção */
+  color: #00cc00; /* Cor verde */
+  position: absolute;
+  top: -3px; /* Ajuste a posição verticalmente */
+  left: 3px; /* Ajuste a posição horizontalmente */
+}
+
+.label-checkbox-aluno-cadastrar {
+  font-size: 16px; /* Tamanho da fonte do rótulo da caixa de seleção */
+}
+
+.botao-cadastrar-professor {
+  margin-top: 9%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+}

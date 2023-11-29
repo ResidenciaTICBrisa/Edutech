@@ -1,0 +1,28 @@
+/* Estilo base para o botão */
+.log-pos {
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  transform: translateY(-50%);
+}
+
+.log-color {
+  font-size: 1.3rem;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.log-color:hover {
+  background-color: #0ec46f;
+}
+
+.log-color:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

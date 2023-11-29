@@ -1,0 +1,184 @@
+.text-cadastro-aluno-cadastrar {
+  color: #fff;
+  font-size: 2.3rem;
+  margin-bottom: 7%;
+  font-weight: bold;
+}
+
+.div-fundo-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.h1-cadastro-aluno-cadastrar {
+  color: #fff;
+  font-size: 1.5em;
+  padding: 10%;
+  width: 40%;
+  text-align: center;
+  margin-left: 20%;
+  margin-top: -7%;
+}
+
+.label-aluno {
+  color: #fff;
+  font-size: 1.1em;
+}
+
+.text-entrada-aluno-novo {
+  margin-top: 5%;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  resize: none;
+  width: 90%;
+  box-sizing: border-box;
+}
+
+.label-aluno-span {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-right: 0%;
+}
+
+.label-aluno-span-text {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-right: 0.3%;
+  margin-bottom: 100px;
+}
+
+.img-cadastro-aluno-cadastrar {
+  width: 17%;
+  height: 17%;
+}
+
+.child-aluno-cadastrar {
+  width: 50%;
+  margin: 1px;
+  margin-top: 10px;
+  margin-bottom: 90px;
+  flex: 1;
+  text-align: center;
+}
+
+.child-aluno-cadastrar + .child-aluno-cadastrar {
+  margin-left: -13%;
+}
+
+.img-cadastro-aluno-cadastrar-content {
+  margin-left: 14%;
+}
+
+.content-aluno-cadastrar {
+  height: auto;
+}
+
+.caixa-texto-aluno {
+  display: inline-block;
+  margin-top: 2%;
+  margin-right: 10px;
+  width: 300px;
+  height: 40px;
+}
+
+.text-cadastrar-aluno-novo {
+  color: #fff;
+  font-size: 2.3rem;
+  margin-bottom: 3%;
+  margin-top: 3%;
+  font-weight: bold;
+}
+
+.button-cadastro-aluno-cadastrar {
+  font-size: 1.3rem;
+  background-color: #0ec46f;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.espaco-cadastro {
+  margin: 10px;
+}
+
+.caixa-checkbox-aluno-cadastrar {
+  display: flex;
+  display: inline-block;
+  margin-top: 2%;
+}
+
+.checkbox-aluno-cadastrar {
+  display: inline-block;
+  vertical-align: middle;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: #fff;
+  border: 2px solid #0ec46f;
+  border-radius: 4px;
+  position: relative;
+}
+
+.checkbox-aluno-cadastrar:checked {
+  background-color: #1c3f50;
+}
+
+.checkbox-aluno-cadastrar:checked::after {
+  content: '\2713';
+  font-size: 16px;
+  color: #00cc00;
+  position: absolute;
+  top: -3px;
+  left: 3px;
+}
+
+.label-checkbox-aluno-cadastrar {
+  font-size: 16px;
+}
+
+.div-fundo-content-cadastrar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.botao-cadastrar-aluno {
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.button-cadastrar-aluno {
+  font-size: 1.3rem;
+  background-color: #0ec46f;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+.button-cancelar-aluno {
+  font-size: 1.3rem;
+  background-color: #e02020;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}

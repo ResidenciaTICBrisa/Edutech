@@ -1,0 +1,88 @@
+.div-fundo-aluno {
+  text-align: center;
+  background-color: #1c3f50;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 1%;
+  margin-top: 2%;
+  margin-bottom: 0%;
+}
+
+.text-cadastro-aluno {
+  color: #fff;
+  font-size: 2.3rem;
+  margin-bottom: 7%;
+  font-weight: bold;
+  margin-top: 3%;
+}
+
+.div-fundo-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.h1-cadastro-aluno {
+  color: #fff;
+  font-size: 1.5em;
+  padding: 10%;
+  width: 40%;
+  text-align: center;
+  margin-left: 21%;
+  margin-top: -7%;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.img-cadastro-aluno {
+  width: 6rem;
+  height: 6rem;
+}
+
+.child-aluno {
+  width: 50%;
+  margin: 1px;
+  margin-top: 10px;
+  margin-bottom: 7rem;
+  flex: 1;
+  text-align: center;
+}
+
+.child-aluno + .child-aluno {
+  margin-left: -20%;
+}
+
+.img-cadastro-aluno-content {
+  margin-left: 1%;
+}
+
+.content-aluno {
+  height: auto;
+}
+
+.button-cadastro-aluno {
+  font-size: 1.3rem;
+  background-color: #0ec46f;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.button-aluno:hover {
+  background-color: #007bff;
+}
+
+.button-aluno:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.espaco-cadastro-in-p {
+  margin-bottom: 6rem;
+}

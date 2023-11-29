@@ -1,0 +1,43 @@
+version: "3.0"
+
+services:
+  # frontend:
+  #   container_name: react_app
+  #   image: react_image
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./frontend:/app
+  #     - node_modules:/app/node_modules
+
+  backend:
+    container_name: fastapi_app
+    image: fastapi_image
+    build: ./backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - ./backend/ml:/app/ml
+      - ./backend:/app
+
+  db:
+    container_name: mysql
+    image: mysql_image
+    build: ./db
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: matrix123
+      MYSQL_DATABASE: studentdatabase
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
+    driver: local
+  node_modules:
