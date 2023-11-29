@@ -7,13 +7,11 @@
 ## Como Executar
 ### 1. Clone o repositório:
 
-
 ```
 git clone https://github.com/ResidenciaTICBrisa/06_AcompanhamentoEnsinoMedio.git
 cd 06_AcompanhamentoEnsinoMedio
 ```
 ### 2. Execute o Docker Compose:
-
 
 ```
 docker-compose up --build
