@@ -100,7 +100,7 @@ function CadastroInstituicaoNovo() {
                 onChange={(e) => handleChangeTexto("senha", e.target.value)}
               />
             </div>
-            <div className="botao-cadastrar">
+            <div className="botao-cadastrar-inst">
               <button className="button-cancelar-inst" onClick={handleCancelar}>
                 Cancelar
               </button>

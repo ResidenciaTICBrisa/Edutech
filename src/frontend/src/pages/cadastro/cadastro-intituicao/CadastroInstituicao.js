@@ -40,7 +40,7 @@ function CadastroInstituicao() {
       <div className="div-fundo-instituicao">
         <p className="text-cadastro">Página de Cadastramento de Instituição</p>
         <div className="div-fundo-content">
-          <div className="child">
+          <div className="child-ins">
             <div className="img-cadastro-content">
               <img
                 className="img-cadastro"
@@ -52,12 +52,12 @@ function CadastroInstituicao() {
               <button className="button-cadastro" onClick={handleCadastro}>
                 Cadastrar Instituição
               </button>
-              <div className="h1-cadastro">
+              <div className="h1-cadastro-inst">
                 Nesta opção é possível cadastrar uma nova Instituição.
               </div>
             </div>
           </div>
-          <div className="child">
+          <div className="child-ins">
             <div className="img-cadastro-content">
               <img
                 className="img-cadastro"
@@ -67,7 +67,7 @@ function CadastroInstituicao() {
             </div>
             <div className="content">
               <ButtonUpload onFileSelected={handleFileSelected} />
-              <div className="h1-cadastro">
+              <div className="h1-cadastro-inst">
                 Nesta opção é possível importar os dados de nova Instituição.
               </div>
             </div>

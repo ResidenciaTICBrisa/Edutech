@@ -54,11 +54,11 @@ const Predicao = () => {
     <>
       <Header />
       <div className="dark-background">
-        <div>
-          <h1>Consulta de Predição</h1>
-        </div>
-        <div>
-          <div>
+        <div className="predicao-fundo">
+          <h1 className="predicao">Consulta de Predição</h1>
+
+        <div class="search-container">
+          <div class="select-container">
             <select
               value={filtro.disciplina}
               id="disciplina"
@@ -70,7 +70,8 @@ const Predicao = () => {
                 </option>
               ))}
             </select>
-
+          </div>
+          <div class="select-container">
             <select
               value={filtro.avaliacao}
               id="avaliacao"
@@ -84,8 +85,9 @@ const Predicao = () => {
               ))}
             </select>
           </div>
-          <button onClick={handleSearchButtonClick}>Buscar</button>
+          <button className="search-button" onClick={handleSearchButtonClick}>Buscar</button>
         </div>
+
         <table>
           <thead>
             <tr>
@@ -140,6 +142,7 @@ const Predicao = () => {
             </tbody>
           }
         </table>
+      </div>
       </div>
     </>
   );

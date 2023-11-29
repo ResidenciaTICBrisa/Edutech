@@ -63,8 +63,8 @@
 }
 
 .img-consulta-consulta {
-  width: 11rem;
-  height: 11rem;
+  width: 6rem;
+  height: 6rem;
 }
 
 .child-consulta-1 {
@@ -84,7 +84,7 @@
   text-align: center;
 }
 
-.child-consulta + .child-consulta {
+.child-consulta-1 + .child-consulta {
   margin-left: -13%;
 }
 
@@ -94,6 +94,11 @@
 
 .content-consulta {
   height: auto;
+}
+
+.content-consulta-1 {
+  height: auto;
+  margin-bottom: 10rem;
 }
 
 .button-consulta-consulta {
@@ -116,3 +121,4 @@
   background-color: #ccc;
   cursor: not-allowed;
 }
+

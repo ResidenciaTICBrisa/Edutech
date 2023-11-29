@@ -16,13 +16,37 @@
 }
 
 .text-home {
-  color: #0ec46f;
+  color: #0EC46F;
   font-size: 2.4rem;
   margin-bottom: 10%;
   margin-top: 9%;
   font-weight: bold;
   text-align: center;
 }
+
+.a-home {
+  color: white;
+}
+
+.a-home:hover  {
+  background-color: #0EC46F;
+  text-decoration: underline;
+}
+
+.p-home {
+  font-size: 1.4rem;
+  text-align: justify;
+  margin-top: 2rem;
+  margin-left: 4rem;
+  margin-bottom: 7%;
+  color: #fff;
+  font-size: 1.3rem;
+  padding: 0rem;
+  width: 80%;
+  text-align: center;
+  font-weight: bold;
+}
+
 
 .img-home {
   width: 100%;
@@ -32,8 +56,9 @@
 
 .child-home {
   width: 100%;
-  background-color: #1c3f50;
+  background-color: #1C3F50;
   border-radius: 20px;
+  margin: -1%;
 }
 
 .child-home-img {
@@ -42,7 +67,7 @@
 }
 
 .child-home + .child-home-img {
-  margin-left: 10%;
+  margin-left: 12%;
 }
 
 .img-home-content {

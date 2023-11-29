@@ -77,7 +77,7 @@ function CadastroTurmaNovo() {
                 onChange={(e) => handleChangeTexto("idUnidade", e.target.value)}
               />
             </div>
-            <div className="botao-cadastrar">
+            <div className="botao-cadastrar-turma">
               <button className="button-cancelar-inst" onClick={handleCancelar}>
                 Cancelar
               </button>

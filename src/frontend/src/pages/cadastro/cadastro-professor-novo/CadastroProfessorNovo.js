@@ -222,7 +222,7 @@ function CadastroProfessorNovo() {
               />
             </div>
 
-            <div className="botao-cadastrar">
+            <div className="botao-cadastrar-professor">
               <button className="button-cancelar-inst" onClick={handleCancelar}>
                 Cancelar
               </button>

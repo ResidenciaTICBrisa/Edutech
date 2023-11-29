@@ -19,26 +19,26 @@
   justify-content: space-between;
 }
 
-.h1-cadastro {
+.h1-cadastro-inst {
   color: #fff;
   font-size: 1.5em;
   padding: 10%;
   width: 40%;
   text-align: center;
-  margin-left: 30%;
+  margin-left: 21%;
   margin-top: -7%;
 }
 
 .img-cadastro {
-  width: 11rem;
-  height: 11rem;
+  width: 6rem;
+  height: 6rem;
 }
 
-.child {
+.child-ins {
   width: 50%;
   margin: 1px;
   margin-top: 10px;
-  margin-bottom: 9px;
+  margin-bottom: 7rem;
   flex: 1;
   text-align: center;
 }
@@ -53,6 +53,7 @@
 
 .content {
   height: auto;
+  margin-bottom: 3rem;
 }
 
 .button-cadastro {

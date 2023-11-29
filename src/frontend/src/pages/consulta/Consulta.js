@@ -8,6 +8,7 @@ import disciplina from "../../img/disciplina.png";
 import turma from "../../img/turma.png";
 import unidade from "../../img/unidade.png";
 import instituicao from "../../img/instituicao.png";
+import professor from "../../img/professor.png";
 
 function Consulta() {
   return (
@@ -16,7 +17,7 @@ function Consulta() {
       <div className="div-fundo-consulta">
         <p className="text-consulta-consulta">O que deseja consultar?</p>
         <div className="div-fundo-content">
-          <div className="child-consulta-1">
+          <div className="child-consulta">
             <div className="img-consulta-consulta-content">
               <img className="img-consulta-consulta" src={aluno} alt="Aluno" />
             </div>
@@ -33,8 +34,8 @@ function Consulta() {
             <div className="img-consulta-consulta-content">
               <img
                 className="img-consulta-consulta"
-                src={aluno}
-                alt="Consultar Unidade"
+                src={professor}
+                alt="professor"
               />
             </div>
             <Link to="professor">
@@ -46,7 +47,7 @@ function Consulta() {
             </Link>
           </div>
 
-          <div className="child-consulta-1">
+          <div className="child-consulta">
             <div className="img-consulta-consulta-content">
               <img
                 className="img-consulta-consulta"
@@ -73,7 +74,7 @@ function Consulta() {
               />
             </div>
             <Link to="unidade">
-              <div className="content-consulta">
+              <div className="content-consulta-1">
                 <button className="button-consulta-consulta">
                   Consultar Unidade
                 </button>
@@ -90,7 +91,7 @@ function Consulta() {
               />
             </div>
             <Link to="disciplina">
-              <div className="content-consulta">
+              <div className="content-consulta-1">
                 <button className="button-consulta-consulta">
                   Consultar Disciplina
                 </button>
@@ -107,7 +108,7 @@ function Consulta() {
               />
             </div>
             <Link to="turma">
-              <div className="content-consulta">
+              <div className="content-consulta-1">
                 <button className="button-consulta-consulta">
                   Consultar Turma
                 </button>
@@ -116,12 +117,6 @@ function Consulta() {
           </div>
         </div>
 
-        <div>
-          <br />
-        </div>
-        <div>
-          <br />
-        </div>
       </div >
     </>
   );

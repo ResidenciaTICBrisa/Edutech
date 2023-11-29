@@ -215,22 +215,6 @@ function CadastroAlunoNovo() {
               />
             </div>
 
-            <div className="espaco-cadastro"></div>
-
-            <label className="label-aluno-span">
-              O aluno possui acesso à Internet em casa?
-            </label>
-            <div className="caixa-checkbox-aluno-cadastrar">
-              <input type="checkbox" value={dadosAluno.acessaInternet} className="checkbox-aluno-cadastrar" />
-            </div>
-
-            <label className="label-aluno-span">
-              O aluno quer fazer educação superior?
-            </label>
-            <div className="caixa-checkbox-aluno-cadastrar">
-              <input type="checkbox" value={dadosAluno.educacaoSuperior} className="checkbox-aluno-cadastrar" />
-            </div>
-
             <div className="caixa-texto-aluno">
               <label className="label-aluno-span-text">
                 Série
@@ -289,6 +273,21 @@ function CadastroAlunoNovo() {
                   handleChangeTexto("disciplinasCursadas", e.target.value)
                 }
               />
+            </div>
+            <div className="espaco-cadastro"></div>
+            
+            <label className="label-aluno-span">
+              O aluno possui acesso à Internet em casa?
+            </label>
+            <div className="caixa-checkbox-aluno-cadastrar">
+              <input type="checkbox" value={dadosAluno.acessaInternet} className="checkbox-aluno-cadastrar" />
+            </div>
+
+            <label className="label-aluno-span">
+              O aluno quer fazer educação superior?
+            </label>
+            <div className="caixa-checkbox-aluno-cadastrar">
+              <input type="checkbox" value={dadosAluno.educacaoSuperior} className="checkbox-aluno-cadastrar" />
             </div>
 
             <div className="botao-cadastrar-aluno">
