@@ -25,16 +25,14 @@ As nossas **cores** escolhidas para o projeto foi um <font color="#0ec46f">verde
 Link para vizualizar pelo <a href="//www.figma.com/file/XwP1NJtDg7cglLqzlTQaDP/Untitled?type=design&node-id=0%3A1&mode=design&t=R08QjwOi5ZtNiyYS-1">Figma</a>
 
 ### Login
-
+![logo](../imagens/login.jpeg)
 ### Home
-
+![logo](../imagens/home.jpeg)
 ### Pagina de predição
-
+![logo](../imagens/Predicao.jpeg)
 ### Pagina de consulta
+![logo](../imagens/Consulta.jpeg)
 
-### Pagina para visualizações de gráficos
-
-### Pagina de feedback
 
 <!-- ## Referências -->
 
